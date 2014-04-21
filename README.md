@@ -1,6 +1,34 @@
 Everything
 ==========
 
+Git
+---
+```
+git config --global color.ui true    # Turn on color
+
+# Configure user name and email
+git config --global user.name "John Doe" 
+git config --global user.email johndoe@example.com
+
+# To revert last commit that is NOT pushed to remote
+git reset --hard HEAD^
+
+# Made some changes in master branch and want to apply those to the dev branch
+git co dev
+git rebase master
+
+# Delete a branch both locally and remotely
+git branch -d mybranch # locally
+git push origin :mybranch # remote
+ 
+# When you get error path '...' is unmerged and you want to undo local changes
+git reset foo/bar.txt
+git checkout foo/bar.txt
+
+# diff last commit
+git diff HEAD^ HEAD
+```
+
 Django
 ------
 #### South
