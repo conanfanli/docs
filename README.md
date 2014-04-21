@@ -37,6 +37,21 @@ Django
   - python manage.py migrate app
 
 
+Shell Commands
+--------------
+#### sed
+```
+#the "-n" option will not print anything unless an explicit request to print is found
+# use /p to only print the lines that match instead of the whole file
+sed -n 's/pattern/repl/p' file   
+
+# Use -i to modify the file in place
+sed  -i 's/transaction_rest_api/transaction_api/' templates/finance/model_table.html templates/finance/transaction_list.html
+```
+#### Change all new line characters to commas. sed will not really work
+> cat file | tr '\n' ','`
+
+
 Markdown
 --------
 See this [gist](https://gist.github.com/conanfanli/6546498).
@@ -70,9 +85,33 @@ AngularJS
 - Get object keys in a loop: http://stackoverflow.com/questions/11985863/how-to-use-ng-repeat-for-dictionaries-in-angularjs
 - handling $resource delete: Transaction.delete({transactionId: '123'}, success, failaure)
 
-Reverse SSH
+SSH
 -----------
+#### Generate keys 
+```
+# ssh
+sh-keygen -t rsa #Generating public/private rsa key pair. 
+#You can hit enter all the way
+#Your identification has been saved in /home/jurn/.ssh/id_rsa Your public key has been saved in /home/jurn/.ssh/id_rsa.pub 
+cd ~/.ssh
+cat id_rsa.pub >> authorized_keys  
+chmod 600 authorized_keys`
+ 
+#now copy id_rsa to your client (your GUI box)
+scp ./id_rsa hub@<GUI box ip>:       #do not forget the colon
+ 
+#now log out from you devbox and use your GUI box
+cd ~/.ssh
+chmod 600 id_rsa    
+#you should be able to ssh to your devbox without entering password now
 
+###############################################################################################
+
+# Redirect stderr to stdout and append output to a file
+script.sh >> output.txt 2>&1
+```
+
+#### Reverse ssh
 [Source](https://gist.github.com/conanfanli/7252902)
 
 ```
