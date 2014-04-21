@@ -1,5 +1,14 @@
 Everything
 ==========
+
+Django
+------
+#### South
+- If you accidentally dropped a table:
+  - python manage.py migrate app zero --fake
+  - python manage.py migrate app
+
+
 Markdown
 --------
 See this [gist](https://gist.github.com/conanfanli/6546498).
@@ -38,7 +47,8 @@ Reverse SSH
 
 [Source](https://gist.github.com/conanfanli/7252902)
 
-```#!/bin/sh
+```
+#!/bin/sh
 
 date
 cmd=ssh -nNT -R <secretport>:localhost:22 user@homebox
@@ -80,4 +90,20 @@ fi
 }
 
 # To connect and port forward from home box
-# ssh -D <newport> devuser@localhost -p <secretport>```
+# ssh -D <newport> devuser@localhost -p <secretport>
+```
+
+
+MYSQL
+-----
+- Disable innodb:
+
+```
+[mysqld]
+innodb=OFF
+ignore-builtin-innodb
+skip-innodb
+default-storage-engine=myisam
+default-tmp-storage-engine=myisam
+```
+
