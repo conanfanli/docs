@@ -33,4 +33,51 @@ AngularJS
 - Get object keys in a loop: http://stackoverflow.com/questions/11985863/how-to-use-ng-repeat-for-dictionaries-in-angularjs
 - handling $resource delete: Transaction.delete({transactionId: '123'}, success, failaure)
 
+Reverse SSH
+-----------
 
+[Source](https://gist.github.com/conanfanli/7252902)
+
+```#!/bin/sh
+
+date
+cmd=ssh -nNT -R <secretport>:localhost:22 user@homebox
+
+function status(){
+pid=`cat ~/.con.sh.pid`
+if [[ -n $pid ]] && [[ -n `ps $pid | tail -n +2` ]]
+then
+    echo Process is running
+    return 1
+else
+    echo Process is NOT running
+    return 0
+fi
+}
+
+# switch user to the user name of your home box
+function getpid(){
+ps aux | grep "[u]er" | cut -b10-16
+}
+
+function stop(){
+pid=`getpid`
+echo will kill $pid
+kill $pid
+}
+
+# switch workuser to the user name of dev box
+function restart(){
+if [[ `w | grep devuser` == "" ]]
+    # when not connection from dev, kill it and start
+then
+    echo No dev user, will restart
+    stop
+    $cmd
+else
+    echo dev is connected, will not kill current process
+fi
+}
+
+# To connect and port forward from home box
+# ssh -D <newport> devuser@localhost -p <secretport>```
