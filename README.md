@@ -29,6 +29,10 @@ git checkout foo/bar.txt
 git diff HEAD^ HEAD
 ```
 
+Virtual Box resize drive
+------------------------
+`VBoxManage modifyhd Win 7.vdi --resize 200000`
+
 Django
 ------
 #### South
