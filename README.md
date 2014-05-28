@@ -1,6 +1,12 @@
 Everything
 ==========
 
+Postgres
+--------
+- SELECT * FROM "pg_user" 
+- DROP USER someone
+- 
+
 Git
 ---
 ```
