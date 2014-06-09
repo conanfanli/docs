@@ -30,11 +30,11 @@ server {
 
     # Django media
     location /media  {
-        alias /www/nectar/media;  # your Django project's media files - amend as required
+        alias /www/mysite/media;  # your Django project's media files - amend as required
     }
 
     location /static {
-        alias /www/nectar/static; # your Django project's static files - amend as required
+        alias /www/mysite/static; # your Django project's static files - amend as required
     }
 
     # Finally, send all non-media requests to the Django server.
@@ -43,6 +43,18 @@ server {
         include     /etc/nginx/uwsgi_params; # the uwsgi_params file you installed
     }
 }
+```
+- Create ini file for uwsgi
+```
+[uwsgi]
+master = true
+module = nectar.wsgi
+daemonize = /var/log/uwsgi/nectar.log
+home = /usr/local/nectar
+socket = /tmp/nectar.sock
+pidfile = /tmp/nectar.pid
+chmod-socket = 666
+vacuum = true
 ```
 
 Git
