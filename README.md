@@ -48,11 +48,11 @@ server {
 ```
 [uwsgi]
 master = true
-module = nectar.wsgi
-daemonize = /var/log/uwsgi/nectar.log
-home = /usr/local/nectar
-socket = /tmp/nectar.sock
-pidfile = /tmp/nectar.pid
+module = mysite.wsgi
+daemonize = /var/log/uwsgi/mysite.log
+home = /usr/local/mysite
+socket = /tmp/mysite.sock
+pidfile = /tmp/mysite.pid
 chmod-socket = 666
 vacuum = true
 ```
