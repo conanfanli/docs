@@ -96,6 +96,15 @@ Django
   - python manage.py migrate app zero --fake
   - python manage.py migrate app
 
+### Template
+- verbatim: stops the engine from rendering the contents of this block tag.
+```
+{% verbatim %}
+    {{if dying}}Still alive. {{/if}}
+{% endverbatim %}
+```
+- {{ next }}: the value of the request parameter.
+
 
 Shell Commands
 --------------
