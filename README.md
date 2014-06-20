@@ -50,10 +50,11 @@ server {
 master = true
 module = mysite.wsgi
 daemonize = /var/log/uwsgi/mysite.log
+# This is you virtualenv directory
 home = /usr/local/mysite
 socket = /tmp/mysite.sock
 pidfile = /tmp/mysite.pid
-chmod-socket = 666
+chmod-socket = 664
 vacuum = true
 ```
 
