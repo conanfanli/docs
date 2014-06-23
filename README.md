@@ -5,6 +5,7 @@ Postgres
 --------
 - SELECT * FROM "pg_user" 
 - DROP USER someone
+- Output tuples only (no headers): psql mydb -t -c '\dt'
  
 
 Django & uWsgi & nginx
