@@ -151,6 +151,12 @@ Heroku
 see http://stackoverflow.com/questions/10527512/configuring-gunicorn-for-django-on-heroku.
 If you don't use --settings, you may get an annoying import error. If you don do collectstatic, your static files won't be served. And you must do this in the Procfile instead of using "heroku run ..."
 
+#### Use multi buildpack
+- heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
+- Add a file at root .buildpacks and include all build packs such as python and node:
+ - https://github.com/heroku/heroku-buildpack-nodejs.git
+ - https://github.com/heroku/heroku-buildpack-python.git
+
 AngularJS
 ---------
 - Get object keys in a loop: http://stackoverflow.com/questions/11985863/how-to-use-ng-repeat-for-dictionaries-in-angularjs
