@@ -107,6 +107,8 @@ Django
 ```
 - {{ next }}: the value of the request parameter.
 
+#### Django rest framework
+- set allow_add_remove=True for related fields.
 
 Shell Commands
 --------------
