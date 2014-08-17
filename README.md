@@ -143,6 +143,12 @@ Vim
 #### Vim commands:
 - Show the mapping of a certain key: ``` :verbose imap <tab>```
 
+Tmux
+----
+
+#### Use VIM keybinding in copy mode
+- set-window-option -g mode-keys vi
+
 Heroku
 ------
 #### Procfile:
