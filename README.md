@@ -85,6 +85,11 @@ git checkout foo/bar.txt
 
 # diff last commit
 git diff HEAD^ HEAD
+
+# submodules
+git submodule add https://github.com/kien/ctrlp.vim.git vim/bundle/ctrlp
+git submodule init
+git submodule update
 ```
 
 Virtual Box resize drive
