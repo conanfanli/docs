@@ -7,6 +7,13 @@ Everything
 randci () {
  git commit -a -m "Random commit message: $(curl -s http://whatthecommit.com/index.txt)"
  }
+ 
+ci () {
+    ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
+    read -p "You better come up with some thing good to say: " message
+    git commit -a -m "$ticket: $message"
+}
+
 ```
 
 Postgres
