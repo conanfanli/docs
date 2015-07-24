@@ -1,6 +1,14 @@
 Everything
 ==========
 
+.bashrc
+-------
+```
+randci () {
+ git commit -a -m "Random commit message: $(curl -s http://whatthecommit.com/index.txt)"
+ }
+```
+
 Postgres
 --------
 - SELECT * FROM "pg_user" 
