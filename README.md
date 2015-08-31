@@ -154,11 +154,11 @@ Vim
 
 #### Compiling Vim with Python
 
-`./configure --with-x --with-features=huge --enable-pythoninterp --with-python-config-dir=/usr/local/lib/python2.7/config  --enable-cscope --enable-gnome-check`
-
-`make `
-
-`sudo make install`
+How to compile with Python
+==========================
+- sudo apt-get install -y ncurses-dev libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
+- `./configure --with-features=huge --enable-python3interp=dynamic --enable-cscope --prefix=$HOME`
+- `make install`
 
 #### Vim commands:
 - Show the mapping of a certain key: ``` :verbose imap <tab>```
