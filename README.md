@@ -77,6 +77,11 @@ vacuum = true
 Git
 ---
 ```
+# Delete last 2 merged branches on remote
+for branch in `git branch -r --merged| grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep  'bit/.*' -o | tail -n 2 | sed -n 's/bit\///p' | xargs git push bit --delete
+```
+
+```
 git config --global color.ui true    # Turn on color
 
 # Configure user name and email
