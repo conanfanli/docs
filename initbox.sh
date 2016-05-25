@@ -1,7 +1,5 @@
 #!bin/bash
 set -e
-echo -n Please enter your password for iconfigs: 
-read password
 
 sudo apt-get update
 curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
@@ -12,7 +10,7 @@ sudo mkdir -p projects
 cd projects
 
 # Clone iconfigs if not exists
-test -d iconfigs || sudo git clone https://conanfanli:$password@bitbucket.org/conanfanli/iconfigs.git
+test -d iconfigs || sudo git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
 
 # Symlink
 sudo mkdir -p /srv/salt
