@@ -13,6 +13,7 @@ cd projects
 test -d iconfigs || git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
 
 # Symlink
+mkdir -p /srv/salt
 sudo ln -s /home/ubuntu/projects/iconfigs /srv/salt/iconfgis
 
 # Change owner
