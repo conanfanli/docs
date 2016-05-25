@@ -1,8 +1,6 @@
 #!bin/bash
 set -e
 
-sudo apt-get update && sudo apt-get -y install curl
-
 curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
 
 cd /home/ubuntu/
