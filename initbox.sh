@@ -9,7 +9,7 @@ sudo mkdir -p projects
 cd projects
 
 # Clone iconfigs if not exists
-test -d iconfigs || git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
+test -d iconfigs || sudo git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
 
 # Symlink
 sudo mkdir -p /srv/salt
