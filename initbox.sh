@@ -3,6 +3,7 @@ set -e
 echo -n Please enter your password for iconfigs: 
 read -s password
 
+sudo apt-get update
 curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
 sudo apt-get update && sudo apt-get install -y git < "/dev/null";
 
