@@ -13,3 +13,5 @@ cd /tmp && unzip ${VIM_VERSION} && cd ${VIM_VERSION} && \
     make && \
     make install && \
     sudo ln -s ${HOME}/bin/vim /usr/bin/vi -f
+
+exit 0
