@@ -1,7 +1,7 @@
 #!bin/bash
 set -e
 echo -n Please enter your password for iconfigs: 
-read -s password
+read password
 
 sudo apt-get update
 curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
