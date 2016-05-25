@@ -2,7 +2,8 @@
 set -e
 
 sudo apt-get update
-curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
+curl -L https://bootstrap.saltstack.com | sudo sh
+
 sudo apt-get update && sudo apt-get install -y git < "/dev/null";
 
 cd /home/ubuntu/
