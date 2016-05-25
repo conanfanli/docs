@@ -14,7 +14,7 @@ test -d iconfigs || git clone https://conanfanli@bitbucket.org/conanfanli/iconfi
 
 # Symlink
 sudo mkdir -p /srv/salt
-sudo ln -s /home/ubuntu/projects/iconfigs /srv/salt/iconfgis
+sudo ln -s /home/ubuntu/projects/iconfigs /srv/salt/iconfigs
 
 # Change owner
 sudo chown -R ubuntu:ubuntu /home/ubuntu/
