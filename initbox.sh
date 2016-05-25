@@ -4,7 +4,7 @@ set -e
 curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable
 
 cd /home/ubuntu/
-mkdir -p projects
+sudo mkdir -p projects
 cd projects
 
 # Clone iconfigs if not exists
