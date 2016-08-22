@@ -1,6 +1,9 @@
 Everything
 ==========
 
+DO NOT PUT __init__.py AT THE TOP LEVEL OF YOUR PROJECT OR YOUR TESTS CANNOT BE PROPERLY DISCOVERED
+---------------------------------------------------------------------------------------------------
+
 .bashrc
 -------
 ```
