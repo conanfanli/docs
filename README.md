@@ -1,10 +1,11 @@
 Everything
 ==========
 
-Fluentd + nginx
+Fluentd + nginx + elasticsearch
 ---------------
 - service td-agent restart will NOT work if it's not running. HOW STUPID IS THAT?
 - https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch/
+- List indecies `curl 'localhost:9200/_cat/indices?v'`
 
 
 DO NOT PUT __init__.py AT THE TOP LEVEL OF YOUR PROJECT OR YOUR TESTS CANNOT BE PROPERLY DISCOVERED
