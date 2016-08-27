@@ -1,6 +1,12 @@
 Everything
 ==========
 
+Fluentd + nginx
+---------------
+- Install fluentd
+- `sudo /opt/td-agent/embedded/bin/fluent-gem install fluent-plugin-elasticsearch`
+
+
 DO NOT PUT __init__.py AT THE TOP LEVEL OF YOUR PROJECT OR YOUR TESTS CANNOT BE PROPERLY DISCOVERED
 ---------------------------------------------------------------------------------------------------
 
