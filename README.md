@@ -4,7 +4,7 @@ Everything
 Fluentd + nginx + elasticsearch
 ---------------
 - service td-agent restart will NOT work if it's not running. HOW STUPID IS THAT?
-- https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch/
+- https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch/ https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch-2/
 - List indecies `curl 'localhost:9200/_cat/indices?v'`
 
 
