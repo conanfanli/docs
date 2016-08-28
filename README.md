@@ -5,6 +5,7 @@ Fluentd + nginx + elasticsearch
 ---------------
 - service td-agent restart will NOT work if it's not running. HOW STUPID IS THAT?
 - Plugin for multiple formats `sudo td-agent-gem install fluent-plugin-multi-format-parser`
+- `sudo td-agent-gem install fluent-plugin-rewrite-tag-filter`
 - https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch/ https://sonnguyen.ws/monitor-nginx-response-time-with-fluentd-kibana-and-elasticsearch-2/
 - List indecies `curl 'localhost:9200/_cat/indices?v'`
 - https://github.com/conanfanli/docs/blob/master/logstash-mapping.json
