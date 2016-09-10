@@ -1,5 +1,6 @@
 **TL;DR**
 
+https://medium.com/@tk512/upgrading-postgresql-from-9-3-to-9-4-on-ubuntu-14-04-lts-2b4ddcd26535#.ykg7kfkhu
 ```bash
 sudo pg_dropcluster 9.4 main --stop
 sudo pg_upgradecluster 9.3 main
