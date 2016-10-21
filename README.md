@@ -37,6 +37,12 @@ Postgres
 - Output tuples only (no headers): psql mydb -t -c '\dt'
 - Dump database `pg_dump -d DBNAME -O -x -Ft -f DBNAME.pgdump`
 - Restore: `pg_restore --single-transaction --no-privileges --no-owner -d DBNAME -Fc /PATH/TO/DUMPFILE`
+- Grant user permission:
+```
+GRANT USAGE ON SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO postgres;
+```
  
 
 Django & uWsgi & nginx
