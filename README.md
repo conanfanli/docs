@@ -35,6 +35,8 @@ Postgres
 - SELECT * FROM "pg_user" 
 - DROP USER someone
 - Output tuples only (no headers): psql mydb -t -c '\dt'
+- Dump database `pg_dump -d DBNAME -O -x -Ft -f DBNAME.pgdump`
+- Restore: `pg_restore --single-transaction --no-privileges --no-owner -d DBNAME -Fc /PATH/TO/DUMPFILE`
  
 
 Django & uWsgi & nginx
