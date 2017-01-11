@@ -1,5 +1,9 @@
 Everything
 ==========
+Javascript
+-----------
+- eslint parser needs to be set to `babel-eslint`
+- Use `babel-plugin-transform-class-properties` for class properties
 
 Fluentd + nginx + elasticsearch
 ---------------
