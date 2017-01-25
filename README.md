@@ -144,10 +144,6 @@ Virtual Box resize drive
 
 Django
 ------
-#### South
-- If you accidentally dropped a table:
-  - python manage.py migrate app zero --fake
-  - python manage.py migrate app
 
 ### Template
 - verbatim: stops the engine from rendering the contents of this block tag.
