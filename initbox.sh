@@ -6,9 +6,8 @@ wget -O bootstrap_salt.sh https://bootstrap.saltstack.com
 sudo sh bootstrap_salt.sh
 sudo apt-get update && sudo apt-get install -y git < "/dev/null";
 
-cd /home/ubuntu/
-sudo mkdir -p projects
-cd projects
+sudo mkdir -p /home/ubuntu/projects
+cd /home/ubuntu/projects
 
 # Clone iconfigs if not exists
 test -d iconfigs || sudo git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
@@ -17,9 +16,9 @@ test -d iconfigs || sudo git clone https://conanfanli@bitbucket.org/conanfanli/i
 sudo mkdir -p /srv/salt
 sudo ln -s /home/ubuntu/projects/iconfigs /srv/salt/iconfigs
 
+# Apply salt
+sudo salt-call --local state.apply iconfigs
+
 # Change owner
 sudo chown -R ubuntu:ubuntu /home/ubuntu/
 sudo chown -R ubuntu:ubuntu /srv/salt
-
-# Apply salt
-sudo salt-call --local state.apply iconfigs
