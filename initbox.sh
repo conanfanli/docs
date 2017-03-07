@@ -10,7 +10,7 @@ sudo mkdir -p /home/ubuntu/projects
 cd /home/ubuntu/projects
 
 # Clone iconfigs if not exists
-test -d iconfigs || sudo git clone https://conanfanli@bitbucket.org/conanfanli/iconfigs.git
+test -d iconfigs || sudo git cloneh ttps://gitlab.com/vanillarice/iconfigs.git
 
 # Symlink
 sudo mkdir -p /srv/salt
