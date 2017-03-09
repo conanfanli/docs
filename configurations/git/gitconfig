@@ -1,0 +1,12 @@
+[color]
+	ui = true
+[alias]
+    ci = commit -a -m
+    st = status
+    co = checkout
+    merge = --no-ff
+
+[user]
+	name = Conan Li
+[core]
+	editor = vim
