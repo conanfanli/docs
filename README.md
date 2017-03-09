@@ -195,6 +195,8 @@ Tmux
 
 #### Use VIM keybinding in copy mode
 - set-window-option -g mode-keys vi
+### Map meta keys in Mac
+- https://www.reddit.com/r/tmux/comments/2fgmf7/os_x_problems_with_meta_keys_with_tmux_and_iterm2/
 
 Heroku
 ------
