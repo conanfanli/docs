@@ -5,7 +5,7 @@ cd ~/docs
 
 if [ -f "/usr/bin/sw_vers" ]
 then
-    echo Mac version: $mac
+    echo You are on Mac
     echo mac > data/os
     exit 0
 fi
