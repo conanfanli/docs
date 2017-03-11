@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh e
 
 mkdir -p ~/docs/data
 cd ~/docs
