@@ -3,15 +3,14 @@
 mkdir -p ~/docs/data
 cd ~/docs
 
-mac=`sw_vers -productVersion`
-if [ -n "$mac" ]
+if [ -f "/usr/bin/sw_vers" ]
 then
     echo Mac version: $mac
     echo mac > data/os
     exit 0
 fi
 
-centos=`cat /etc/*-release | grep -i centos)`
+centos=`cat /etc/*-release | grep -i centos`
 if [ -n "$centos" ]
 then
     echo CentOS
