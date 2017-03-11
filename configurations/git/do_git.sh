@@ -2,6 +2,8 @@
 
 CONFIG_FILE="$HOME/docs/configurations/git/gitconfig"
 cp $CONFIG_FILE ~/.gitconfig
+
+echo Installed gitconfig
 cat ~/.gitconfig
 
-https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+(ls /etc/bash_completion.d/ | grep git) && echo 11111 || echo 2222

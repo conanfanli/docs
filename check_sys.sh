@@ -1,4 +1,4 @@
-#!/bin/sh e
+#!/bin/sh
 
 mkdir -p ~/docs/data
 cd ~/docs
@@ -10,8 +10,8 @@ then
     exit 0
 fi
 
-centos=`cat /etc/*-release | grep -i ubuntu`
-if [ -n "$centos" ]
+ubuntu=`cat /etc/*-release | grep -i ubuntu`
+if [ -n "$ubuntu" ]
 then
     echo You are on Ubuntu
     echo ubuntu > data/os
@@ -26,3 +26,6 @@ then
     echo centos > data/os
     exit 0
 fi
+
+echo unknown OS
+exit 1
