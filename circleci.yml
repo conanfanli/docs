@@ -1,0 +1,3 @@
+test:
+    override:
+        - ./check_sys.sh
