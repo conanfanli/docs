@@ -3,6 +3,9 @@
 GIT_CONFIG_DIR="$HOME/docs/configurations/git"
 COMPLETION_FILE_PATH="$GIT_CONFIG_DIR/git-completion.bash"
 CONFIG_FILE="$GIT_CONFIG_DIR/gitconfig"
+
+MAC_COMPLETION_DIR="/usr/local/etc/bash_completion.d"
+
 cp $CONFIG_FILE ~/.gitconfig
 
 echo Installed gitconfig
@@ -18,7 +21,7 @@ then
 fi
 
 # On Mac
-if [ -d "/usr/local/etc/bash_completion.d/" ] && [ ! -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]
+if [ -d "$MAC_COMPLETION_DIR" ] && [ ! -f "$MAC_COMPLETION_DIR/git-completion.bash" ]
 then
-    echo 1111111
+    sudo cp $COMPLETION_FILE_PATH $MAC_COMPLETION_DIR
 fi
