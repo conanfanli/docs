@@ -11,7 +11,13 @@ then
     exit 0
 fi
 
-(cat /etc/*-release | grep -i centos) && echo CentOS
+centos=`cat /etc/*-release | grep -i centos)`
+if [ -n "$centos" ]
+then
+    echo CentOS
+    echo centos > data/os
+    exit 0
+fi
 # info=`cat /etc/*-release`
 # echo $info
 # set -e
