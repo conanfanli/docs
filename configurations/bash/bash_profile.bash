@@ -17,7 +17,7 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh'
+alias ls='ls -GFh --color'
 
 alias la='ls -a'
 
