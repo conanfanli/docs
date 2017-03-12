@@ -3,7 +3,7 @@
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
