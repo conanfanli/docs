@@ -313,3 +313,6 @@ let g:javascript_plugin_flow = 1
 
 " Automatically remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
+
+" Dsiabling rope autoimport for performance reasons
+let g:pymode_rope_autoimport = 0
