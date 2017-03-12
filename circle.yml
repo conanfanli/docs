@@ -6,3 +6,4 @@ test:
     override:
         - grep -w ubuntu ./data/os
         - test -f ~/.gitconfig
+        - test -f ~/.tmux.conf
