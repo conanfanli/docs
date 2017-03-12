@@ -1,8 +1,14 @@
+# START bash_profile -DO-NOT-EDIT
+# grep with color
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
-alias migrate='python manage.py migrate && JUMP_DB_NAME=test_nectar python manage.py migrate'
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
+
 ci () {
     ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
     read -p "You better come up with some thing good to say: " message
@@ -37,3 +43,4 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# END bash_profile
