@@ -1,4 +1,7 @@
 # START bash_profile -DO-NOT-EDIT
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
 
 # For MAC
 export CLICOLOR=1
