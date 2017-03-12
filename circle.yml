@@ -1,3 +1,7 @@
 test:
+    pre:
+        - ./check_sys.sh
+        - ./configurations/git/do_git.sh
     override:
-        - ./check_sys.sh && grep -w ubuntu ./data/os
+        - grep -w ubuntu ./data/os
+        - test -f ~/.gitconfig
