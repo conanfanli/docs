@@ -1,8 +1,22 @@
 # START bash_profile -DO-NOT-EDIT
+
+# For MAC
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# END MAC
+
+
 # grep with color
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias ls='ls -GFh'
+
+alias la='ls -a'
 
 alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
