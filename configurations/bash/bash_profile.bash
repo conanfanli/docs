@@ -2,6 +2,9 @@
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 
 # For MAC
 export CLICOLOR=1
@@ -25,6 +28,10 @@ alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
+
+v () {
+    source ~/envs/$1/bin/activate
+}
 
 ci () {
     ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
