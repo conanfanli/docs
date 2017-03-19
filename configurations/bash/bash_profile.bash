@@ -31,12 +31,13 @@ alias t='python manage.py test'
 alias so='source ~/.bash_profile'
 
 v () {
+    ENV_DIR=~/envs
     if [ -z "$1" ]
     then
         ENV=`basename $PWD`
-        . ~/envs/$ENV/bin/activate
+        . $ENV_DIR/$ENV/bin/activate 2> /dev/null || echo Available virutal environments: `ls $ENV_DIR`
     else
-        . ~/envs/$1/bin/activate
+        . $ENV_DIR/$1/bin/activate
     fi
 }
 
