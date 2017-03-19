@@ -28,9 +28,16 @@ alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
+alias so='source ~/.bash_profile'
 
 v () {
-    source ~/envs/$1/bin/activate
+    if [ -z "$1" ]
+    then
+        ENV=`basename $PWD`
+        . ~/envs/$ENV/bin/activate
+    else
+        . ~/envs/$1/bin/activate
+    fi
 }
 
 ci () {
