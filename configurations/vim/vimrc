@@ -316,3 +316,4 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Dsiabling rope autoimport for performance reasons
 let g:pymode_rope_autoimport = 0
+let g:pymode_rope_regenerate_on_write = 0
