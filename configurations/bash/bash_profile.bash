@@ -25,6 +25,13 @@ alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
+alias so='source ~/.bash_profile'
+
+v () {
+    base=`basename $PWD`
+    name=${1-$base}
+    . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
+}
 
 ci () {
     ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
