@@ -6,7 +6,7 @@ fi
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if which brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
@@ -21,6 +21,7 @@ alias ls='ls -GFh --color'
 
 alias la='ls -a'
 
+alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
