@@ -9,8 +9,12 @@ export LANGUAGE=en_US.UTF-8
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if which brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]
+then
     . $(brew --prefix)/etc/bash_completion
+    alias ls='ls -GFh'
+else
+    alias ls='ls -GFh --color'
 fi
 
 # END MAC
@@ -20,10 +24,10 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh --color'
-
+alias ll='ls -l'
 alias la='ls -a'
 
+alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
 alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
@@ -31,14 +35,9 @@ alias t='python manage.py test'
 alias so='source ~/.bash_profile'
 
 v () {
-    ENV_DIR=~/envs
-    if [ -z "$1" ]
-    then
-        ENV=`basename $PWD`
-        . $ENV_DIR/$ENV/bin/activate 2> /dev/null || echo Available virutal environments: `ls $ENV_DIR`
-    else
-        . $ENV_DIR/$1/bin/activate
-    fi
+    base=`basename $PWD`
+    name=${1-$base}
+    . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
 }
 
 ci () {
@@ -75,4 +74,9 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+# For FZF
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # END bash_profile
