@@ -6,8 +6,12 @@ fi
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]
+then
     . $(brew --prefix)/etc/bash_completion
+    alias ls='ls -GFh'
+else
+    alias ls='ls -GFh --color'
 fi
 
 # END MAC
@@ -17,7 +21,6 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh'
 alias ll='ls -l'
 alias la='ls -a'
 
