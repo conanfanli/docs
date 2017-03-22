@@ -17,8 +17,8 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh --color'
-
+alias ls='ls -GFh'
+alias ll='ls -l'
 alias la='ls -a'
 
 alias docs='cd ~/docs'
