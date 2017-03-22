@@ -10,3 +10,5 @@
 	name = Conan Li
 [core]
 	editor = vim
+[push]
+	default = simple
