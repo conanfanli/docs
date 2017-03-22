@@ -33,6 +33,7 @@ alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activat
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
 alias so='source ~/.bash_profile'
+alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 v () {
     base=`basename $PWD`
