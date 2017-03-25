@@ -322,5 +322,6 @@ let g:pymode_rope_regenerate_on_write = 0
 set rtp+=~/.fzf
 
 " Use ag instead of ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'git grep -n'
 

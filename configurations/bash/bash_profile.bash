@@ -2,12 +2,19 @@
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew 2> /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]
+then
     . $(brew --prefix)/etc/bash_completion
+    alias ls='ls -GFh'
+else
+    alias ls='ls -GFh --color'
 fi
 
 # END MAC
@@ -17,7 +24,6 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh'
 alias ll='ls -l'
 alias la='ls -a'
 
@@ -27,6 +33,7 @@ alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activat
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
 alias so='source ~/.bash_profile'
+alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 v () {
     base=`basename $PWD`
