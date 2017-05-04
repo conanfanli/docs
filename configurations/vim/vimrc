@@ -38,6 +38,7 @@
  NeoBundle 'alvan/vim-closetag'
  NeoBundle 'elzr/vim-json'
  NeoBundle 'mxw/vim-jsx'
+ NeoBundle 'editorconfig/editorconfig-vim'
 
  NeoBundleLazy 'flowtype/vim-flow', {
              \ 'autoload': {'filetypes': 'javascript'},

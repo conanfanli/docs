@@ -2,3 +2,4 @@
 .ropeproject
 *.map
 *.min.css
+.git/
