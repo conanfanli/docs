@@ -1,52 +1,59 @@
-" Note: Skip initialization for vim-tiny or vim-small.
- if 0 | endif
+if &compatible
+    set nocompatible
+endif
+set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
- if has('vim_starting')
-   if &compatible
-     set nocompatible               " Be iMproved
-   endif
+if dein#load_state('~/.vim/bundles')
+    call dein#begin('~/.vim/bundles')
 
-   " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+    " Let dein manage dein
+    " Required:
+    call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
 
- " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
+    " Add or remove your plugins here:
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
 
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
+    " You can specify revision/branch/tag.
+    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('jonathanfilip/vim-lucius')
+    call dein#add('kien/ctrlp.vim')
+    call dein#add('klen/python-mode')
+    call dein#add('scrooloose/syntastic')
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('vim-airline/vim-airline-themes')
+    call dein#add('mileszs/ack.vim')
+    call dein#add('digitaltoad/vim-jade')
+    call dein#add('pangloss/vim-javascript')
+    call dein#add('maksimr/vim-jsbeautify')
+    call dein#add('ervandew/supertab')
+    call dein#add('saltstack/salt-vim')
+    call dein#add('schickling/vim-bufonly')
+    call dein#add('leafgarland/typescript-vim')
+    call dein#add('alvan/vim-closetag')
+    call dein#add('elzr/vim-json')
+    call dein#add('mxw/vim-jsx')
+    call dein#add('editorconfig/editorconfig-vim')
 
- " My Bundles here:
- " Refer to |:NeoBundle-examples|.
- " Note: You don't set neobundle setting in .gvimrc!
- NeoBundle 'scrooloose/nerdtree'
- NeoBundle 'jonathanfilip/vim-lucius'
- NeoBundle 'kien/ctrlp.vim'
- NeoBundle 'klen/python-mode'
- NeoBundle 'scrooloose/syntastic'
- NeoBundle 'vim-airline/vim-airline'
- NeoBundle 'vim-airline/vim-airline-themes'
- NeoBundle 'mileszs/ack.vim'
- NeoBundle 'digitaltoad/vim-jade'
- NeoBundle 'pangloss/vim-javascript'
- NeoBundle 'maksimr/vim-jsbeautify'
- NeoBundle 'ervandew/supertab'
- NeoBundle 'saltstack/salt-vim'
- NeoBundle 'schickling/vim-bufonly'
- NeoBundle 'leafgarland/typescript-vim'
- NeoBundle 'alvan/vim-closetag'
- NeoBundle 'elzr/vim-json'
- NeoBundle 'mxw/vim-jsx'
- NeoBundle 'editorconfig/editorconfig-vim'
+    " NeoBundleLazy 'flowtype/vim-flow', {
+    "             \ 'autoload': {'filetypes': 'javascript'},
+    "             \}
 
- NeoBundleLazy 'flowtype/vim-flow', {
-             \ 'autoload': {'filetypes': 'javascript'},
-             \}
+    " NeoBundle 'jiangmiao/auto-pairs'
 
- "NeoBundle 'jiangmiao/auto-pairs'
+    " Required:
+    call dein#end()
+    call dein#save_state()
+endif
 
- call neobundle#end()
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
 
 
@@ -56,34 +63,6 @@
 
  " Auto reload vimrc
  autocmd! bufwritepost .vimrc source %
-
- " Required:
- filetype plugin indent on
-
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
-" Turn filetype off to load pathogen
-" filetype off
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
-
-" filetype on
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
