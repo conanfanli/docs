@@ -20,9 +20,8 @@ install-vim () {
 }
 
 install-dein () {
-    # test -d ~/repos/github.com/Shougo && echo 'Dein is already installed' && return 0
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-    sh ./installer.sh ~/.vim/bundles
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+    sh /tmp/installer.sh ~/.vim/bundles
 }
 
 
