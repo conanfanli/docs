@@ -5,7 +5,7 @@ set -e
 
 
 install-vim () {
-    (vim --version | grep -o 8.0) && echo 'Your Vim is already up to date' && return 0
+    (~/bin/vim --version | grep -o 'IMproved 8.0') && echo 'Your Vim is already up to date' && return 0
 
     sudo apt-get update && sudo apt-get install -y make unzip ncurses-dev libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
 
