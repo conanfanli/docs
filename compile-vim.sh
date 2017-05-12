@@ -16,7 +16,7 @@ install-vim () {
     ./configure --with-features=huge --enable-python3interp=dynamic --enable-cscope --prefix=${HOME} && \
         make && \
         make install && \
-        sudo ln -s ${HOME}/bin/vim /usr/bin/vi -f
+        sudo ln -fs ${HOME}/bin/vim /usr/bin/vi
 }
 
 install-dein () {
