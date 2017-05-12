@@ -2,6 +2,7 @@
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
+export HISTFILESIZE=2000
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
