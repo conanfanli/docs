@@ -30,6 +30,7 @@ install-vim () {
     cd ~
     test -d vim || git clone https://github.com/vim/vim.git
 
+    # sudo ln doesn't work on Mac because of permission
     cd vim/src && \
     ./configure --with-features=huge ${compile_arg} --enable-cscope --prefix=${HOME} && \
         make && \
