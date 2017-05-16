@@ -285,12 +285,6 @@ let b:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
 " JSX works for .js files
 let g:jsx_ext_required = 0
 
-" For flow
-let g:flow#autoclose = 1
-let g:flow#flowpath = './node_modules/.bin/flow'
-let g:flow#enable = 0
-let g:javascript_plugin_flow = 1
-
 " Automatically remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
