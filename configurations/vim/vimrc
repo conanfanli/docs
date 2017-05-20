@@ -30,7 +30,6 @@ if dein#load_state('~/.vim/bundles')
     call dein#add('ervandew/supertab')
     call dein#add('saltstack/salt-vim')
     call dein#add('schickling/vim-bufonly')
-    call dein#add('leafgarland/typescript-vim')
     call dein#add('alvan/vim-closetag')
     call dein#add('elzr/vim-json')
     call dein#add('mxw/vim-jsx')
@@ -275,21 +274,11 @@ command! CP :w! /usr/share/nginx/html/clips/1.txt
 autocmd FileType typescript :set makeprg=./node_modules/.bin/tsc
 set backupcopy=yes
 
-let g:syntastic_typescript_checkers = ['tsc']
-set backupcopy=yes
-let g:syntastic_typescript_tsc_fname = ''
-
 let g:syntastic_javascript_checkers = ['eslint']
 let b:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
 
 " JSX works for .js files
 let g:jsx_ext_required = 0
-
-" For flow
-let g:flow#autoclose = 1
-let g:flow#flowpath = './node_modules/.bin/flow'
-let g:flow#enable = 0
-let g:javascript_plugin_flow = 1
 
 " Automatically remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
