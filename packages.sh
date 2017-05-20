@@ -7,6 +7,11 @@ then
     yes | ~/.fzf/install
 fi
 
+if [ ! -f ~/z.sh ]
+then
+    curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/bin/z.sh
+fi
+
 $DIR/check_sys.sh
 
 install_ag () {
@@ -29,6 +34,7 @@ install_ag () {
         exit 1;
     fi
 }
+
 
 install_ag
 
