@@ -171,15 +171,11 @@ imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-l> <Right>
 
-" use PageUp/H and PageDown/L switch buffer
-nmap <PageUp> :bp<CR>
-nmap <PageDown> :bn<CR>
-
+" Use shift-H and shift-L to change buffer
 nmap H :bp<CR>
 nmap L :bn<CR>
 
 " Use fuzzy finder buffer mode to open buffer
-nmap <C-S-F> :PyLintAuto<CR>
 map <Leader>d :CtrlP .<CR>
 map <Leader>f :CtrlPBuffer<CR>
 set wildignore+=*/coverage/*,*/build/*,*/node_modules/*,*/__pycache__/*,*.ttf,*.svg,*.pyc,*/build-debug/*,venv/*
@@ -191,8 +187,6 @@ imap <Leader>w <ESC>:w<CR>
 nmap <Leader>w <ESC>:w<CR>
 imap zz <ESC>
 
-" Use ww instead of ESC
-" imap ww <ESC>
 " set tags files
 set tags=tags;
 
@@ -263,7 +257,7 @@ set laststatus=2
 au BufNewFile,BufRead *.styl set filetype=less
 
 " closetag filename extensions
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ts"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ts,*jsx"
 
 " clip command to copy yanked text to a file served by ngxin
 command! CP :w! /usr/share/nginx/html/clips/1.txt
