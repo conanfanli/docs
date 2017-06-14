@@ -257,7 +257,7 @@ set laststatus=2
 au BufNewFile,BufRead *.styl set filetype=less
 
 " closetag filename extensions
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ts,*jsx"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ts,*jsx,*js"
 
 " clip command to copy yanked text to a file served by ngxin
 command! CP :w! /usr/share/nginx/html/clips/1.txt
