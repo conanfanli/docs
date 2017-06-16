@@ -10,6 +10,6 @@
 	name = Conan Li
 [core]
 	editor = vim
-	excludesfile = /Users/cli/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple

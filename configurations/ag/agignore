@@ -3,3 +3,4 @@
 *.map
 *.min.css
 .git/
+logs/
