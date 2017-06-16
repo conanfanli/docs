@@ -34,6 +34,7 @@ if dein#load_state('~/.vim/bundles')
     call dein#add('elzr/vim-json')
     call dein#add('mxw/vim-jsx')
     call dein#add('editorconfig/editorconfig-vim')
+    call dein#add('jparise/vim-graphql')
 
     " NeoBundleLazy 'flowtype/vim-flow', {
     "             \ 'autoload': {'filetypes': 'javascript'},
