@@ -1,61 +1,26 @@
-if &compatible
-    set nocompatible
-endif
-set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
+call plug#begin('~/.vim/plugged')
 
-if dein#load_state('~/.vim/bundles')
-    call dein#begin('~/.vim/bundles')
+" You can specify revision/branch/tag.
+Plug 'Shougo/vimshell', { 'rev': '3787e5' }
+Plug 'scrooloose/nerdtree'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'kien/ctrlp.vim'
+Plug 'klen/python-mode'
+" Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mileszs/ack.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'schickling/vim-bufonly'
+Plug 'alvan/vim-closetag'
+Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'jparise/vim-graphql'
+Plug 'w0rp/ale'
 
-    " Let dein manage dein
-    " Required:
-    call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
-
-    " Add or remove your plugins here:
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet-snippets')
-
-    " You can specify revision/branch/tag.
-    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('jonathanfilip/vim-lucius')
-    call dein#add('kien/ctrlp.vim')
-    call dein#add('klen/python-mode')
-    " call dein#add('scrooloose/syntastic')
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('mileszs/ack.vim')
-    call dein#add('digitaltoad/vim-jade')
-    call dein#add('pangloss/vim-javascript')
-    call dein#add('maksimr/vim-jsbeautify')
-    call dein#add('ervandew/supertab')
-    call dein#add('saltstack/salt-vim')
-    call dein#add('schickling/vim-bufonly')
-    call dein#add('alvan/vim-closetag')
-    call dein#add('elzr/vim-json')
-    call dein#add('mxw/vim-jsx')
-    call dein#add('editorconfig/editorconfig-vim')
-    call dein#add('jparise/vim-graphql')
-    call dein#add('w0rp/ale')
-
-    " NeoBundleLazy 'flowtype/vim-flow', {
-    "             \ 'autoload': {'filetypes': 'javascript'},
-    "             \}
-
-    " NeoBundle 'jiangmiao/auto-pairs'
-
-    " Required:
-    call dein#end()
-    call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
+call plug#end()
 
 
  " Toggle nerd tree
