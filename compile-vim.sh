@@ -38,11 +38,11 @@ install-vim () {
         sudo ln -fs ${HOME}/bin/vim /usr/bin/vi
 }
 
-install-dein () {
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
-    sh /tmp/installer.sh ~/.vim/bundles
+install-vim-plug () {
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 
 install-vim
-install-dein
+install-vim-plug
