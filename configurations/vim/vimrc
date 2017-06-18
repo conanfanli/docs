@@ -175,6 +175,7 @@ imap <C-l> <Right>
 " Use shift-H and shift-L to change buffer
 nmap H :bp<CR>
 nmap L :bn<CR>
+nmap <C-f> :Ack<Space>
 
 " Use fuzzy finder buffer mode to open buffer
 map <Leader>d :CtrlP .<CR>
