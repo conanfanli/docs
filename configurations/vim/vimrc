@@ -22,6 +22,8 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
+filetype plugin indent on
+syntax enable
 
  " Toggle nerd tree
  map <C-n> :NERDTreeToggle<CR>
