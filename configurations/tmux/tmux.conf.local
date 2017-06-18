@@ -241,12 +241,12 @@ tmux_conf_copy_to_os_clipboard=false
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
-#set -g mode-keys vi
+set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
@@ -290,7 +290,6 @@ bind-key C-a last-pane
 bind -n M-h prev
 bind -n M-l next
 
-set-option -g history-limit 10000
 
 bind -n M-right resize-pane -R
 bind -n M-left resize-pane -L
