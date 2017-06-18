@@ -20,7 +20,7 @@ if dein#load_state('~/.vim/bundles')
     call dein#add('jonathanfilip/vim-lucius')
     call dein#add('kien/ctrlp.vim')
     call dein#add('klen/python-mode')
-    call dein#add('scrooloose/syntastic')
+    " call dein#add('scrooloose/syntastic')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('mileszs/ack.vim')
@@ -35,6 +35,7 @@ if dein#load_state('~/.vim/bundles')
     call dein#add('mxw/vim-jsx')
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('jparise/vim-graphql')
+    call dein#add('w0rp/ale')
 
     " NeoBundleLazy 'flowtype/vim-flow', {
     "             \ 'autoload': {'filetypes': 'javascript'},
@@ -236,7 +237,6 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 
 set wildmode=longest:full,list
-let g:syntastic_python_checkers = ['flake8']
 set t_Co=256
 
 set relativenumber
@@ -271,8 +271,12 @@ command! CP :w! /usr/share/nginx/html/clips/1.txt
 autocmd FileType typescript :set makeprg=./node_modules/.bin/tsc
 set backupcopy=yes
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
+" set mode to passive
+" let g:syntastic_mode_map = { 'mode': 'passive' }
+
 
 " JSX works for .js files
 let g:jsx_ext_required = 0
