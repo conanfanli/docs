@@ -131,6 +131,8 @@ set ignorecase
 set smartcase
 set background=dark
 
+" Toggle paste mode
+set pastetoggle=<F5>
 " Disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
