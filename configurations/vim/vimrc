@@ -187,11 +187,17 @@ let g:pymode_utils_whitespaces = 0
 
 let g:pymode_lint_write = 0
 
-let g:pymode_lint_checkers = ''
+let g:pymode_lint_checkers = '[]'
 
 
 " DO NOT Auto open cwindow if errors be finded
 let g:pymode_lint_cwindow = 0
+
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" " if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
 
 " Supertab
 imap <tab> <C-Space>
