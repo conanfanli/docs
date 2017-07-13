@@ -5,7 +5,7 @@ Plug 'Shougo/vimshell', { 'rev': '3787e5' }
 Plug 'scrooloose/nerdtree'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kien/ctrlp.vim'
-" Plug 'klen/python-mode'
+Plug 'klen/python-mode'
 " Deprecated in favor of ale which is async
 " Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
@@ -273,4 +273,3 @@ set rtp+=~/.fzf
 " Use ag instead of ack
 " let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ackprg = 'git grep -n'
-
