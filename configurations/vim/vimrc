@@ -196,7 +196,6 @@ let g:ale_lint_on_text_changed = 'never'
 " " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 
-
 " Supertab
 imap <tab> <C-Space>
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -225,6 +224,7 @@ nmap <Leader>c :BufOnly<CR>
 
 
 " Airline settings
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 let g:airline_powerline_fonts = 1
