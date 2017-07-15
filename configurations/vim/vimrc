@@ -6,12 +6,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
+" Deprecated in favor of ale which is async
 " Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'ervandew/supertab'
+" Deprecated in favor of YCM
+" Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 Plug 'alvan/vim-closetag'
 Plug 'elzr/vim-json'
@@ -19,7 +21,7 @@ Plug 'mxw/vim-jsx'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
-
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer --clang-completer' }
 
 call plug#end()
 
@@ -175,7 +177,10 @@ let g:pyflakes_use_quickfix = 0
 " filetype plugin indent on
 " syntax on
 
-let g:pymode_rope_goto_definition_bind = '<F3>'
+let g:ycm_python_binary_path = 'python'
+
+" let g:pymode_rope_goto_definition_bind = '<F3>'
+map <F3> :YcmCompleter GoToDefinition<CR>
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_complete_on_dot = 0
 " Do not let pymode automatically fold
@@ -270,4 +275,3 @@ set rtp+=~/.fzf
 " Use ag instead of ack
 " let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ackprg = 'git grep -n'
-
