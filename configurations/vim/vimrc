@@ -35,6 +35,8 @@ syntax enable
  " Auto reload vimrc
  autocmd! bufwritepost .vimrc source %
 
+ autocmd BufRead,BufNewFile *.conf setf dosini
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
