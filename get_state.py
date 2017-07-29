@@ -1,5 +1,7 @@
 import subprocess
-from marshmallow import Schema, fields, pprint
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class EvalCommand:
@@ -17,6 +19,7 @@ class EvalCommand:
     def evaluate(self):
         try:
             output = subprocess.check_output(self.command, shell=self.shell)
+            logger.info(output)
             self.result = True
         except subprocess.CalledProcessError:
             self.result = False
