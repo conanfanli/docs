@@ -16,3 +16,37 @@ Install by running `./packages.sh`
 
 ## ag
 Install by running `./packages.sh`
+
+# State design
+```javascript
+{
+  "system": "osx",
+  "weapons": {
+    "vim": {
+      "installed": true,
+      "version": "8.0"
+    },
+    "fzf": {
+      "installed": true
+    },
+    "ag": {
+      "installed": true
+    },
+    "tmux": {
+      "installed": true,
+      "version": "2.5",
+      "configurations": {
+        "configurations/tmux/tmux.conf": {
+          "inSync": true,
+          "destination": "~/.tmux.conf"
+        },
+        "configurations/tmux/tmux.conf.local": {
+          "inSync": false,
+          "destination": "~/.tmux.conf.local",
+          "diff": "xxxx"
+        }
+      }
+    }
+  }
+}
+```
