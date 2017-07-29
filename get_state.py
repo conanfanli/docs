@@ -1,20 +1,42 @@
 import subprocess
+from marshmallow import Schema, fields, pprint
+
+
+class EvalCommand:
+
+    def __init__(self, command: str) -> None:
+        self.command = command
+
+    def to_dict(self):
+        return {
+            'command': self.command,
+            'result': self.result
+        }
+
+    def evaluate(self):
+        try:
+            subprocess.check_output(self.command)
+            self.result = True
+        except subprocess.CalledProcessError:
+            self.result = False
+            return False
+
 
 state = {
-    "branchIsUpdated": {
-        "type": "eval",
-        "cmd": ["false"],
-        "result": None
-    }
+    "branchIsUpdated": EvalCommand(command='false')
 }
 
 
-def evaluate(cmd):
-    try:
-        subprocess.check_output(cmd)
-    except subprocess.CalledProcessError:
-        return False
+state["branchIsUpdated"].evaluate()
 
 
-state["branchIsUpdated"]["result"] = evaluate(state["branchIsUpdated"]["cmd"])
-print(state)
+def serialize(state):
+    for key in state:
+        value = state[key]
+        if hasattr(value, 'to_dict'):
+            state[key] = value.to_dict()
+
+    return state
+
+
+print(serialize(state))
