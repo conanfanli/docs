@@ -11,9 +11,9 @@ async def read_stream(stream, callback):
             break
 
 
-async def stream_command(command: List[str],
-                         stdout_callback: Callable,
-                         stderr_callback: Callable):
+async def _stream_command(command: List[str],
+                          stdout_callback: Callable,
+                          stderr_callback: Callable):
     process = await asyncio.create_subprocess_exec(
         *command,
         stdout=asyncio.subprocess.PIPE,
@@ -28,19 +28,22 @@ async def stream_command(command: List[str],
     return await process.wait()
 
 
-def execute(command: List[str], stdout_callback, stderr_callback) -> int:
+def stream_command(
+    command: List[str],
+    stdout_callback,
+    stderr_callback
+) -> int:
     loop = asyncio.get_event_loop()
     return_code = loop.run_until_complete(
-        stream_command(command, stdout_callback, stderr_callback)
+        _stream_command(command, stdout_callback, stderr_callback)
     )
     loop.close()
     return return_code
 
 
 if __name__ == '__main__':
-    print(execute(
-        # ["bash", "-c", "echo stdout && sleep 1 && echo stderr 1>&2 && sleep 1 && echo done"],
-        ['echo', '1'],
+    stream_command(
+        ["bash", "-c", "echo stdout && sleep 1 && echo stderr 1>&2 && sleep 1 && echo done"],
         lambda x: print("STDOUT: %s" % x),
         lambda x: print("STDERR: %s" % x),
-    ))
+    )
