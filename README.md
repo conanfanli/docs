@@ -12,7 +12,7 @@ Setting up a development environment
 - Alternatively, run `curl -sSL https://raw.githubusercontent.com/conanfanli/docs/master/compile-vim.sh | bash -s python3`
 
 ## fzf
-Install by running `./packages.sh``
+Install by running `./packages.sh`
 
 ## ag
-Install by running `./packages.sh``
+Install by running `./packages.sh`
