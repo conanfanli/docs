@@ -50,3 +50,7 @@ Install by running `./packages.sh`
   }
 }
 ```
+
+# HOW TO
+## Stream subprocess stdin and stdout
+https://kevinmccarthy.org/2016/07/25/streaming-subprocess-stdin-and-stdout-with-asyncio-in-python/
