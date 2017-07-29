@@ -22,7 +22,6 @@ Install by running `./packages.sh`
 {
   "system": "osx",
   "weapons": {
-    "git": {},
     "vim": {
       "installed": true,
       "version": "8.0"
