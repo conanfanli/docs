@@ -4,8 +4,9 @@ from marshmallow import Schema, fields, pprint
 
 class EvalCommand:
 
-    def __init__(self, command: str) -> None:
+    def __init__(self, command: str, shell: bool = False) -> None:
         self.command = command
+        self.shell = shell
 
     def to_dict(self):
         return {
@@ -15,7 +16,7 @@ class EvalCommand:
 
     def evaluate(self):
         try:
-            subprocess.check_output(self.command)
+            output = subprocess.check_output(self.command, shell=self.shell)
             self.result = True
         except subprocess.CalledProcessError:
             self.result = False
@@ -23,7 +24,10 @@ class EvalCommand:
 
 
 state = {
-    "branchIsUpdated": EvalCommand(command='false')
+    "branchIsUpdated": EvalCommand(
+        command='git remote update && git status -uno | grep up-to-date',
+        shell=True
+    )
 }
 
 
