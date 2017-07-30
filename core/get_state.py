@@ -1,4 +1,4 @@
-from collections import namedtuple
+import copy
 from pprint import pprint
 import subprocess
 import logging
@@ -8,7 +8,11 @@ from command_streamer import stream_command
 logger = logging.getLogger(__name__)
 
 
-class EvalCommand:
+class Deferred:
+    pass
+
+
+class EvalCommand(Deferred):
 
     def __init__(self, command: str) -> None:
         self.command = command
@@ -44,28 +48,29 @@ state_definition = {
     )
 }
 
-fields = sorted(state_definition.keys())
+class State:
 
-
-AbstractState = namedtuple('AbstractState', fields)
-
-
-class State(AbstractState):
+    def __init__(self, data: dict):
+        self._data = copy.deepcopy(data)
+        self._field_names = sorted(data.keys())
 
     def evaluate(self):
-        pass
+        for attr in self._field_names:
+            value = getattr(self, attr)
+            if isinstance(value, Deferred):
+                pass
 
     def to_dict(self):
-        rv = self._asdict()
-        for key in self._fields:
-            value = getattr(self, key)
+        rv = dict(self._data)
+        for key in self._field_names:
+            value = self._data[key]
             if hasattr(value, 'to_dict'):
                 rv[key] = value.to_dict()
 
         return rv
 
 
-initial_state = State(**state_definition)
+initial_state = State(state_definition)
 
 
 def evaluate(state):
