@@ -1,5 +1,6 @@
 import re
 import copy
+import subprocess
 from pprint import pformat
 import logging
 from typing import List
@@ -63,17 +64,61 @@ class BranchStatus(EvalCommand):
         return rv
 
 
-class State:
+class Package(EvalCommand):
+
+    def __init__(self, name):
+        self.name = name
+        command = ['vim', '--version']
+        super().__init__(command, print_to_console=False)
+
+    def get_version(self):
+        if not self.is_executed:
+            return None
+
+        first_line = self._output[0]
+        match = re.search(r'Vi IMproved (\d\.\d+) \(', first_line)
+        return match.groups(0)
+
+    def evaluate(self):
+        import asyncio
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        super().evaluate()
+
+    def to_dict(self):
+        rv = super().to_dict()
+        rv['version'] = self.get_version()
+        return rv
+
+
+def evaluate_dict(d):
+    for key in d:
+        value = d[key]
+        if isinstance(value, Deferred):
+            value.evaluate()
+        elif isinstance(value, dict):
+            evaluate_dict(value)
+
+
+class State(Deferred):
 
     def __init__(self, data: dict) -> None:
         self._data = copy.deepcopy(data)
         self._field_names = sorted(data.keys())
 
+        for key in self._data:
+            if isinstance(self._data[key], dict):
+                self._data[key] = State(self._data[key])
+
+    def __getitem__(self, key):
+        return self._data[key]
+
     def evaluate(self):
-        for attr in self._field_names:
-            value = self._data[attr]
-            if isinstance(value, Deferred):
-                value.evaluate()
+        return evaluate_dict(self._data)
+        # for attr in self._field_names:
+        #     value = self._data[attr]
+        #     if isinstance(value, Deferred):
+        #         value.evaluate()
 
     def to_dict(self):
         rv = dict(self._data)
@@ -89,7 +134,10 @@ class State:
 
 
 state_definition = {
-    "branchIsUpdated": BranchStatus()
+    'branchIsUpdated': BranchStatus(),
+    'weapons': {
+        'vim': Package('vim')
+    }
 }
 
 initial_state = State(state_definition)
