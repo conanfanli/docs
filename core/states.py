@@ -1,5 +1,5 @@
 import copy
-from pprint import pprint
+from pprint import pformat
 import subprocess
 import logging
 from command_streamer import stream_command
@@ -69,12 +69,8 @@ class State:
 
         return rv
 
+    def __str__(self):
+        return pformat(dict(initial_state.to_dict()))
+
 
 initial_state = State(state_definition)
-
-
-def evaluate(state):
-    state["branchIsUpdated"].evaluate()
-
-
-pprint(dict(initial_state.to_dict()))
