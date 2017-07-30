@@ -1,6 +1,5 @@
 import re
 import copy
-import subprocess
 from pprint import pformat
 import logging
 from typing import List
@@ -77,7 +76,7 @@ class Package(EvalCommand):
 
         first_line = self._output[0]
         match = re.search(r'Vi IMproved (\d\.\d+) \(', first_line)
-        return match.groups(0)
+        return match.groups(0)[0]
 
     def evaluate(self):
         import asyncio
@@ -89,15 +88,6 @@ class Package(EvalCommand):
         rv = super().to_dict()
         rv['version'] = self.get_version()
         return rv
-
-
-def evaluate_dict(d):
-    for key in d:
-        value = d[key]
-        if isinstance(value, Deferred):
-            value.evaluate()
-        elif isinstance(value, dict):
-            evaluate_dict(value)
 
 
 class State(Deferred):
@@ -114,11 +104,10 @@ class State(Deferred):
         return self._data[key]
 
     def evaluate(self):
-        return evaluate_dict(self._data)
-        # for attr in self._field_names:
-        #     value = self._data[attr]
-        #     if isinstance(value, Deferred):
-        #         value.evaluate()
+        for key in self._data:
+            value = self._data[key]
+            if isinstance(value, Deferred):
+                value.evaluate()
 
     def to_dict(self):
         rv = dict(self._data)
