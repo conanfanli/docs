@@ -52,5 +52,12 @@ Install by running `./packages.sh`
 ```
 
 # HOW TO
+
 ## Stream subprocess stdin and stdout
 https://kevinmccarthy.org/2016/07/25/streaming-subprocess-stdin-and-stdout-with-asyncio-in-python/
+
+## Pass arguments to make commands
+```
+test: ## Run tests for the application
+	run-my-command $(filter-out $@,$(MAKECMDGOALS))
+```
