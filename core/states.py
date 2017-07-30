@@ -1,3 +1,4 @@
+import re
 import copy
 from pprint import pformat
 import subprocess
@@ -12,16 +13,26 @@ class Deferred:
     pass
 
 
+
 class EvalCommand(Deferred):
 
-    def __init__(self, command: str) -> None:
+    def __init__(self, command: str, print_to_console=True) -> None:
         self.command = command
-        self.return_code = None
+        self.result = None
+        self._output = []
+        self.print_to_console = print_to_console
+
+    def on_stdout(self, output):
+        output = output.decode('utf-8')
+        self._output.append(output)
+        if self.print_to_console:
+            print(output)
+
 
     def to_dict(self):
         return {
             'command': self.command,
-            'return_code': self.return_code
+            'result': self.result
         }
 
     def __repr__(self):
@@ -29,23 +40,37 @@ class EvalCommand(Deferred):
 
     def evaluate(self):
         try:
-            rc = stream_command(self.command, on_stdout)
-            self.return_code = True
+            rc = stream_command(self.command, lambda x: self.on_stdout(x))
+            self.result = True
         except subprocess.CalledProcessError:
-            self.return_code = False
+            self.result = False
             return False
 
 
+class BranchStatus(EvalCommand):
+    def __init__(self) -> None:
+        command = ['bash', '-c', 'git remote update && git status -uno']
+        super().__init__(command)
 
-def on_stdout(s):
-    logger.info(s.decode('utf-8'))
+    def get_status(self):
+        output = ''.join(self._output)
+        if re.search(r'Changes not staged', output):
+            return 'AHEAD'
+        if re.search(r'up-to-date', output):
+            return 'UP-TO-DATE'
+
+        return 'OUT-OF-SYNC'
+
+    def to_dict(self):
+        rv = super().to_dict()
+        rv['status'] = self.get_status()
+        return rv
+
+
 
 
 state_definition = {
-    "branchIsUpdated": EvalCommand(
-        command=['bash', '-c',
-                 'git remote update && git status -uno | grep up-to-date']
-    )
+    "branchIsUpdated": BranchStatus()
 }
 
 class State:
@@ -56,9 +81,9 @@ class State:
 
     def evaluate(self):
         for attr in self._field_names:
-            value = getattr(self, attr)
+            value = self._data[attr]
             if isinstance(value, Deferred):
-                pass
+                value.evaluate()
 
     def to_dict(self):
         rv = dict(self._data)
