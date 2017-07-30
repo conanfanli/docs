@@ -1,14 +1,18 @@
 import subprocess
 import logging
+from command_streamer import stream_command
+
 
 logger = logging.getLogger(__name__)
 
+def on_stdout(s):
+    logger.info(s.decode('utf-8'))
 
 class EvalCommand:
 
     def __init__(self, command: str, shell: bool = False) -> None:
         self.command = command
-        self.shell = shell
+        # self.shell = shell
 
     def to_dict(self):
         return {
@@ -18,7 +22,9 @@ class EvalCommand:
 
     def evaluate(self):
         try:
-            output = subprocess.check_output(self.command, shell=self.shell)
+            output = subprocess.check_output(self.command)
+            # rc = stream_command(self.command, on_stdout)
+            # print('return code', rc)
             logger.info(output)
             self.result = True
         except subprocess.CalledProcessError:
@@ -28,13 +34,14 @@ class EvalCommand:
 
 state = {
     "branchIsUpdated": EvalCommand(
-        command='git remote update && git status -uno | grep up-to-date',
-        shell=True
+        command=['bash', '-c',
+                 'git remote update && git status -uno | grep up-to-date']
     )
 }
 
 
-state["branchIsUpdated"].evaluate()
+def evaluate(state):
+    state["branchIsUpdated"].evaluate()
 
 
 def serialize(state):
@@ -45,5 +52,3 @@ def serialize(state):
 
     return state
 
-
-print(serialize(state))
