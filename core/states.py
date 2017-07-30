@@ -1,10 +1,9 @@
 import re
 import copy
 from pprint import pformat
-import subprocess
 import logging
+from typing import List
 from command_streamer import stream_command
-
 
 logger = logging.getLogger(__name__)
 
@@ -13,13 +12,12 @@ class Deferred:
     pass
 
 
-
 class EvalCommand(Deferred):
 
-    def __init__(self, command: str, print_to_console=True) -> None:
+    def __init__(self, command: List[str], print_to_console=True) -> None:
         self.command = command
-        self.result = None
-        self._output = []
+        self.is_executed = False
+        self._output: List = []
         self.print_to_console = print_to_console
 
     def on_stdout(self, output):
@@ -28,23 +26,18 @@ class EvalCommand(Deferred):
         if self.print_to_console:
             print(output)
 
-
     def to_dict(self):
         return {
             'command': self.command,
-            'result': self.result
+            'is_executed': self.is_executed
         }
 
     def __repr__(self):
         return '{}({})'.format(self.__class__.__name__, repr(self.command))
 
     def evaluate(self):
-        try:
-            rc = stream_command(self.command, lambda x: self.on_stdout(x))
-            self.result = True
-        except subprocess.CalledProcessError:
-            self.result = False
-            return False
+        stream_command(self.command, lambda x: self.on_stdout(x))
+        self.is_executed = True
 
 
 class BranchStatus(EvalCommand):
@@ -53,6 +46,9 @@ class BranchStatus(EvalCommand):
         super().__init__(command)
 
     def get_status(self):
+        if not self.is_executed:
+            return None
+
         output = ''.join(self._output)
         if re.search(r'Changes not staged', output):
             return 'AHEAD'
@@ -67,15 +63,9 @@ class BranchStatus(EvalCommand):
         return rv
 
 
-
-
-state_definition = {
-    "branchIsUpdated": BranchStatus()
-}
-
 class State:
 
-    def __init__(self, data: dict):
+    def __init__(self, data: dict) -> None:
         self._data = copy.deepcopy(data)
         self._field_names = sorted(data.keys())
 
@@ -97,5 +87,9 @@ class State:
     def __str__(self):
         return pformat(dict(initial_state.to_dict()))
 
+
+state_definition = {
+    "branchIsUpdated": BranchStatus()
+}
 
 initial_state = State(state_definition)
