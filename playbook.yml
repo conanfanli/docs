@@ -8,3 +8,8 @@
 
       - name: install git
         package: name=git state=present
+
+      - name: sync git config
+        template:
+            src: './configurations/git/gitconfig'
+            dest: '~/.gitconfig'
