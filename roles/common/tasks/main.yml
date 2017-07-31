@@ -13,4 +13,18 @@
   template:
       src: './configurations/git/gitconfig'
       dest: '~/.gitconfig'
+  tags:
+    - rc_files
+
+- name: sync vimrc
+  file:
+      src: '~/docs/configurations/vim/vimrc'
+      dest: '~/.vimrc'
+      state: link
+      force: yes
+
+  tags:
+    - vim
+    - rc_files
+
 
