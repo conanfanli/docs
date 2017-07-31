@@ -40,4 +40,5 @@
     - vim
     - rc_files
 
-
+- name: verify vim is installed
+  shell: vim --version | grep '8.0'
