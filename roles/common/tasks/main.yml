@@ -40,5 +40,16 @@
     - vim
     - rc_files
 
+- name: symlimk bash profile
+  file:
+      src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
+      dest: '~/.bash_profile'
+      state: link
+      force: yes
+
+  tags:
+    - vim
+    - rc_files
+
 - name: verify vim is installed
   shell: (vim --version | grep '8.0') && (vim --version grep '+python3')
