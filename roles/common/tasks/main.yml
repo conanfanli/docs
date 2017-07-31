@@ -3,8 +3,13 @@
 
 - debug: msg="{{ansible_os_family}}"
 
-- name: install the_silver_searcher
-  package: name=the_silver_searcher state=present
+- name: install the_silver_searcher for Mac OS X
+  homebrew: name=the_silver_searcher state=present
+  when: ansible_os_family == 'Darwin'
+
+- name: install the_silver_searcher for Ubuntu
+  package: name=silversearcher-ag state=present
+  when: ansible_os_family == 'Debian'
 
 - name: install git
   package: name=git state=present
@@ -16,7 +21,7 @@
   tags:
     - rc_files
 
-- name: sync vimrc
+- name: symlimk vimrc
   file:
       src: '~/docs/configurations/vim/vimrc'
       dest: '~/.vimrc'
