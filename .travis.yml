@@ -1,8 +1,15 @@
 language: python
 sudo: enabled
-os:
-  - linux
-  - osx
+python:
+  - 3.6
+
+matrix:
+  include:
+    - language: generic
+      os: osx
+      before_install:
+        - brew update
+        - brew install python3
 
 before_install:
   - sudo apt-get update -qq
