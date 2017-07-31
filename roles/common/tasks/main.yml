@@ -10,6 +10,7 @@
 - name: install the_silver_searcher for Ubuntu
   package: name=silversearcher-ag state=present
   when: ansible_os_family == 'Debian'
+  become: true
 
 - name: install git
   package: name=git state=present
