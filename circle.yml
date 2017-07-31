@@ -1,9 +1,0 @@
-test:
-    pre:
-        - ./check_sys.sh
-        - ./configurations/git/do_git.sh
-        - ./configurations/tmux/do_tmux.sh
-    override:
-        - grep -w ubuntu ./data/os
-        - test -f ~/.gitconfig
-        - test -f ~/.tmux.conf

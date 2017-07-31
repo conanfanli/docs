@@ -10,9 +10,10 @@ matrix:
       before_install:
         - brew update
         - brew install python3
-
-before_install:
-  - sudo apt-get update -qq
+    - language: python
+      os: linux
+      before_install:
+        - sudo apt-get update -qq
 
 install:
   - pip3 install ansible
