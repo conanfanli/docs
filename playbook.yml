@@ -5,3 +5,6 @@
 
       - name: install the_silver_searcher
         package: name=the_silver_searcher state=present
+
+      - name: install git
+        package: name=git state=present
