@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+      - name: output operating system
+        command: /bin/echo my OS
+
+      - name: install the_silver_searcher
+        package: name=the_silver_searcher state=present
