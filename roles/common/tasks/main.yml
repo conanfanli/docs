@@ -13,6 +13,10 @@
   when: ansible_os_family == 'Debian'
   become: true
 
+- name: install vim for Mac OS X
+  homebrew: name=vim state=present install_options=--with-python3
+  when: ansible_os_family == 'Darwin'
+
 - name: install git
   package: name=git state=present
 
