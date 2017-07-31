@@ -2,7 +2,7 @@
 # This playbook contains common plays that will be run on all nodes.
 
 - debug:
-    msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}"
+    msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}. Python version is {{ansible_playbook_python}}"
 
 - name: install the_silver_searcher for Mac OS X
   homebrew: name=the_silver_searcher state=present
