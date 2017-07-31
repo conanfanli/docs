@@ -27,7 +27,7 @@
 
 - name: symlimk vimrc
   file:
-      src: '~/docs/configurations/vim/vimrc'
+      src: '{{playbook_dir}}/configurations/vim/vimrc'
       dest: '~/.vimrc'
       state: link
       force: yes
