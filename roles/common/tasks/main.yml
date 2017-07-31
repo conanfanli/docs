@@ -1,7 +1,8 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
 
-- debug: msg="{{ansible_os_family}}"
+- debug:
+    msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}"
 
 - name: install the_silver_searcher for Mac OS X
   homebrew: name=the_silver_searcher state=present
@@ -16,9 +17,11 @@
   package: name=git state=present
 
 - name: sync git config
-  template:
-      src: './configurations/git/gitconfig'
+  file:
+      src: '{{playbook_dir}}/configurations/git/gitconfig'
       dest: '~/.gitconfig'
+      state: link
+      force: yes
   tags:
     - rc_files
 
