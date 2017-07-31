@@ -15,3 +15,6 @@
 
 - include: bash.yml
   tags: bash
+
+- include: tmux.yml
+  tags: tmux
