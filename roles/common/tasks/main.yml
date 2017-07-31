@@ -7,43 +7,11 @@
 - include: the_silver_searcher.yml
   tags: the_siver_searcher
 
-- name: install vim for Mac OS X
-  homebrew: name=vim state=present install_options=--with-python3
-  when: ansible_os_family == 'Darwin'
+- include: vim.yml
+  tags: vim
 
-- name: install git
-  package: name=git state=present
+- include: git.yml
+  tags: git
 
-- name: sync git config
-  file:
-      src: '{{playbook_dir}}/configurations/git/gitconfig'
-      dest: '~/.gitconfig'
-      state: link
-      force: yes
-  tags:
-    - rc_files
-
-- name: symlimk vimrc
-  file:
-      src: '{{playbook_dir}}/configurations/vim/vimrc'
-      dest: '~/.vimrc'
-      state: link
-      force: yes
-
-  tags:
-    - vim
-    - rc_files
-
-- name: symlimk bash profile
-  file:
-      src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
-      dest: '~/.bash_profile'
-      state: link
-      force: yes
-
-  tags:
-    - vim
-    - rc_files
-
-- name: verify vim is installed
-  shell: (vim --version | grep '8.0') && (vim --version grep '+python3')
+- include: bash.yml
+  tags: bash

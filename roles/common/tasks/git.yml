@@ -1,0 +1,11 @@
+
+- name: install git
+  package: name=git state=present
+
+- name: sync git config
+  file:
+      src: '{{playbook_dir}}/configurations/git/gitconfig'
+      dest: '~/.gitconfig'
+      state: link
+      force: yes
+

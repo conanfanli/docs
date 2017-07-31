@@ -7,3 +7,10 @@
   when: ansible_os_family == 'Debian'
   become: true
 
+- name: sync agignore
+  file:
+      src: '{{playbook_dir}}/configurations/ag/agignore'
+      dest: '~/.agignore'
+      state: link
+      force: yes
+

@@ -1,0 +1,8 @@
+
+- name: symlimk bash profile
+  file:
+      src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
+      dest: '~/.bash_profile'
+      state: link
+      force: yes
+
