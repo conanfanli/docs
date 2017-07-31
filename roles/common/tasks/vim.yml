@@ -3,6 +3,10 @@
   homebrew: name=vim state=present install_options=--with-python3
   when: ansible_os_family == 'Darwin'
 
+- name: install vim for Ubuntu
+  when: ansible_os_family == 'Debian'
+  shell: '{{playbook}}/compile-vim.sh python3'
+
 - name: symlimk vimrc
   file:
       src: '{{playbook_dir}}/configurations/vim/vimrc'
