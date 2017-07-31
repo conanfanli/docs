@@ -15,7 +15,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - pip install ansible
+  - pip3 install ansible
 
 script:
   - make check
