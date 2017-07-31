@@ -1,0 +1,16 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- debug: msg="{{ansible_os_family}}"
+
+- name: install the_silver_searcher
+  package: name=the_silver_searcher state=present
+
+- name: install git
+  package: name=git state=present
+
+- name: sync git config
+  template:
+      src: './configurations/git/gitconfig'
+      dest: '~/.gitconfig'
+
