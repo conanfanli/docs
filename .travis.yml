@@ -19,5 +19,4 @@ install:
   - pip3 install ansible
 
 script:
-  - make check
   - make play
