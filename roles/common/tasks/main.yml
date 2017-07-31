@@ -4,14 +4,8 @@
 - debug:
     msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}. Python version is {{ansible_playbook_python}}"
 
-- name: install the_silver_searcher for Mac OS X
-  homebrew: name=the_silver_searcher state=present
-  when: ansible_os_family == 'Darwin'
-
-- name: install the_silver_searcher for Ubuntu
-  package: name=silversearcher-ag state=present
-  when: ansible_os_family == 'Debian'
-  become: true
+- include: the_silver_searcher.yml
+  tags: the_siver_searcher
 
 - name: install vim for Mac OS X
   homebrew: name=vim state=present install_options=--with-python3
