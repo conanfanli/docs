@@ -5,4 +5,4 @@ WORKDIR /app
 RUN git checkout develop && git pull
 
 RUN pip3 install ansible
-# RUN make play
+RUN make play
