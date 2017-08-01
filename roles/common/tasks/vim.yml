@@ -8,6 +8,9 @@
   shell: '{{playbook_dir}}/bin/compile-vim8-debian-python3.sh'
   become: true
 
+- name: install vim plug
+  shell: '{{playbook_dir}}/bin/install-vim-plug.sh'
+
 - name: symlimk vimrc
   file:
       src: '{{playbook_dir}}/configurations/vim/vimrc'
