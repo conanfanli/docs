@@ -8,4 +8,4 @@ WORKDIR /app
 
 ADD . /app
 
-RUN make play -- --tags fzf
+RUN make play
