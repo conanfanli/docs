@@ -3,4 +3,10 @@
   shell: '{{playbook_dir}}/bin/install-fzf.sh'
 
 - name: verify fzf is installed
-  shell: fzf --version
+  shell: . ~/.bashrc && fzf --version
+  args:
+    executable: /bin/bash
+  register: fzf
+
+- debug: msg="{{fzf.std_lines}}"
+
