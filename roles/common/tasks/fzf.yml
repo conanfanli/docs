@@ -8,5 +8,5 @@
     executable: /bin/bash
   register: fzf
 
-- debug: msg="{{fzf.std_lines}}"
+- debug: msg="{{fzf.stdout_lines}}"
 
