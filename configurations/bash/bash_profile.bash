@@ -37,7 +37,6 @@ alias la='ls -a'
 
 alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
-alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
 alias so='source ~/.bash_profile'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
