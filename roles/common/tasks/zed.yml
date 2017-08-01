@@ -1,0 +1,3 @@
+
+- name: install fzf
+  shell: '{{playbook_dir}}/bin/install-zed.sh'

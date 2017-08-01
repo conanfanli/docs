@@ -21,3 +21,6 @@
 
 - include: fzf.yml
   tags: fzf
+
+- include: zed.yml
+  tags: zed
