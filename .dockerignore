@@ -1,0 +1,7 @@
+.git
+**/*.pyc
+dist/
+.ropeproject/
+__pycache__/
+data/
+.mypy_cache/
