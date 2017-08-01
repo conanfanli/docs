@@ -32,10 +32,9 @@ install-vim () {
 
     # sudo ln doesn't work on Mac because of permission
     cd vim/src && \
-    ./configure --with-features=huge ${compile_arg} --enable-cscope --prefix=${HOME} && \
+    ./configure --with-features=huge ${compile_arg} --enable-cscope && \
         make && \
-        make install && \
-        ln -fs ${HOME}/bin/vim /usr/bin/vim
+        make install
 }
 
 install-vim-plug () {
