@@ -4,8 +4,6 @@
 
 - name: verify fzf is installed
   shell: . ~/.bashrc && fzf --version
-  args:
-    executable: /bin/bash
   register: fzf
 
 - debug: msg="{{fzf.stdout_lines}}"
