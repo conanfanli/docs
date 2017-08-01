@@ -5,7 +5,7 @@
 
 - name: install vim for Ubuntu
   when: ansible_os_family == 'Debian'
-  shell: '{{playbooki_dir}}/bin/compile-vim8-debian-python3.sh'
+  shell: '{{playbook_dir}}/bin/compile-vim8-debian-python3.sh'
   become: true
 
 - name: symlimk vimrc
