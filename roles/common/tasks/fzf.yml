@@ -1,0 +1,6 @@
+
+- name: install fzf
+  shell: '{{playbook_dir}}/bin/install-fzf.sh'
+
+- name: verify fzf is installed
+  shell: fzf --version
