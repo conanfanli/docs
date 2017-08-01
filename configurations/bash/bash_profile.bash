@@ -37,7 +37,6 @@ alias la='ls -a'
 
 alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
-alias activate_here='source .*/bin/activate 2> /dev/null || source */bin/activate 2> /dev/null'
 alias saltme='sudo salt-call --local state.apply iconfigs'
 alias t='python manage.py test'
 alias so='source ~/.bash_profile'
