@@ -35,7 +35,7 @@ install-vim () {
     ./configure --with-features=huge ${compile_arg} --enable-cscope --prefix=${HOME} && \
         make && \
         make install && \
-        sudo ln -fs ${HOME}/bin/vim /usr/bin/vi
+        ln -fs ${HOME}/bin/vim /usr/bin/vim
 }
 
 install-vim-plug () {
