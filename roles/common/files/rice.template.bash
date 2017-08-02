@@ -9,6 +9,7 @@ export HISTFILESIZE=5000
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export EDITOR=vim
 
 {% if ansible_os_family == 'Darwin' %}
 # For MAC
@@ -17,6 +18,8 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # source bash_completion
 . $(brew --prefix)/etc/bash_completion
 alias ls='ls -GFh'
+{% else %}
+alias ls='ls -GFh --color'
 # END MAC
 {% endif %}
 
@@ -25,7 +28,6 @@ alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls -GFh --color'
 alias ll='ls -l'
 alias la='ls -a'
 
@@ -96,5 +98,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # All about them rice
 alias so='source ~/.bashrc'
-alias rice-check='cd ~/docs && make check -- --tags bash && cd -'
-alias rice-sync='cd ~/docs && make play -- --tags bash && cd -'
+alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
+alias cooksomerice='cd ~/docs && make play -- --tags bash && cd - && source ~/.bashrc && cd -'
+
+# Check who is using the port
+whoisusingthisport () {
+    lsof -i $1
+}
