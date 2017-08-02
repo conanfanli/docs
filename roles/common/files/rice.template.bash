@@ -32,7 +32,6 @@ alias la='ls -a'
 alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
-alias so='source ~/.bash_profile'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 v () {
@@ -94,3 +93,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# All about them rice
+alias so='source ~/.bashrc'
+alias rice-check='cd ~/docs && make check -- --tags bash && cd -'
+alias rice-sync='cd ~/docs && make play -- --tags bash && cd -'
