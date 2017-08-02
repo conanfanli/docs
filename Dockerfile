@@ -10,4 +10,6 @@ WORKDIR /app
 
 ADD . /app
 
+RUN make play -- --tags bash
+
 CMD make play
