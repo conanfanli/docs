@@ -1,6 +1,8 @@
 FROM python:3.6.2
 
-RUN apt-get update
+# Install locales
+RUN apt-get clean && apt-get update && apt-get install -y locales
+RUN locale-gen en_US.UTF-8
 
 RUN ln -sf /bin/bash /bin/sh
 
