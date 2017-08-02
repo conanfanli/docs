@@ -5,11 +5,12 @@ then
     . ~/bin/z.sh
 fi
 
-export HISTFILESIZE=2000
-export LC_ALL=en_US.UTF-8
+export HISTFILESIZE=5000
+# export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+{% if ansible_os_family == 'Darwin' %}
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -22,6 +23,7 @@ else
 fi
 
 # END MAC
+{% endif %}
 
 
 # grep with color

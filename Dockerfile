@@ -10,4 +10,4 @@ WORKDIR /app
 
 ADD . /app
 
-RUN make play
+CMD make play
