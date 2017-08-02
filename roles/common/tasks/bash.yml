@@ -1,8 +1,19 @@
 
-- name: symlimk bash profile
-  file:
-      src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
-      dest: '~/.bash_profile'
-      state: link
-      force: yes
+# - name: symlimk bash profile
+#   file:
+#       src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
+#       dest: '~/.bash_profile'
+#       state: link
+#       force: yes
 
+
+# - name: write to bashrc
+#   template:
+#     src: '{{playbook_dir}}/roles/common/files/bashrc.template'
+#     dest: ~/.bashrc
+#     backup: yes
+
+- name: insert a line into bashrc
+  lineinfile:
+    path: ~/.bashrc
+    line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
