@@ -7,13 +7,22 @@
 #       force: yes
 
 
-# - name: write to bashrc
-#   template:
-#     src: '{{playbook_dir}}/roles/common/files/bashrc.template'
-#     dest: ~/.bashrc
-#     backup: yes
 
 - name: insert a line into bashrc
   lineinfile:
     path: ~/.bashrc
     line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
+
+
+    # - name: insert blocks into rice.bash
+    #   blockinfile:
+    #     block: "{{lookup('file', 'rice.bash.template')}}"
+    #     path: ~/.bashrc
+    #
+    #
+    #
+
+- name: write rice.bash
+  template:
+    src: '{{playbook_dir}}/roles/common/files/rice.template.bash'
+    dest: ~/.rice.bash
