@@ -24,3 +24,6 @@
 
 - include: zed.yml
   tags: zed
+
+- include: other_tools.yml
+  tags: other_tools

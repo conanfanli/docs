@@ -1,5 +1,7 @@
 FROM python:3.6.2
 
+RUN apt-get update
+
 RUN ln -sf /bin/bash /bin/sh
 
 RUN pip3 install ansible
