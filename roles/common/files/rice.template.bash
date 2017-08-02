@@ -22,7 +22,6 @@ alias ls='ls -GFh'
 
 
 # grep with color
-# alias vim='~/bin/vim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -69,7 +68,6 @@ change_extension () {
 
     for file in *.$1; do
         mv "$file" "`basename "$file" .$1`.$2"
-    #     mv "$file" "`basename "$file" .html`.txt"
     done
 }
 
