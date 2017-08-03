@@ -19,6 +19,6 @@
       force: yes
 
 - name: verify vim is installed
-  shell: (vim --version | grep '8.0') && (vim --version | grep '+python3')
+  shell: "(vim --version | grep '8.0') && (vim --version | grep '+python3')"
   args:
     executable: /bin/bash
