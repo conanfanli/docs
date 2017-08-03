@@ -9,6 +9,7 @@ Setting up a development environment
 - Run `checkifriceiscooked` to diff bash configuration
 - Run `cooksomerice` to sync bash configuration
 - Press `ALT-C` to go to a directory
+- `cm` to choose one of the alasies or functions defined in ~/.rice.bash
 
 # HOW TO
 
