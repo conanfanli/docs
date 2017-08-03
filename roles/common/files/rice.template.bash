@@ -102,6 +102,7 @@ export NVM_DIR="$HOME/.nvm"
 alias so='source ~/.bashrc'
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
 alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
+alias mypi='curl https://ifconfig.co/'
 
 # Check who is using the port
 whoisusingthisport () {
