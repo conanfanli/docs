@@ -1,13 +1,3 @@
-
-# - name: symlimk bash profile
-#   file:
-#       src: '{{playbook_dir}}/configurations/bash/bash_profile.bash'
-#       dest: '~/.bash_profile'
-#       state: link
-#       force: yes
-
-
-
 - name: insert a line into bashrc
   lineinfile:
     path: ~/.bashrc
