@@ -8,6 +8,7 @@ Setting up a development environment
 - ~/.bashrc loads ~/.rice.bash
 - Run `checkifriceiscooked` to diff bash configuration
 - Run `cooksomerice` to sync bash configuration
+- Press `ALT-C` to go to a directory
 
 # HOW TO
 

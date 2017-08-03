@@ -48,6 +48,12 @@ alias so='source ~/.bashrc'
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
 alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
 alias myip='curl https://ifconfig.co/'
+# Choose from all aliases and functions deficed in .rices.bash
+
+cm () {
+    selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  /Users/cli/.rice.bash | fzf`
+    command $selected
+}
 
 v () {
     base=`basename $PWD`
