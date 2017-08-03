@@ -6,9 +6,9 @@ then
 fi
 
 export HISTFILESIZE=5000
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# export LANGUAGE=en_US.UTF-8
 export EDITOR=vim
 
 {% if ansible_os_family == 'Darwin' %}
@@ -102,7 +102,7 @@ export NVM_DIR="$HOME/.nvm"
 alias so='source ~/.bashrc'
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
 alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
-alias mypi='curl https://ifconfig.co/'
+alias myip='curl https://ifconfig.co/'
 
 # Check who is using the port
 whoisusingthisport () {
