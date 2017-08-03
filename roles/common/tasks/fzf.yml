@@ -5,8 +5,10 @@
 - name: verify fzf is installed
   shell: . ~/.fzf.bash  && fzf --version
   register: fzf
+  check_mode: no
   args:
     executable: /bin/bash
 
-- debug: msg="{{fzf.stdout_lines}}"
+- debug:
+    msg: "{{fzf.stdout_lines}}"
 
