@@ -14,13 +14,10 @@
     line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
 
 
-    # - name: insert blocks into rice.bash
-    #   blockinfile:
-    #     block: "{{lookup('file', 'rice.bash.template')}}"
-    #     path: ~/.bashrc
-    #
-    #
-    #
+- name: insert a line into bash_profile
+  lineinfile:
+    path: ~/.bash_profile
+    line: '[ -f ~/.bashrc ] && source ~/.bashrc'
 
 - name: write rice.bash
   template:

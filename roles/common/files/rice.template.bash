@@ -99,7 +99,7 @@ export NVM_DIR="$HOME/.nvm"
 # All about them rice
 alias so='source ~/.bashrc'
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
-alias cooksomerice='cd ~/docs && make play -- --tags bash && cd - && source ~/.bashrc && cd -'
+alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
 
 # Check who is using the port
 whoisusingthisport () {
