@@ -5,7 +5,9 @@ Setting up a development environment
 ` make play -- --tags vim`
 
 ## Bash
-Run `make play -- --tags bash`
+- ~/.bashrc loads ~/.rice.bash
+- Run `checkifriceiscooked` to diff bash configuration
+- Run `cooksomerice` to sync bash configuration
 
 # HOW TO
 
