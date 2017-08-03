@@ -51,7 +51,7 @@ alias myip='curl https://ifconfig.co/'
 # Choose from all aliases and functions deficed in .rices.bash
 
 cmds () {
-    selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  /Users/cli/.rice.bash | fzf`
+    selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  ~/.rice.bash | fzf`
     eval "$selected"
 }
 
