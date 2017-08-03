@@ -31,6 +31,7 @@ alias egrep='egrep --color=auto'
 alias ll='ls -FGlAhp'
 alias la='ls -a'
 alias ..='cd ../'
+alias ...='cd ../../'
 
 alias docs='cd ~/docs'
 alias iconf='cd ~/projects/iconfigs'
