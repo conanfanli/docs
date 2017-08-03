@@ -50,9 +50,9 @@ alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc &&
 alias myip='curl https://ifconfig.co/'
 # Choose from all aliases and functions deficed in .rices.bash
 
-cm () {
+cmds () {
     selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  /Users/cli/.rice.bash | fzf`
-    command $selected
+    eval "$selected"
 }
 
 v () {
