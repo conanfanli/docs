@@ -81,7 +81,7 @@ clip () {
     echo "$1" > /usr/share/nginx/html/clips/1.txt
 }
 
-change_extension () {
+change_extension () { # change file extentions in the current directory
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo Missing 2 extensions
         return 1
@@ -92,7 +92,7 @@ change_extension () {
     done
 }
 
-alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'
+alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'  # clean up docker containers and volumnes
 alias dc='docker-compose'
 export USER_ID=`id -u`
 export PGUSER=postgres
