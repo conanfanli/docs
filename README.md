@@ -1,5 +1,5 @@
-Setting up a development environment
-====================================
+Rice or die
+===========
 # Weapons
 ## Vim
 ` make play -- --tags vim`
