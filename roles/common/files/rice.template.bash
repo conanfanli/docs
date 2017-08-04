@@ -62,13 +62,12 @@ v () { # activate virtualenv if there is one
     . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
 }
 
-ci () {
-    ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
-    read -p "You better come up with some thing good to say: " message
+ci () { # shortcut to git commit -a -m (if branch name contains ticket number, it will be included in the commit message
+    ticket=`git branch | grep '*' | egrep '[A-Z]{2,4}-\d{1,4}' -o`
     if [ -n "$ticket" ]; then
-        git commit -a -m "$ticket: $message"
+        git commit -a -m "$ticket: $@"
     else
-        git commit -a -m "$message"
+        git commit -a -m "$@"
     fi
 }
 
