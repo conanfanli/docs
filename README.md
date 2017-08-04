@@ -29,3 +29,6 @@ test: ## Run tests for the application
 
 ## User Namespaces
 [How to User Namespaces in Docker Engine](https://success.docker.com/KBase/Introduction_to_User_Namespaces_in_Docker_Engine)
+
+# Regex
+- Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
