@@ -1,5 +1,5 @@
 - debug:
-    msg: "aliases: {{aliases}}"
+    msg: "aliases: {{aliases|to_nice_yaml}}"
 
 - name: insert a line into bashrc
   lineinfile:

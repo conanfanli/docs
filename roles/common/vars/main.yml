@@ -1,2 +1,4 @@
 aliases:
-  - name: bad
+  - name: grep
+    code: 'grep --color=auto'
+    descript: grep with color
