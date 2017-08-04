@@ -51,8 +51,7 @@ alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
     selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
-    echo -n "$selected "
-    read args
+    read -p "$selected " args
 
     eval "$selected $args"
 }
