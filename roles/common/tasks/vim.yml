@@ -18,6 +18,14 @@
       state: link
       force: yes
 
+- name: check vim version
+  shell: vim --version
+  register: vim_version
+  check_mode: no
+
+- debug:
+    msg: "{{vim_version.stdout_lines}}"
+
 - name: verify vim is installed
   shell: "(vim --version | grep '8.0') && (vim --version | grep '+python3')"
   args:

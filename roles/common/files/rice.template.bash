@@ -40,7 +40,7 @@ alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 # Find directory matching pattern
 fdir () {
-    find . -type d -name $@ -print -quit
+    find . -type d -name $@ -print
 }
 
 # All about them rice
