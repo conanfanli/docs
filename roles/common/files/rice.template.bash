@@ -52,7 +52,11 @@ alias myip='curl https://ifconfig.co/'
 
 cmds () {
     selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  ~/.rice.bash | fzf`
-    eval "$selected"
+    echo "$selected"
+    echo -n "Enter command arguments (can be blank) and press [ENTER]: "
+    read args
+
+    eval "$selected $args"
 }
 
 v () {
