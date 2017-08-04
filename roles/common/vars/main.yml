@@ -1,0 +1,4 @@
+aliases:
+  - name: grep
+    code: 'grep --color=auto'
+    descript: grep with color

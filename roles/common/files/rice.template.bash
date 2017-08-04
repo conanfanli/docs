@@ -38,36 +38,37 @@ alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
-# Find directory matching pattern
-fdir () {
+
+fdir () { # Find directory matching pattern
     find . -type d -name $@ -print
 }
 
 # All about them rice
-alias so='source ~/.bashrc'
-alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
-alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
-alias myip='curl https://ifconfig.co/'
-# Choose from all aliases and functions deficed in .rices.bash
+alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
+alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -' # check if rice is updated
+alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
+alias myip='curl https://ifconfig.co/'  # print my IP address
 
-cmds () {
-    selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  ~/.rice.bash | fzf`
-    eval "$selected"
+cmds () { # show all aliases and functions in a list
+    selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    read -p "$selected " args
+
+    eval "$selected $args"
 }
 
-v () {
+v () { # activate virtualenv if there is one
     base=`basename $PWD`
     name=${1-$base}
     . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
 }
 
-ci () {
-    ticket=`git branch | grep '*' |grep 'JUMP-[0-9]*' -o`
-    read -p "You better come up with some thing good to say: " message
+ci () { # shortcut to git commit -a -m (if branch name contains ticket number, it will be included in the commit message
+    ticket=`git branch | grep '*' | egrep '[A-Z]{2,4}-\d{1,4}' -o`
+    [ -z "$@" ] && echo You forgot your fucking commit message! && return 1
     if [ -n "$ticket" ]; then
-        git commit -a -m "$ticket: $message"
+        git commit -a -m "$ticket: $@"
     else
-        git commit -a -m "$message"
+        git commit -a -m "$@"
     fi
 }
 
@@ -80,7 +81,7 @@ clip () {
     echo "$1" > /usr/share/nginx/html/clips/1.txt
 }
 
-change_extension () {
+change_extension () { # change file extentions in the current directory
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo Missing 2 extensions
         return 1
@@ -91,7 +92,7 @@ change_extension () {
     done
 }
 
-alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'
+alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'  # clean up docker containers and volumnes
 alias dc='docker-compose'
 export USER_ID=`id -u`
 export PGUSER=postgres
@@ -116,7 +117,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-# Check who is using the port
-whoisusingthisport () {
+whoisusingthisport () { # check who is using the port
     lsof -i $1
 }
