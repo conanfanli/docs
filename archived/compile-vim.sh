@@ -23,19 +23,18 @@ fi
 
 
 install-vim () {
-    (~/bin/vim --version | grep -o 'IMproved 8.0') && echo 'Your Vim is already up to date' && return 0
+    (vim --version | grep -o 'IMproved 8.0') && echo 'Your Vim is already up to date' && return 0
 
-    sudo apt-get update && sudo apt-get install -y make unzip ncurses-dev libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
+    apt-get update && apt-get install -y make unzip ncurses-dev libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
 
     cd ~
     test -d vim || git clone https://github.com/vim/vim.git
 
     # sudo ln doesn't work on Mac because of permission
     cd vim/src && \
-    ./configure --with-features=huge ${compile_arg} --enable-cscope --prefix=${HOME} && \
+    ./configure --with-features=huge ${compile_arg} --enable-cscope && \
         make && \
-        make install && \
-        sudo ln -fs ${HOME}/bin/vim /usr/bin/vi
+        make install
 }
 
 install-vim-plug () {

@@ -7,14 +7,23 @@
 - include: the_silver_searcher.yml
   tags: the_siver_searcher
 
+- include: bash.yml
+  tags: bash
+
 - include: vim.yml
   tags: vim
 
 - include: git.yml
   tags: git
 
-- include: bash.yml
-  tags: bash
-
 - include: tmux.yml
   tags: tmux
+
+- include: fzf.yml
+  tags: fzf
+
+- include: zed.yml
+  tags: zed
+
+- include: other_tools.yml
+  tags: other_tools

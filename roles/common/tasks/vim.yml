@@ -5,7 +5,11 @@
 
 - name: install vim for Ubuntu
   when: ansible_os_family == 'Debian'
-  shell: '{{playbook_dir}}/compile-vim.sh python3'
+  shell: '{{playbook_dir}}/bin/compile-vim8-debian-python3.sh'
+  become: true
+
+- name: install vim plug
+  shell: '{{playbook_dir}}/bin/install-vim-plug.sh'
 
 - name: symlimk vimrc
   file:
@@ -15,4 +19,6 @@
       force: yes
 
 - name: verify vim is installed
-  shell: (vim --version | grep '8.0') && (vim --version | grep '+python3')
+  shell: "(vim --version | grep '8.0') && (vim --version | grep '+python3')"
+  args:
+    executable: /bin/bash

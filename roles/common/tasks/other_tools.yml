@@ -1,0 +1,9 @@
+- name: install lsof
+  package: name=lsof state=present
+  when: ansible_os_family == 'Debian'
+  become: true
+
+- name: install tree
+  package: name=tree state=present
+  when: ansible_os_family == 'Debian'
+  become: true
