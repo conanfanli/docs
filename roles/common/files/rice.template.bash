@@ -38,17 +38,16 @@ alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
-# Find directory matching pattern
-fdir () {
+
+fdir () { # Find directory matching pattern
     find . -type d -name $@ -print
 }
 
 # All about them rice
 alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
-alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
-alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
+alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -' # check if rice is updated
+alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
 alias myip='curl https://ifconfig.co/'  # print my IP address
-# Choose from all aliases and functions deficed in .rices.bash
 
 cmds () { # show all aliases and functions in a list
     selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
@@ -119,7 +118,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-# Check who is using the port
-whoisusingthisport () {
+whoisusingthisport () { # check who is using the port
     lsof -i $1
 }
