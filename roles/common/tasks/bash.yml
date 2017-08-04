@@ -1,3 +1,6 @@
+- debug:
+    msg: "aliases: {{aliases}}"
+
 - name: insert a line into bashrc
   lineinfile:
     path: ~/.bashrc
