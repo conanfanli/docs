@@ -44,22 +44,21 @@ fdir () {
 }
 
 # All about them rice
-alias so='source ~/.bashrc'
+alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -'
 alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -'
-alias myip='curl https://ifconfig.co/'
+alias myip='curl https://ifconfig.co/'  # print my IP address
 # Choose from all aliases and functions deficed in .rices.bash
 
-cmds () {
-    selected=`ag '^(\w+) (?=\(\))|(?<=alias )(.*?)(?=\=)' -o  ~/.rice.bash | fzf`
-    echo "$selected"
-    echo -n "Enter command arguments (can be blank) and press [ENTER]: "
+cmds () { # show all aliases and functions in a list
+    selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    echo -n "$selected "
     read args
 
     eval "$selected $args"
 }
 
-v () {
+v () { # activate virtualenv if there is one
     base=`basename $PWD`
     name=${1-$base}
     . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
