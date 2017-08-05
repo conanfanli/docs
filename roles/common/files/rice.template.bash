@@ -64,11 +64,11 @@ v () { # activate virtualenv if there is one
 
 ci () { # shortcut to git commit -a -m (if branch name contains ticket number, it will be included in the commit message
     ticket=`git branch | grep '*' | egrep '[A-Z]{2,4}-\d{1,4}' -o`
-    [ -z "$@" ] && echo You forgot your fucking commit message! && return 1
+    [ -z "$#" ] && echo You forgot your fucking commit message! && return 1
     if [ -n "$ticket" ]; then
-        git commit -a -m "$ticket: $@"
+        git commit -a -m "$ticket: $*"
     else
-        git commit -a -m "$@"
+        git commit -a -m "$*"
     fi
 }
 
