@@ -50,7 +50,7 @@ alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc &&
 alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
-    selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    selected=`~/docs/bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
     read -p "$selected " args
 
     eval "$selected $args"
