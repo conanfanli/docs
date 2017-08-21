@@ -50,7 +50,7 @@ alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc &&
 alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
-    selected=`bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    selected=`~/docs/bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
     read -p "$selected " args
 
     eval "$selected $args"
@@ -63,7 +63,7 @@ v () { # activate virtualenv if there is one
 }
 
 ci () { # shortcut to git commit -a -m (if branch name contains ticket number, it will be included in the commit message
-    ticket=`git branch | grep '*' | egrep '[A-Z]{2,4}-\d{1,4}' -o`
+    ticket=`git branch | grep '*' | egrep '^[A-Z0-9]{2,5}-\d{1,4}' -o`
     [ -z "$1" ] && echo You forgot your fucking commit message! && return 1
     if [ -n "$ticket" ]; then
         git commit -a -m "$ticket: $*"
