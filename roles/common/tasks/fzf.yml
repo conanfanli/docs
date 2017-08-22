@@ -1,6 +1,11 @@
 
 - name: install fzf
   shell: '{{playbook_dir}}/bin/install-fzf.sh'
+  when: ansible_os_family == 'Debian'
+
+- name: install fzf for Mac OS X
+  homebrew: name=fzf state=present
+  when: ansible_os_family == 'Darwin'
 
 - name: verify fzf is installed
   shell: . ~/.fzf.bash  && fzf --version
