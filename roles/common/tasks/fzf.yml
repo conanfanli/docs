@@ -6,6 +6,3 @@
 - name: install fzf for Mac OS X
   homebrew: name=fzf state=present
   when: ansible_os_family == 'Darwin'
-
-- debug:
-    msg: "{{fzf.stdout_lines}}"
