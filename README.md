@@ -32,3 +32,7 @@ test: ## Run tests for the application
 
 # Regex
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
+
+# Postgres
+## Insert rows from CSV file
+`\copy companies from 'companies.csv' with csv;`
