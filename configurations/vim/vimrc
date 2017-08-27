@@ -156,7 +156,7 @@ nmap <C-f> :Ack<Space>
 " Use fuzzy finder buffer mode to open buffer
 map <Leader>d :CtrlP .<CR>
 map <Leader>f :CtrlPBuffer<CR>
-set wildignore+=*/coverage/*,*/build/*,*/node_modules/*,*/__pycache__/*,*.ttf,*.svg,*.pyc,*/build-debug/*,venv/*
+set wildignore+=*/coverage/*,*/build/*,*/node_modules/*,*/__pycache__/*,*.ttf,*.svg,*.pyc,*/build-debug/*,venv/*,*/dist/*
 " map <Leader>d :FufFileWithCurrentBufferDir<CR>
 
 " close buffer without closing the window
