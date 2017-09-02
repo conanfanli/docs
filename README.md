@@ -36,3 +36,7 @@ test: ## Run tests for the application
 # Postgres
 ## Insert rows from CSV file
 `\copy companies from 'companies.csv' with csv;`
+
+# Django
+- Make sure `multi_db = True` in test cases when working with multiple databases. Otherwise, DB won't be flushed after every test.
+
