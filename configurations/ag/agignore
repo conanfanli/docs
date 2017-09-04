@@ -6,3 +6,4 @@
 logs/
 node_modules/
 __pycache__/
+typings/material-ui/index.d.ts
