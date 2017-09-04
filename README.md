@@ -22,6 +22,9 @@ test: ## Run tests for the application
 	run-my-command $(filter-out $@,$(MAKECMDGOALS))
 ```
 
+## Assign result of a command to a variable in Makefile
+`myvar=$(shell somecommand)`
+
 # Docker
 
 ## Clean up images and volumes
