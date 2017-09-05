@@ -12,6 +12,12 @@
     path: ~/.zshrc
     line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
 
+- name: insert fzf into zshrc
+  lineinfile:
+    create: true
+    path: ~/.zshrc
+    line: '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
+
 
 - name: insert a line into bash_profile
   lineinfile:
