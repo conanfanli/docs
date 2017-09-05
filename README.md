@@ -1,5 +1,7 @@
 Rice or die
 ===========
+[![Build Status](https://travis-ci.org/conanfanli/docs.svg?branch=master)](https://travis-ci.org/conanfanli/docs)
+
 # Weapons
 ## Vim
 ` make play -- --tags vim`
@@ -22,6 +24,9 @@ test: ## Run tests for the application
 	run-my-command $(filter-out $@,$(MAKECMDGOALS))
 ```
 
+## Assign result of a command to a variable in Makefile
+`myvar=$(shell somecommand)`
+
 # Docker
 
 ## Clean up images and volumes
@@ -32,3 +37,11 @@ test: ## Run tests for the application
 
 # Regex
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
+
+# Postgres
+## Insert rows from CSV file
+`\copy companies from 'companies.csv' with csv;`
+
+# Django
+- Make sure `multi_db = True` in test cases when working with multiple databases. Otherwise, DB won't be flushed after every test.
+

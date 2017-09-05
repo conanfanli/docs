@@ -27,3 +27,8 @@
 
 - include: other_tools.yml
   tags: other_tools
+
+- include: docker.yml
+  tags:
+    - docker
+    - skip-ci

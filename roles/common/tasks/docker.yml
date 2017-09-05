@@ -1,0 +1,25 @@
+- name: add apt-key for docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+  when: ansible_os_family == 'Debian'
+
+- name: add apt repository for docker
+  become: true
+  when: ansible_os_family == 'Debian'
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+
+- name: install docker
+  package: name=docker-ce state=present update_cache=yes
+  when: ansible_os_family == 'Debian'
+  become: true
+
+- name: add user "{{ansible_user}}" to docker group
+  become: true
+  user:
+    name: "{{ansible_user}}"
+    groups: docker
+    append: yes
