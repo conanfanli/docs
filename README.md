@@ -1,5 +1,7 @@
 Rice or die
 ===========
+[![Build Status](https://travis-ci.org/conanfanli/docs.svg?branch=master)](https://travis-ci.org/conanfanli/docs)
+
 # Weapons
 ## Vim
 ` make play -- --tags vim`
