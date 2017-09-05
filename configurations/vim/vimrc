@@ -115,8 +115,8 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+                \ | wincmd p | diffthis
 endif
 
 " Customized section
@@ -243,7 +243,7 @@ nmap <Leader>c :BufOnly<CR>
 " Airline settings
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
