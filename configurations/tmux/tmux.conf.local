@@ -286,10 +286,13 @@ bind-key C-a last-pane
 # set -g status-bg black
 # set -g status-fg white
 
-# Use alt-left and shift-right to switch windows. No prefix needed.
+# Use alt-left and alt-right to switch windows. No prefix needed.
 bind -n M-h prev
 bind -n M-l next
 
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
 
 bind -n M-right resize-pane -R
 bind -n M-left resize-pane -L
