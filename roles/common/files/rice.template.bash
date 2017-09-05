@@ -50,13 +50,15 @@ alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
+hub () { # open the repo in github
+    URL="https://github.com/$(git remote get-url origin | ag '(?<=:)(.*?)(?=\.git)' -o)"
+    open $URL
+}
 
 fdir () { # Find directory matching pattern
     find . -type d -name $@ -print
 }
 
-# All about them rice
-alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
 alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -' # check if rice is updated
 alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
 alias myip='curl https://ifconfig.co/'  # print my IP address
@@ -84,7 +86,7 @@ ci () { # shortcut to git commit -a -m (if branch name contains ticket number, i
     fi
 }
 
-gdm () {
+gdm () { # delete stale branches
     git branch --merged | grep -v '*' | xargs git branch -d
     git fetch -p
 }
