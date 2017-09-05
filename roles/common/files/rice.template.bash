@@ -16,12 +16,21 @@ export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 # source bash_completion if the current shell is bash
-(echo $0 | grep bash) && . $(brew --prefix)/etc/bash_completion
+(echo $SHELL | grep bash) && . $(brew --prefix)/etc/bash_completion
 alias ls='ls -GFh'
 {% else %}
 alias ls='ls -GFh --color'
 # END MAC
 {% endif %}
+
+IN_BASH=`echo $SHELL | grep bash`
+# These only apply to bash
+if [[ "$IN_BASH" ]]; then
+    LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
+    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+fi
+
+
 
 
 # grep with color
@@ -105,8 +114,6 @@ export LESS_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
-LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
-PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 # For FZF
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
