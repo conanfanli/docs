@@ -19,6 +19,7 @@
 
 - name: add user "{{ansible_user}}" to docker group
   become: true
+  when: ansible_os_family == 'Debian'
   user:
     name: "{{ansible_user}}"
     groups: docker

@@ -15,8 +15,8 @@ export EDITOR=vim
 # For MAC
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-# source bash_completion
-. $(brew --prefix)/etc/bash_completion
+# source bash_completion if the current shell is bash
+(echo $0 | grep bash) && . $(brew --prefix)/etc/bash_completion
 alias ls='ls -GFh'
 {% else %}
 alias ls='ls -GFh --color'
