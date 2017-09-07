@@ -9,9 +9,9 @@
 - name: Clone oh-my-zsh repo
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
 
-- name: Set zsh as default shell
-  user: name=vagrant shell=/bin/zsh
-  tags: skip-ci
+  # - name: Set zsh as default shell
+  #   user: name=vagrant shell=/bin/zsh
+  #   tags: skip-ci
 
 
 - name: install zsh on ubuntu step2
