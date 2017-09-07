@@ -1,9 +1,33 @@
 - debug:
     msg: "aliases: {{aliases|to_nice_yaml}}"
 
+- name: apt-get install zsh on ubuntu
+  package: name=zsh state=present
+  when: ansible_os_family == 'Debian'
+  become: true
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+
+- name: Set zsh as default shell
+  user: name=vagrant shell=/bin/zsh
+  tags: skip-ci
+
+
+- name: install zsh on ubuntu step2
+  when: ansible_os_family == 'Debian'
+  become: true
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 - name: insert a line into bashrc
   lineinfile:
     path: ~/.bashrc
+    line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
+
+- name: insert a line into zshrc
+  lineinfile:
+    create: true
+    path: ~/.zshrc
     line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
 
 - name: insert a line into zshrc
