@@ -4,6 +4,7 @@ if [ -f ~/bin/z.sh ]
 then
     . ~/bin/z.sh
 fi
+alias tmux='tmux -2u'
 
 export HISTFILESIZE=5000
 # export LC_ALL=en_US.UTF-8
