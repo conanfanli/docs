@@ -2,6 +2,11 @@ Rice or die
 ===========
 [![Build Status](https://travis-ci.org/conanfanli/docs.svg?branch=master)](https://travis-ci.org/conanfanli/docs)
 
+# Set up a new Ubuntu box
+- clone this repo
+- Install ansible: `sudo apt-get update && sudo apt install python3-pip && sudo pip3 install ansible`
+- `make play`
+
 # Weapons
 ## Vim
 ` make play -- --tags vim`
