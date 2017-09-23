@@ -4,6 +4,9 @@
 - debug:
     msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}. Python version is {{ansible_playbook_python}}"
 
+- include: packages.yml
+  tags: packages
+
 - include: the_silver_searcher.yml
   tags: the_siver_searcher
 
@@ -24,9 +27,6 @@
 
 - include: zed.yml
   tags: zed
-
-- include: packages.yml
-  tags: packages
 
 - include: docker.yml
   tags:

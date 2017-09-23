@@ -1,11 +1,6 @@
 - debug:
     msg: "aliases: {{aliases|to_nice_yaml}}"
 
-- name: apt-get install zsh on ubuntu
-  package: name=zsh state=present
-  when: ansible_os_family == 'Debian'
-  become: true
-
 - name: Clone oh-my-zsh repo
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
 
