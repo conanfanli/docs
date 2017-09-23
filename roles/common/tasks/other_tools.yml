@@ -12,13 +12,11 @@
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     state: present
 
-- name: install tree
-  package: name=tree state=present
+- name: install lsof
+  package: name={{item}} state=present
   when: ansible_os_family == 'Debian'
   become: true
-
-
-- name: install yarn
-  package: name=yarn state=present
-  when: ansible_os_family == 'Debian'
-  become: true
+  with_items:
+    - lsof
+    - tree
+    - yarn
