@@ -13,7 +13,7 @@
 
 - name: symlimk vimrc
   file:
-      src: '{{playbook_dir}}/configurations/vim/vimrc'
+      src: '{{role_path}}/files/vim/vimrc'
       dest: '~/.vimrc'
       state: link
       force: yes

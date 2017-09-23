@@ -1,15 +1,11 @@
+# File directory roles/common/files
 
 - name: sync tmux config
   file:
-      src: '{{playbook_dir}}/configurations/tmux/tmux.conf'
-      dest: '~/.tmux.conf'
+      src: '{{role_path}}/files/tmux/{{item}}'
+      dest: '~/.{{item}}'
       state: link
       force: yes
-
-- name: sync tmux config.local
-  file:
-      src: '{{playbook_dir}}/configurations/tmux/tmux.conf.local'
-      dest: '~/.tmux.conf.local'
-      state: link
-      force: yes
-
+  with_items:
+    - tmux.conf
+    - tmux.conf.local

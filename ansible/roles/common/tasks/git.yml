@@ -4,7 +4,7 @@
 
 - name: sync git config
   file:
-      src: '{{playbook_dir}}/configurations/git/gitconfig'
+      src: '{{role_path}}/files/git/gitconfig'
       dest: '~/.gitconfig'
       state: link
       force: yes

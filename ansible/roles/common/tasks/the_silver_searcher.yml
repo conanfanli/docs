@@ -4,7 +4,7 @@
 
 - name: sync agignore
   file:
-      src: '{{playbook_dir}}/configurations/ag/agignore'
+      src: '{{role_path}}/files/ag/agignore'
       dest: '~/.agignore'
       state: link
       force: yes
