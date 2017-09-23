@@ -1,5 +1,10 @@
 # This is for {{rice_type}}
-export RICE_BASH_LOADED=1
+RED='\033[1;31m'
+NO_COLOR='\033[0m' # No Color
+
+yell() {
+    echo -e "\n[+] ${RED}$@${NO_COLOR}"
+}
 
 if [ -f ~/bin/z.sh ]
 then
