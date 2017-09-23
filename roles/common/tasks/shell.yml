@@ -15,16 +15,13 @@
   become: true
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-- name: insert a line into bashrc
+- name: make sure rice gets loaded for bash and zsh
   lineinfile:
-    path: ~/.bashrc
-    line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
-
-- name: insert a line into zshrc
-  lineinfile:
-    create: true
-    path: ~/.zshrc
-    line: '[ -f ~/.rice.bash ] && source ~/.rice.zsh'
+    path: ~/.{{item}}rc
+    line: "[ -f ~/.rice.bash ] && source ~/.rice.{{item}}"
+  with_items:
+    - bash
+    - zsh
 
 - name: insert fzf into zshrc
   lineinfile:
