@@ -7,11 +7,11 @@
 - include: packages.yml
   tags: packages
 
-- include: the_silver_searcher.yml
-  tags: the_siver_searcher
-
 - include: shell.yml
   tags: shell
+
+- include: the_silver_searcher.yml
+  tags: the_siver_searcher
 
 - include: vim.yml
   tags: vim
