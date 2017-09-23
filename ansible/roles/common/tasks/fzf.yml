@@ -1,6 +1,6 @@
 
 - name: install fzf
-  shell: '{{playbook_dir}}/bin/install-fzf.sh'
+  shell: '{{playbook_dir}}/../bin/install-fzf.sh'
   when: ansible_os_family == 'Debian'
 
 - name: install fzf for Mac OS X
