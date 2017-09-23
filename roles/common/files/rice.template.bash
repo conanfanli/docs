@@ -29,17 +29,14 @@ alias ls='ls -GFh --color'
 # END MAC
 {% endif %}
 
-IN_BASH=`echo $SHELL | grep bash`
+{% if rice_type == 'bash' %}
 # These only apply to bash
-if [[ "$IN_BASH" ]]; then
-    LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
-    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-    alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
-else
-    alias so='source ~/.zshrc' #desc#: re-source ~/.zshrc
-fi
-
-
+LS_COLORS="ow=01;96:di=01;96" ; export LS_COLORS
+PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+alias so='source ~/.bashrc' #desc#: re-source ~/.bashrc
+{% else %}
+alias so='source ~/.zshrc' #desc#: re-source ~/.zshrc
+{% endif %}
 
 
 # grep with color

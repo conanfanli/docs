@@ -9,10 +9,6 @@
 - name: Clone oh-my-zsh repo
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
 
-  # - name: Set zsh as default shell
-  #   user: name=vagrant shell=/bin/zsh
-  #   tags: skip-ci
-
 
 - name: install zsh on ubuntu step2
   when: ansible_os_family == 'Debian'
@@ -28,13 +24,7 @@
   lineinfile:
     create: true
     path: ~/.zshrc
-    line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
-
-- name: insert a line into zshrc
-  lineinfile:
-    create: true
-    path: ~/.zshrc
-    line: '[ -f ~/.rice.bash ] && source ~/.rice.bash'
+    line: '[ -f ~/.rice.bash ] && source ~/.rice.zsh'
 
 - name: insert fzf into zshrc
   lineinfile:
