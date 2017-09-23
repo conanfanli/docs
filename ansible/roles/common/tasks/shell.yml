@@ -35,12 +35,12 @@
   vars:
     rice_type: bash
   template:
-    src: '{{playbook_dir}}/roles/common/files/rice-shell.template.sh'
+    src: '{{role_path}}/files/rice-shell.template.sh'
     dest: ~/.rice.bash
 
 - name: write ~/.rice.zsh
   vars:
     rice_type: zsh
   template:
-    src: '{{playbook_dir}}/roles/common/files/rice-shell.template.sh'
+    src: '{{role_path}}/files/rice-shell.template.sh'
     dest: ~/.rice.zsh
