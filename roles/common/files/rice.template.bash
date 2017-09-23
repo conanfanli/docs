@@ -51,6 +51,8 @@ alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
+alias copy-package-to-container='~/docs/copy-package-to-container.sh'
+
 hub () { # open the repo in github
     URL="https://github.com/$(git remote get-url origin | ag '(?<=:)(.*?)(?=\.git)' -o)"
     open $URL

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 RED='\033[0;31m'
 NO_COLOR='\033[0m' # No Color
 
@@ -13,7 +11,7 @@ ECHO() {
 }
 
 show-usage() {
-    echo ./copy-package-to-container.sh container_name package_name
+    echo ./copy.sh container_name package_name
     exit 1
 }
 if [ -z $VIRTUAL_ENV ]
@@ -37,12 +35,6 @@ run-docker-command() {
 TMP=/tmp/$package_name
 SOURCE_DIR=$VIRTUAL_ENV/lib/python3.6/site-packages/$package_name
 TARGET=/usr/local/lib/python3.6/site-packages/$package_name
-
-if [ ! -d "$SOURCE_DIR" ]
-then
-    ECHO $SOURCE_DIR does not exist!!!
-    exit 1
-fi
 
 
 ECHO removing $TMP
