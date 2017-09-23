@@ -49,7 +49,16 @@
     line: '[ -f ~/.bashrc ] && source ~/.bashrc'
     create: yes
 
-- name: write rice.bash
+- name: write ~/.rice.bash
+  vars:
+    rice_type: bash
   template:
     src: '{{playbook_dir}}/roles/common/files/rice.template.bash'
     dest: ~/.rice.bash
+
+- name: write ~/.rice.zsh
+  vars:
+    rice_type: zsh
+  template:
+    src: '{{playbook_dir}}/roles/common/files/rice.template.bash'
+    dest: ~/.rice.zsh

@@ -1,3 +1,4 @@
+# This is for {{shell_for}}
 export RICE_BASH_LOADED=1
 
 if [ -f ~/bin/z.sh ]
