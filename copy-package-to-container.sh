@@ -20,6 +20,10 @@ then
     exit 1
 fi
 
+PYTHON_VERSION=`python -V 2>&1 | grep "\d.\d" -o`
+
+ECHO Python version is $PYTHON_VERSION
+
 if [ -z "$package_name" ] || [ -z "$container_name" ]
 then
     show-usage
@@ -33,8 +37,8 @@ run-docker-command() {
 
 
 TMP=/tmp/$package_name
-SOURCE_DIR=$VIRTUAL_ENV/lib/python3.6/site-packages/$package_name
-TARGET=/usr/local/lib/python3.6/site-packages/$package_name
+SOURCE_DIR=$VIRTUAL_ENV/lib/python$PYTHON_VERSION/site-packages/$package_name
+TARGET=/usr/local/lib/python$PYTHON_VERSION/site-packages/$package_name
 
 
 ECHO removing $TMP
