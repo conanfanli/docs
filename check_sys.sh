@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir -p ~/docs/data
-cd ~/docs
+mkdir -p ~/rice/data
+cd ~/rice
 
 if [ -f "/usr/bin/sw_vers" ]
 then

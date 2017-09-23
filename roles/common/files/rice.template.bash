@@ -48,12 +48,12 @@ alias la='ls -a'
 alias ..='cd ../'
 alias ...='cd ../../'
 
-alias docs='cd ~/docs'
+alias rice='cd ~/rice'
 alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
-alias copy-package-to-container='~/docs/copy-package-to-container.sh'
+alias copy-package-to-container='~/rice/copy-package-to-container.sh'
 
 hub () { # open the repo in github
     URL="https://github.com/$(git remote get-url origin | ag '(?<=:)(.*?)(?=\.git)' -o)"
@@ -64,12 +64,12 @@ fdir () { # Find directory matching pattern
     find . -type d -name $@ -print
 }
 
-alias checkifriceiscooked='cd ~/docs && make check -- --tags bash && cd -' # check if rice is updated
-alias cooksomerice='cd ~/docs && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
+alias checkifriceiscooked='cd ~/rice && make check -- --tags bash && cd -' # check if rice is updated
+alias cooksomerice='cd ~/rice && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
 alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
-    selected=`~/docs/bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    selected=`~/rice/bin/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
     read -p "$selected " args
 
     eval "$selected $args"

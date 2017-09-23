@@ -13,12 +13,12 @@ RUN apt-get update
 
 RUN pip3 install ansible
 
-RUN mkdir /root/docs
-# RUN git clone https://github.com/conanfanli/docs.git /app
-WORKDIR /root/docs
+RUN mkdir /root/rice
+# RUN git clone https://github.com/conanfanli/rice.git /app
+WORKDIR /root/rice
 # RUN git checkout develop && git pull
 
-ADD . /root/docs
+ADD . /root/rice
 
 RUN make play -- --tags bash
 

@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-GIT_CONFIG_DIR="$HOME/docs/configurations/git"
+GIT_CONFIG_DIR="$HOME/rice/configurations/git"
 COMPLETION_FILE_PATH="$GIT_CONFIG_DIR/git-completion.bash"
 CONFIG_FILE="$GIT_CONFIG_DIR/gitconfig"
 

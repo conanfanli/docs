@@ -1,6 +1,6 @@
 Rice or die
 ===========
-[![Build Status](https://travis-ci.org/conanfanli/docs.svg?branch=master)](https://travis-ci.org/conanfanli/docs)
+[![Build Status](https://travis-ci.org/conanfanli/rice.svg?branch=master)](https://travis-ci.org/conanfanli/rice)
 
 # Set up a new Ubuntu box
 - clone this repo
