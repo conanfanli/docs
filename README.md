@@ -20,6 +20,9 @@ Rice or die
 
 # HOW TO
 
+## Write decorators with arguments
+http://python-3-patterns-idioms-test.readthedocs.io/en/latest/PythonDecorators.html#decorators-with-arguments
+
 ## Stream subprocess stdin and stdout
 https://kevinmccarthy.org/2016/07/25/streaming-subprocess-stdin-and-stdout-with-asyncio-in-python/
 
