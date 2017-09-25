@@ -142,3 +142,5 @@ export NVM_DIR="$HOME/.nvm"
 whoisusingthisport () { # check who is using the port
     lsof -i $1
 }
+
+export PATH=$PATH:~/rice/bin
