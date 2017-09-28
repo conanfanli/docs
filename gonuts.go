@@ -16,14 +16,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	key := []byte("example key 1234")
 
 	encrypted := encrypt(key, text)
-	fmt.Println("encrypted: %s", encrypted)
-	fmt.Fprintf(w, "Hi there, I love %s!", text)
+	fmt.Println("encrypted: ", encrypted)
+	// fmt.Fprintf(w, "Hi there, I love %s!", text)
+
+	// Decrypt
+	decrypted := decrypt(key, encrypted)
+	fmt.Println("decrypted: ", decrypted)
 }
 
 func main() {
 	http.HandleFunc("/", handler)
 	fmt.Println("Starting server ...")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":3000", nil)
 }
 
 // encrypt string to base64 crypto using AES
@@ -49,4 +53,29 @@ func encrypt(key []byte, text string) string {
 
 	// convert to base64
 	return base64.URLEncoding.EncodeToString(ciphertext)
+}
+
+// decrypt from base64 to decrypted string
+func decrypt(key []byte, cryptoText string) string {
+	ciphertext, _ := base64.URLEncoding.DecodeString(cryptoText)
+
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		panic(err)
+	}
+
+	// The IV needs to be unique, but not secure. Therefore it's common to
+	// include it at the beginning of the ciphertext.
+	if len(ciphertext) < aes.BlockSize {
+		panic("ciphertext too short")
+	}
+	iv := ciphertext[:aes.BlockSize]
+	ciphertext = ciphertext[aes.BlockSize:]
+
+	stream := cipher.NewCFBDecrypter(block, iv)
+
+	// XORKeyStream can work in-place if the two arguments are the same.
+	stream.XORKeyStream(ciphertext, ciphertext)
+
+	return fmt.Sprintf("%s", ciphertext)
 }
