@@ -13,11 +13,16 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	pass := os.Getenv("PASS")
-	fmt.Println(pass)
-	pass2, text := path.Split(r.URL.Path[1:])
-	fmt.Println(text, pass2[:len(pass2)-1])
-	key := []byte("example key 1234")
+	SERVER_KEY := os.Getenv("SERVER_KEY")
+
+	first, second := path.Split(r.URL.Path[1:])
+	password := first[:len(first)-1]
+
+	if password != SERVER_KEY {
+		panic("401")
+	}
+
+	key := []byte(SERVER_KEY)
 
 	encrypted := encrypt(key, text)
 	fmt.Println("encrypted: ", encrypted)
