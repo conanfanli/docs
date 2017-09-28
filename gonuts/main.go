@@ -8,11 +8,15 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
+	"path"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	text := r.URL.Path[1:]
-	fmt.Println(text)
+	pass := os.Getenv("PASS")
+	fmt.Println(pass)
+	pass2, text := path.Split(r.URL.Path[1:])
+	fmt.Println(text, pass2[:len(pass2)-1])
 	key := []byte("example key 1234")
 
 	encrypted := encrypt(key, text)
