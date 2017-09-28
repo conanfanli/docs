@@ -19,7 +19,7 @@ BIN := myapp
 PKG := github.com/thockin/go-build-template
 
 # Where to push the docker image.
-REGISTRY ?= thockin
+REGISTRY ?= conanfanli
 
 # Which architecture to build - see $(ALL_ARCH) for options.
 ARCH ?= amd64

@@ -15,11 +15,12 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
 	SERVER_KEY := os.Getenv("SERVER_KEY")
 
-	first, second := path.Split(r.URL.Path[1:])
+	first, text := path.Split(r.URL.Path[1:])
 	password := first[:len(first)-1]
 
 	if password != SERVER_KEY {
-		panic("401")
+		fmt.Println(w, "Bad key!")
+		return
 	}
 
 	key := []byte(SERVER_KEY)
