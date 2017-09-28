@@ -17,7 +17,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	encrypted := encrypt(key, text)
 	fmt.Println("encrypted: ", encrypted)
-	// fmt.Fprintf(w, "Hi there, I love %s!", text)
 
 	// Decrypt
 	decrypted := decrypt(key, encrypted)
