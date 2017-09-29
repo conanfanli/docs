@@ -3,12 +3,13 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"path"
+	"strings"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	first, text := path.Split(r.URL.Path[1:])
-	fmt.Fprintln(w, first, text)
+func handler(w http.ResponseWriter, request *http.Request) {
+	urlPath := request.URL.Path[1:]
+
+	fmt.Fprintln(w, strings.Split(urlPath, "/"))
 }
 
 func main() {
