@@ -3,16 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"path"
+	"strings"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	first, text := path.Split(r.URL.Path[1:])
-	fmt.Fprintln(w, first, text)
+	urlPath := r.URL.Path[1:]
+	parts := strings.Split(urlPath, "/")
+	fmt.Fprintln(w, parts)
 }
 
 func main() {
 	http.HandleFunc("/", handler)
 	fmt.Println("Starting server ...")
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3001", nil)
 }
