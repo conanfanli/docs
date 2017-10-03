@@ -5,3 +5,4 @@ __pycache__/
 playbook.retry
 gonuts/bin
 gonuts/.go
+gin-bin

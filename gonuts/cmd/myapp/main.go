@@ -3,17 +3,45 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 )
 
-func handler(w http.ResponseWriter, request *http.Request) {
-	urlPath := request.URL.Path[1:]
+var store = make(map[string]string)
+var SECRET = os.Getenv("SECRET")
 
-	fmt.Fprintln(w, strings.Split(urlPath, "/"))
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	urlPath := r.URL.Path[1:]
+	parts := strings.Split(urlPath, "/")
+	fmt.Fprintln(w, parts)
+}
+
+func storeHandler(w http.ResponseWriter, r *http.Request) {
+	urlPath := r.URL.Path[1:]
+	fmt.Println(urlPath)
+	parts := strings.Split(urlPath, "/")
+
+	if len(SECRET) == 0 || len(parts) != 3 {
+		http.NotFound(w, r)
+		return
+	}
+	secret, key, value := parts[0], parts[1], parts[2]
+	if key == "get" {
+		fmt.Fprintln(w, store)
+		return
+	}
+
+	if secret != "111" {
+		http.NotFound(w, r)
+		return
+	}
+	store[key] = value
+	fmt.Fprintln(w, store, len(parts))
 }
 
 func main() {
-	http.HandleFunc("/", handler)
+	// http.HandleFunc("/home/", homeHandler)
+	http.HandleFunc(fmt.Sprintf("/%s/", SECRET), storeHandler)
 	fmt.Println("Starting server ...")
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3001", nil)
 }
