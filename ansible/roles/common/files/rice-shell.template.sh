@@ -115,6 +115,10 @@ change_extension () { # change file extentions in the current directory
         mv "$file" "`basename "$file" .$1`.$2"
     done
 }
+push() { # git push branch even when the current branch has no upstream branch
+    cmd_to_set_upstream=`git push 2>&1 | grep 'git push.*' -o`
+    [ -n "$cmd_to_set_upstream" ] && $cmd_to_set_upstream
+}
 
 alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'  # clean up docker containers and volumnes
 alias dc='docker-compose'
