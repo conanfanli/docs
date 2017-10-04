@@ -54,6 +54,7 @@ alias ..='cd ../'
 alias ...='cd ../../'
 
 alias rice='cd ~/rice'
+alias my-docker-compose='convox start --file my-docker-compose.yml'
 alias iconf='cd ~/projects/iconfigs'
 alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
