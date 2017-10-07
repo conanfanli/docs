@@ -62,6 +62,7 @@ alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 alias copy-package-to-container='~/rice/copy-package-to-container.sh'
 
 drop() { # drop in dropbox
+    cd ~/dropbox/
     echo $1 > ~/dropbox/buffer
     git add -A
     git commit -m 'paste buffer'
