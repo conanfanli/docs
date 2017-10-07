@@ -189,6 +189,9 @@ let g:ycm_python_binary_path = 'python'
 
 " let g:pymode_rope_goto_definition_bind = '<F3>'
 map gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
+nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
+
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_complete_on_dot = 0
 " Do not let pymode automatically fold
