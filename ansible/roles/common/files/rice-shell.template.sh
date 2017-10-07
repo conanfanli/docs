@@ -2,7 +2,7 @@
 RED='\033[1;31m'
 NO_COLOR='\033[0m' # No Color
 
-yell() {
+yell() { # echo with color
     echo -e "\n[+] ${RED}$@${NO_COLOR}"
 }
 
@@ -60,6 +60,13 @@ alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 alias copy-package-to-container='~/rice/copy-package-to-container.sh'
+
+drop() { # drop in dropbox
+    echo $1 > ~/dropbox/buffer
+    git add -A
+    git commit -m 'paste buffer'
+    git push
+}
 
 hub () { # open the repo in github
     URL="https://github.com/$(git remote get-url origin | ag '(?<=:)(.*?)(?=\.git)' -o)"
@@ -149,4 +156,4 @@ whoisusingthisport () { # check who is using the port
 }
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$(go env GOPATH)/bin:~/rice/bin
+export PATH=$PATH:/usr/lib/go-1.8/bin/:$(go env GOPATH)/bin:~/rice/bin
