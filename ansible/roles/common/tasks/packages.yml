@@ -30,4 +30,5 @@
     - python3-dev
     - cmake
     - htop
+    - bash-completion
     - golang-1.8-go
