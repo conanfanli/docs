@@ -1,4 +1,15 @@
-aliases:
-  - name: grep
-    code: 'grep --color=auto'
-    descript: grep with color
+# aliases:
+#   - name: grep
+#     code: 'grep --color=auto'
+#     descript: grep with color
+#
+#
+# var_repos:
+#   - name: rice
+#     source: git@github.com:conanfanli/rice.git
+#
+#   - name: iconfigs
+#     source: git@gitlab.com:vanillarice/iconfigs.git
+#
+#   - name: secret
+#     source: "{{vault_secret}}"

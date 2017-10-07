@@ -1,0 +1,9 @@
+aliases:
+  - name: grep
+    code: 'grep --color=auto'
+    descript: grep with color
+
+
+# Encrypted in group_vars/all/vault.yml
+var_repos: "{{vault_var_repos}}"
+

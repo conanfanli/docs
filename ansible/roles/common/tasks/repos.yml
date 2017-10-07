@@ -1,0 +1,8 @@
+- name: Clone repos
+  git: repo={{item.source}} dest={{item.destination}} update=no
+  with_items: "{{var_repos}}"
+
+  # - debug:
+  #     msg: "repo: {{item|to_nice_yaml}}"
+  #   with_items: "{{var_repos}}"
+
