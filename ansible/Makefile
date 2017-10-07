@@ -10,5 +10,8 @@ test-ci:
 check:
 	@ansible-playbook -i hosts -C --diff playbook.yml $(filter-out $@,$(MAKECMDGOALS))
 
+.PHONY: edit-vault
+edit-vault:
+	@ansible-vault edit group_vars/all/vault.yml $(filter-out $@,$(MAKECMDGOALS))
 %:
 	@:
