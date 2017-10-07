@@ -10,6 +10,12 @@
   become: true
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+- name: insert fzf into zshrc
+  lineinfile:
+    create: true
+    path: ~/.zshrc
+    line: '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
+
 - name: make sure rice gets loaded for bash and zsh
   lineinfile:
     path: ~/.{{item}}rc
@@ -17,12 +23,6 @@
   with_items:
     - bash
     - zsh
-
-- name: insert fzf into zshrc
-  lineinfile:
-    create: true
-    path: ~/.zshrc
-    line: '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
 
 
 - name: insert a line into bash_profile
