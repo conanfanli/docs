@@ -1,5 +1,4 @@
 #!/bin/bash
 apt-get update
-apt install python3.6
-apt install python3-pip
+apt install -yq python3.6 python3-pip
 pip3 install ansible
