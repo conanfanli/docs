@@ -158,4 +158,5 @@ whoisusingthisport () { # check who is using the port
 }
 
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/lib/go-1.8/bin/:$(go env GOPATH)/bin:~/rice/bin
+export PATH=$PATH:/usr/lib/go-1.8/bin/
+export PATH=$PATH:$(go env GOPATH)/bin:~/rice/bin
