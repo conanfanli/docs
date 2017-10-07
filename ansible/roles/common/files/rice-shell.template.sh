@@ -62,17 +62,12 @@ alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 alias copy-package-to-container='~/rice/copy-package-to-container.sh'
 
 yank() { # drop in dropbox
-    cd ~/dropbox/
-    echo $1 > ~/dropbox/yanked
-    git add -A
-    git commit -m 'paste yanked'
-    git push
+    cd ~/dropbox/ &&  echo $1 > ~/dropbox/yanked && \
+        git add -A && git commit -m 'paste yanked'&& git push
 }
 
 wank() { # paste what was yanked
-    cd ~/dropbox/
-    git pull
-    cat ./yanked
+    cd ~/dropbox/ &&  git pull > /dev/null && cat ./yanked
 }
 
 hub () { # open the repo in github
