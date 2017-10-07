@@ -69,7 +69,7 @@ yank() { # drop in dropbox
     git push
 }
 
-paste() { # paste what was yanked
+wank() { # paste what was yanked
     cd ~/dropbox/
     git pull
     cat ./yanked
