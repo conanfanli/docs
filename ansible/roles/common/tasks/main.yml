@@ -4,35 +4,36 @@
 - debug:
     msg: "Operating system is {{ansible_os_family}}. Current directory: {{playbook_dir}}. Python version is {{ansible_playbook_python}}"
 
-- include: packages.yml
+- import_tasks: packages.yml
   tags: packages
 
-- include: shell.yml
+- import_tasks: shell.yml
   tags: shell
 
-- include: the_silver_searcher.yml
+- import_tasks: the_silver_searcher.yml
   tags: the_siver_searcher
 
-- include: vim.yml
+- import_tasks: vim.yml
   tags: vim
 
-- include: git.yml
+- import_tasks: git.yml
   tags: git
 
-- include: tmux.yml
+- import_tasks: tmux.yml
   tags: tmux
 
-- include: fzf.yml
+- import_tasks: fzf.yml
   tags: fzf
 
-- include: zed.yml
+- import_tasks: zed.yml
   tags: zed
 
-- include: docker.yml
+- import_tasks: docker.yml
   tags:
     - docker
     - skip-ci
 
-- include: repos.yml
+- import_tasks: repos.yml
   tags:
     - repos
+    - skip-ci
