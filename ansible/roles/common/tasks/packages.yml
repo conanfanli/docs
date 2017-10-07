@@ -29,4 +29,5 @@
     - python-dev
     - python3-dev
     - cmake
+    - htop
     - golang-1.8-go
