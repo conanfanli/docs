@@ -1,3 +1,10 @@
+- file:
+    path: ~/.vim/backups
+    state: directory
+
+- file:
+    path: ~/.vim/swaps
+    state: directory
 
 - name: install vim for Mac OS X
   homebrew: name=vim state=present install_options=--with-python3
