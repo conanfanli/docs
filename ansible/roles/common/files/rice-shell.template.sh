@@ -44,7 +44,7 @@ alias so='source ~/.zshrc' #desc#: re-source ~/.zshrc
 {% endif %}
 
 
-# grep with color
+# linux commands
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -52,14 +52,15 @@ alias ll='ls -FGlAhp'
 alias la='ls -a'
 alias ..='cd ../'
 alias ...='cd ../../'
-
-alias rice='cd ~/rice'
-alias my-docker-compose='convox start --file my-docker-compose.yml'
-alias iconf='cd ~/projects/iconfigs'
-alias t='python manage.py test'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
-alias copy-package-to-container='~/rice/copy-package-to-container.sh'
+# Personal projects, shortcuts
+alias rice='cd ~/rice'
+alias iconf='cd ~/projects/iconfigs'
+
+alias my-docker-compose='convox start --file my-docker-compose.yml'
+alias copy-package-to-container='~/rice/bin/copy-package-to-container.sh'  # Copy package files to docker container
+alias create_react_container='~/rice/bin/create_react_container.py'  # Create a empty react container
 
 yank() { # drop in dropbox
     (cd ~/dropbox/ &&  echo $1 > ~/dropbox/yanked && \
