@@ -1,11 +1,11 @@
-- name: add apt-key for yarn
+- name: apt_key:yarn
   become: true
   when: ansible_os_family == 'Debian'
   apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
     state: present
 
-- name: add apt repository for yarn
+- name: apt_repository:yarn_golang_tmate
   become: true
   when: ansible_os_family == 'Debian'
   apt_repository:
@@ -13,9 +13,10 @@
     state: present
   with_items:
     - 'ppa:gophers/archive'
+    - 'ppa:tmate.io/archive'
     - deb https://dl.yarnpkg.com/debian/ stable main
 
-- name: install packages on Ubuntu
+- name: packages:ubuntu
   package: name={{item}} state=present
   when: ansible_os_family == 'Debian'
   become: true
@@ -32,3 +33,4 @@
     - htop
     - bash-completion
     - golang-1.8-go
+    - tmate

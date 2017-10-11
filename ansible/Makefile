@@ -2,6 +2,10 @@
 play:
 	@ansible-playbook playbook.yml -i hosts $(filter-out $@,$(MAKECMDGOALS))
 
+.PHONY: play-tags
+play-tags:
+	@ansible-playbook playbook.yml -i hosts --tags $(filter-out $@,$(MAKECMDGOALS))
+
 .PHONY: test-ci
 test-ci:
 	@ansible-playbook playbook.yml -i hosts --skip-tags "skip-ci"
