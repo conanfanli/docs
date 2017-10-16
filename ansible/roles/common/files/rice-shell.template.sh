@@ -95,6 +95,7 @@ v () { # activate virtualenv if there is one
     base=`basename $PWD`
     name=${1-$base}
     . ~/envs/$name/bin/activate 2> /dev/null || echo Available envs: `ls ~/envs`
+    [ -f "./.postactivate" ] && . .postactivate
 }
 
 ci () { # shortcut to git commit -a -m (if branch name contains ticket number, it will be included in the commit message
