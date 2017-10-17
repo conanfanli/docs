@@ -3,7 +3,7 @@ import re
 from os.path import expanduser
 
 ALIAS_REGEX = re.compile(r'^alias ([\w\.]+)\=.+# ?(.+)$')
-FUNCTION_REGEX = re.compile(r'^(\w+) \(\) {.+# ?(.+)$')
+FUNCTION_REGEX = re.compile(r'^(\w+) ?\(\) {.+# ?(.+)$')
 
 with open(expanduser('~/.rice.bash')) as f:
     for line in f:
