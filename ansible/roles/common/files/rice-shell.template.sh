@@ -12,6 +12,7 @@ then
 fi
 alias tmux='tmux -2u'
 
+export PATH=$PATH:$HOME/bin
 export HISTFILESIZE=5000
 # export LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
@@ -159,6 +160,5 @@ whoisusingthisport () { # check who is using the port
     lsof -i $1
 }
 
-export GOPATH=$HOME/go
+export GOPATH=$HOME
 export PATH=$PATH:/usr/lib/go-1.8/bin/
-export PATH=$PATH:$(go env GOPATH)/bin:~/rice/bin
