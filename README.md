@@ -55,6 +55,8 @@ http://python-3-patterns-idioms-test.readthedocs.io/en/latest/PythonDecorators.h
 https://kevinmccarthy.org/2016/07/25/streaming-subprocess-stdin-and-stdout-with-asyncio-in-python/
 
 # Makefile
+Good examples:
+- https://github.com/thockin/go-build-template/blob/master/Makefile
 ## Pass arguments to make commands
 ```
 test: ## Run tests for the application
