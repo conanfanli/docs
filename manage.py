@@ -2,7 +2,7 @@
 import argparse
 import glob
 from os.path import pardir, join, abspath
-from bin.get_all_aliases import get_all_aliases
+from commando.get_all_aliases import get_all_aliases
 
 
 def parent(path):
