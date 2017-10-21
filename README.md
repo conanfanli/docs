@@ -1,5 +1,3 @@
-Rice or die
-===========
 [![Build Status](https://travis-ci.org/conanfanli/rice.svg?branch=master)](https://travis-ci.org/conanfanli/rice)
 
 # Table of contents
