@@ -6,14 +6,18 @@ ALIAS_REGEX = re.compile(r'^alias ([\w\.]+)\=.+# ?(.+)$')
 FUNCTION_REGEX = re.compile(r'^(\w+) ?\(\) {.+# ?(.+)$')
 
 
-def get_all_aliases():
+def get_all_aliases() -> dict:
+    aliases: dict = {}
     with open(expanduser('~/.rice.bash')) as f:
         for line in f:
             for regex in (ALIAS_REGEX, FUNCTION_REGEX):
                 match = regex.match(line)
                 if match:
-                    print(': '.join(match.groups()))
+                    name, doc = match.groups()
+                    aliases[name] = aliases[doc]
                     continue
+
+    return aliases
 
 
 if __name__ == '__main__':
