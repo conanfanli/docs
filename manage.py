@@ -14,30 +14,39 @@ def parent(path):
 RICE_BASE = parent(__file__)
 RICE_BIN = join(RICE_BASE, 'commando')
 
-parser = argparse.ArgumentParser(
-    description='Show all the rice commands.'
-)
 
-rice_bin_scripts = glob.glob('{}/*.*'.format(RICE_BIN))
-assert rice_bin_scripts, 'Empty rice bin?'
+def get_scripts():
+    generator = (
+        relpath(f, RICE_BIN) for f in glob.glob('{}/*.*'.format(RICE_BIN))
+    )
 
-parser.add_argument(
-    '--no-color',
-    dest='no_color',
-    action='store_true',
-    default=False,
-    help='Disable colors when printing',
-)
+    rice_bin_scripts = [script for script in generator
+                        if not script.startswith('__')]
+
+    assert rice_bin_scripts, 'Empty rice bin?'
+    return rice_bin_scripts
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description='Show all the rice commands.'
+    )
+
+    parser.add_argument(
+        '--no-color',
+        dest='no_color',
+        action='store_true',
+        default=False,
+        help='Disable colors when printing',
+    )
+
     args = parser.parse_args()
     if args.no_color:
         Color.disable = True
 
     commands = get_all_aliases()
     commands.update({
-        relpath(script, RICE_BIN): '' for script in rice_bin_scripts
+        script: '' for script in get_scripts()
     })
 
     for name, doc in sorted(commands.items()):

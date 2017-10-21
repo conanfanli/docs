@@ -6,12 +6,14 @@ from os.path import expanduser
 
 from jinja2 import Template
 
+
 def render(container_name: str) -> str:
 
     with open(expanduser('~/rice/ansible/roles/common/files/react-container.template.tsx')) as f:
         template = Template(f.read())
 
     return template.render(container_name=container_name)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
