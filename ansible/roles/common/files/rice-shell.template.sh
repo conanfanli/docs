@@ -81,8 +81,6 @@ fdir () { # Find directory matching pattern
     find . -type d -name $@ -print
 }
 
-alias checkifriceiscooked='cd ~/rice && make check -- --tags bash && cd -' # check if rice is updated
-alias cooksomerice='cd ~/rice && make play -- --tags bash && source ~/.bashrc && cd -' # sync ~/.rice.bash
 alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
