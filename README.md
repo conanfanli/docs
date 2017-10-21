@@ -62,4 +62,7 @@ Usage: `copy-package-to-container.sh container_name package_name`
 
 - Create App with name `heroku apps:create myapp`
 - Stop web: `heroku ps:scale web=0`
-- Add addon `heroku addons:create heroku-redis --app important-app` or `heroku addons:create heroku-postgresql`
+- Add addon `heroku addons:create heroku-redis --app important-app` or `heroku addons:create heroku-postgresql`. This might create duplicate addons
+
+# Github
+- You can deploy to a branch `gh-pages` and the content will be pushed github pages at `https://username.github.io/project_name`
