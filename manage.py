@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser(
     description='Show all the rice commands.'
 )
 
-rice_bin_commands = glob.glob(f'{RICE_BIN}/*')
+rice_bin_commands = glob.glob('{}/*'.format(RICE_BIN))
 
 
 # parser.add_argument(
