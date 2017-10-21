@@ -3,7 +3,7 @@ import argparse
 import glob
 from os.path import pardir, join, abspath, relpath
 from commando.get_all_aliases import get_all_aliases
-from commando.printer import print_red
+from commando.printer import print_red, Color
 
 
 def parent(path):
@@ -26,13 +26,15 @@ parser.add_argument(
     dest='no_color',
     action='store_true',
     default=False,
-    help='No color',
+    help='Disable colors when printing',
 )
 
 
 def main():
     args = parser.parse_args()
-    print(args.no_color)
+    if args.no_color:
+        Color.disable = True
+
     commands = get_all_aliases()
     commands.update({
         relpath(script, RICE_BIN): '' for script in rice_bin_scripts

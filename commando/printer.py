@@ -2,6 +2,8 @@ import io
 
 
 class Color:
+    disable = False
+
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
@@ -14,11 +16,11 @@ class Color:
     UNDERLINE = '\033[4m'
 
 
-_print = print
-
-
 def print_red(*args, **kwargs):
+    if Color.disable:
+        return print(*args, **kwargs)
+
     f = io.StringIO()
     # Set end to '' so we don't get two newlines
-    _print(*args, file=f, **kwargs)
-    return _print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
+    print(*args, file=f, **kwargs)
+    return print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
