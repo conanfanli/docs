@@ -17,7 +17,8 @@ RICE_BIN = join(RICE_BASE, 'commando')
 
 def get_scripts():
     generator = (
-        relpath(f, RICE_BIN) for f in glob.glob('{}/*.*'.format(RICE_BIN))
+        relpath(f, RICE_BIN) for f
+        in glob.glob('{}/*.*'.format(RICE_BIN))
     )
 
     rice_bin_scripts = [script for script in generator
