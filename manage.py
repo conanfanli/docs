@@ -14,14 +14,12 @@ def parent(path):
 RICE_BASE = parent(__file__)
 RICE_BIN = join(RICE_BASE, 'commando')
 
-print_red(RICE_BIN)
-
 parser = argparse.ArgumentParser(
     description='Show all the rice commands.'
 )
 
 rice_bin_commands = glob.glob('{}/*'.format(RICE_BIN))
-
+assert rice_bin_commands, 'Empty rice bin?'
 
 # parser.add_argument(
 #     'integers',
@@ -41,7 +39,10 @@ rice_bin_commands = glob.glob('{}/*'.format(RICE_BIN))
 
 def main():
     parser.parse_args()
-    print_red('aliases:', get_all_aliases())
+    for name, doc in get_all_aliases().items():
+        print_red(name, end=':')
+        print(doc)
+
     for cmd in rice_bin_commands:
         print(cmd)
 

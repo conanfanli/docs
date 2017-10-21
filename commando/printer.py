@@ -1,5 +1,6 @@
 import io
 
+
 class Color:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -13,8 +14,9 @@ class Color:
 
 _print = print
 
+
 def print_red(*args, **kwargs):
     f = io.StringIO()
     # Set end to '' so we don't get two newlines
-    _print(*args, end='', file=f, **kwargs)
-    return _print(Color.FAIL + f.getvalue(), Color.BOLD)
+    _print(*args, file=f, **kwargs)
+    return _print(Color.FAIL + f.getvalue() + Color.ENDC, end='')

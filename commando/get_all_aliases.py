@@ -14,11 +14,12 @@ def get_all_aliases() -> dict:
                 match = regex.match(line)
                 if match:
                     name, doc = match.groups()
-                    aliases[name] = aliases[doc]
+                    aliases[name] = doc
                     continue
 
     return aliases
 
 
 if __name__ == '__main__':
-    get_all_aliases()
+    for name, value in get_all_aliases().items():
+        print('{}: {}'.format(name, value))
