@@ -45,7 +45,7 @@ def main():
     })
 
     for name, doc in sorted(commands.items()):
-        print_red(name, end='\n    ')
+        print_red(name, end=': ')
         print(doc)
 
 
