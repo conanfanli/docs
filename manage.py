@@ -2,7 +2,7 @@
 import argparse
 import glob
 from os.path import pardir, join, abspath
-from bin import get_all_aliases
+from bin.get_all_aliases import get_all_aliases
 
 
 def parent(path):
@@ -10,8 +10,8 @@ def parent(path):
     return abspath(join(path, pardir))
 
 
-RICE_BIN = parent(__file__)
-RICE_BASE = parent(RICE_BIN)
+RICE_BASE = parent(__file__)
+RICE_BIN = join(RICE_BASE, 'bin')
 
 parser = argparse.ArgumentParser(
     description='Show all the rice commands.'
@@ -38,6 +38,7 @@ rice_bin_commands = glob.glob(f'{RICE_BIN}/*')
 
 def main():
     parser.parse_args()
+    get_all_aliases()
     for cmd in rice_bin_commands:
         print(cmd)
 
