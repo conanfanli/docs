@@ -18,27 +18,21 @@ parser = argparse.ArgumentParser(
     description='Show all the rice commands.'
 )
 
-rice_bin_scripts = glob.glob('{}/*'.format(RICE_BIN))
+rice_bin_scripts = glob.glob('{}/*.*'.format(RICE_BIN))
 assert rice_bin_scripts, 'Empty rice bin?'
 
-# parser.add_argument(
-#     'integers',
-#     metavar='N',
-#     type=int,
-#     nargs='+',
-#     help='an integer for the accumulator',
-# )
-# parser.add_argument(
-#     '--sum',
-#     dest='accumulate',
-#     action='store_const',
-#     const=sum, default=max,
-#     help='sum the integers (default: find the max)',
-# )
+parser.add_argument(
+    '--no-color',
+    dest='no_color',
+    action='store_true',
+    default=False,
+    help='No color',
+)
 
 
 def main():
-    parser.parse_args()
+    args = parser.parse_args()
+    print(args.no_color)
     commands = get_all_aliases()
     commands.update({
         relpath(script, RICE_BIN): '' for script in rice_bin_scripts
