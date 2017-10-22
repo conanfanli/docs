@@ -1,24 +1,10 @@
 #!/usr/bin/env python3.6
 import argparse
-import glob
-from commando.get_all_aliases import get_all_aliases
 from commando.printer import print_red, Color
-from commando.models import Script, Alias, RICE_BIN
+from commando.models import Commando
 
 
-def get_scripts():
-    generator = (
-        f for f in glob.glob('{}/*.*'.format(RICE_BIN))
-    )
-
-    rice_bin_scripts = [Script(script) for script in generator
-                        if not script.startswith('__')]
-
-    assert rice_bin_scripts, 'Empty rice bin?'
-    return rice_bin_scripts
-
-
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description='Show all the rice commands.'
     )
@@ -35,13 +21,13 @@ def main():
     if args.no_color:
         Color.disable = True
 
-    commands = [
-        Alias(alias, description) for alias, description
-        in get_all_aliases().items()] + get_scripts()
+    # commands = [
+    #     Alias(alias, description) for alias, description
+    #     in get_all_aliases().items()] + Commando.get_all()
 
-    for cmd in commands:
+    for cmd in Commando.get_all():
         print_red(cmd, end=': ')
-        print(cmd.description)
+        print(cmd.doc)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,9 @@
+import typing
 import os
 from os.path import pardir, join, abspath
+import glob
+
+from .get_all_aliases import get_all_aliases
 
 
 def parent(path):
@@ -11,32 +15,53 @@ RICE_BASE = parent(parent(__file__))
 RICE_BIN = join(RICE_BASE, 'commando')
 
 
-class Script:
-
-    def __init__(self, filepath):
+class Commando:
+    def __init__(self, cmd_type, name, doc, filepath):
+        self.cmd_type = cmd_type
+        self.name = name
+        self.doc = doc
         self.filepath = filepath
 
-        if filepath.endswith('.py'):
-            self.filetype = 'python'
-        else:
-            self.filetype = 'shell'
+    @classmethod
+    def from_script(cls, filepath: str):
+        relpath = cls.relpath(filepath)
+        return Commando(
+            cmd_type='script',
+            name=relpath,
+            doc=None,
+            filepath=filepath
+        )
 
-    @property
-    def description(self):
-        return ''
-
-    @property
-    def relpath(self):
-        return os.path.relpath(self.filepath, RICE_BIN)
-
-    def __str__(self):
-        return self.relpath
-
-
-class Alias:
-    def __init__(self, name, description):
-        self.name = name
-        self.description = description
+    @classmethod
+    def from_alias(cls, name, doc):
+        return Commando(
+            cmd_type='alias',
+            name=name,
+            doc=doc,
+            filepath=None,
+        )
 
     def __str__(self):
         return self.name
+
+    @staticmethod
+    def relpath(absolute_patth):
+        return os.path.relpath(absolute_patth, RICE_BIN)
+
+    @classmethod
+    def get_all(cls) -> typing.List['Commando']:
+        generator = (
+            f for f in glob.glob('{}/*.*'.format(RICE_BIN))
+        )
+
+        scripts = [
+            Commando.from_script(script) for script in generator
+            if not script.startswith('__')
+        ]
+        aliases = [
+            Commando.from_alias(name=alias, doc=doc) for alias, doc in
+            get_all_aliases().items()
+        ]
+
+        assert scripts, 'Empty rice bin?'
+        return scripts + aliases
