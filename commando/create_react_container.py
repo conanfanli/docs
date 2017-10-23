@@ -15,10 +15,14 @@ def render(container_name: str) -> str:
     return template.render(container_name=container_name)
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) != 2:
         sys.stderr.write('Provide one and only 1 container name.\n')
         sys.exit(1)
 
     container_name = sys.argv[1]
     print(render(container_name))
+
+
+if __name__ == '__main__':
+    main()

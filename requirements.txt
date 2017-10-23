@@ -1,3 +1,4 @@
 ipython
 mypy
 flake8
+jinja2

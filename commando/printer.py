@@ -1,3 +1,6 @@
+"""
+this is a doc
+"""
 import io
 
 
@@ -24,3 +27,6 @@ def print_red(*args, **kwargs):
     # Set end to '' so we don't get two newlines
     print(*args, file=f, **kwargs)
     return print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
+
+def main():
+    pass

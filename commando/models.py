@@ -1,6 +1,7 @@
 import typing
 import os
 from os.path import pardir, join, abspath
+import importlib
 import glob
 
 from .get_all_aliases import get_all_aliases
@@ -24,13 +25,23 @@ class Commando:
 
     @classmethod
     def from_script(cls, filepath: str) -> 'Commando':
-        relpath = cls.relpath(filepath)
+
         return Commando(
             cmd_type='script',
             name=relpath,
-            doc=None,
+            doc=doc,
             filepath=filepath
         )
+
+    @classmethod
+    def is_python_script(cls, full_path) -> bool:
+        relpath = cls.relpath(full_path)
+        if not relpath.endswith('.py'):
+            return None
+
+        module_name = relpath.split('.py')[0]
+        module = importlib.import_module(f'commando.{module_name}')
+        return module
 
     @classmethod
     def from_alias(cls, name, doc) -> 'Commando':
