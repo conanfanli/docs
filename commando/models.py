@@ -24,23 +24,26 @@ class Commando:
         self.filepath = filepath
 
     @classmethod
-    def from_script(cls, filepath: str) -> 'Commando':
+    def from_module(cls, module) -> 'Commando':
 
         return Commando(
             cmd_type='script',
-            name=relpath,
-            doc=doc,
-            filepath=filepath
+            name=cls.relpath(module.__file__),
+            doc=module.__doc__,
+            filepath=module.__file__
         )
 
     @classmethod
-    def is_python_script(cls, full_path) -> bool:
+    def get_module(cls, full_path):
         relpath = cls.relpath(full_path)
         if not relpath.endswith('.py'):
             return None
 
         module_name = relpath.split('.py')[0]
         module = importlib.import_module(f'commando.{module_name}')
+        if not hasattr(module, 'main'):
+            return None
+
         return module
 
     @classmethod
@@ -61,13 +64,13 @@ class Commando:
 
     @classmethod
     def get_all(cls) -> typing.List['Commando']:
-        generator = (
+        modules = (
             f for f in glob.glob('{}/*.*'.format(RICE_BIN))
+            if Commando.get_module(f)
         )
 
         scripts = [
-            Commando.from_script(script) for script in generator
-            if not script.startswith('__')
+            Commando.from_module(script) for script in modules
         ]
         aliases = [
             Commando.from_alias(name=alias, doc=doc) for alias, doc in
