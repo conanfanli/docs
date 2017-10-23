@@ -5,7 +5,7 @@ Plug 'Shougo/vimshell', { 'rev': '3787e5' }
 Plug 'scrooloose/nerdtree'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kien/ctrlp.vim'
-Plug 'klen/python-mode'
+
 " Deprecated in favor of ale which is async
 " Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
@@ -17,6 +17,7 @@ Plug 'pangloss/vim-javascript'
 " Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 Plug 'alvan/vim-closetag'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'elzr/vim-json'
 Plug 'mxw/vim-jsx'
 Plug 'editorconfig/editorconfig-vim'
@@ -178,36 +179,14 @@ set tags=tags;
 let g:pyflakes_use_quickfix = 0
 
 
-" pymode settings
-" filetype off
-" call pathogen#infect()
-" call pathogen#helptags()
-" filetype plugin indent on
-" syntax on
-
 let g:ycm_python_binary_path = 'python'
 
-" let g:pymode_rope_goto_definition_bind = '<F3>'
 map gd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
 
-let g:pymode_rope_goto_definition_cmd = 'e'
-let g:pymode_rope_complete_on_dot = 0
-" Do not let pymode automatically fold
-let g:pymode_folding = 1
 set foldlevel=1
 
-" Do not let pymode auto fix whitespaces
-let g:pymode_utils_whitespaces = 0
-
-let g:pymode_lint_write = 0
-
-let g:pymode_lint_checkers = '[]'
-
-
-" DO NOT Auto open cwindow if errors be finded
-let g:pymode_lint_cwindow = 0
 
 let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
@@ -242,9 +221,6 @@ set relativenumber
 set cursorcolumn
 colorscheme lucius
 
-" run unittest
-nmap <Leader>t :!python3 manage.py test <cword>
-
 " close all buffers but current
 nmap <Leader>c :BufOnly<CR>
 
@@ -271,22 +247,11 @@ command! CP :w! /usr/share/nginx/html/clips/1.txt
 autocmd FileType typescript :set makeprg=./node_modules/.bin/tsc
 set backupcopy=yes
 
-" let g:syntastic_python_checkers = ['flake8']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
-" set mode to passive
-" let g:syntastic_mode_map = { 'mode': 'passive' }
-
-
 " JSX works for .js files
 let g:jsx_ext_required = 0
 
 " Automatically remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
-
-" Dsiabling rope autoimport for performance reasons
-let g:pymode_rope_autoimport = 0
-let g:pymode_rope_regenerate_on_write = 0
 
 " FZF
 set rtp+=~/.fzf
