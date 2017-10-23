@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Create a react container.
+"""
 # Forcing python3 because jinja2 is likely installed with python3
 # along with ansible
 import sys
@@ -7,9 +10,11 @@ from os.path import expanduser
 from jinja2 import Template
 
 
-def render(container_name: str) -> str:
+TEMPLATE_PATH = '~/rice/ansible/roles/common/files/react-container.template.tsx'
 
-    with open(expanduser('~/rice/ansible/roles/common/files/react-container.template.tsx')) as f:
+
+def render(container_name: str) -> str:
+    with open(expanduser(TEMPLATE_PATH)) as f:
         template = Template(f.read())
 
     return template.render(container_name=container_name)

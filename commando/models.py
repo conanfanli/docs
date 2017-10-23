@@ -1,3 +1,4 @@
+import types
 import typing
 import os
 from os.path import pardir, join, abspath
@@ -34,7 +35,7 @@ class Commando:
         )
 
     @classmethod
-    def get_module(cls, full_path):
+    def get_module(cls, full_path) -> types.ModuleType:
         relpath = cls.relpath(full_path)
         if not relpath.endswith('.py'):
             return None
