@@ -21,10 +21,6 @@ def main() -> None:
     if args.no_color:
         Color.disable = True
 
-    # commands = [
-    #     Alias(alias, description) for alias, description
-    #     in get_all_aliases().items()] + Commando.get_all()
-
     for cmd in Commando.get_all():
         print_red(cmd, end=': ')
         print(cmd.doc)

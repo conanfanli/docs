@@ -23,7 +23,7 @@ class Commando:
         self.filepath = filepath
 
     @classmethod
-    def from_script(cls, filepath: str):
+    def from_script(cls, filepath: str) -> 'Commando':
         relpath = cls.relpath(filepath)
         return Commando(
             cmd_type='script',
@@ -33,7 +33,7 @@ class Commando:
         )
 
     @classmethod
-    def from_alias(cls, name, doc):
+    def from_alias(cls, name, doc) -> 'Commando':
         return Commando(
             cmd_type='alias',
             name=name,
@@ -45,8 +45,8 @@ class Commando:
         return self.name
 
     @staticmethod
-    def relpath(absolute_patth):
-        return os.path.relpath(absolute_patth, RICE_BIN)
+    def relpath(full_path):
+        return os.path.relpath(full_path, RICE_BIN)
 
     @classmethod
     def get_all(cls) -> typing.List['Commando']:
