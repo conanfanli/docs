@@ -65,12 +65,11 @@ class Commando:
     @classmethod
     def get_all(cls) -> typing.List['Commando']:
         modules = (
-            f for f in glob.glob('{}/*.*'.format(RICE_BIN))
-            if Commando.get_module(f)
+            Commando.get_module(f) for f in glob.glob('{}/*.*'.format(RICE_BIN))
         )
 
         scripts = [
-            Commando.from_module(script) for script in modules
+            Commando.from_module(mod) for mod in modules if mod
         ]
         aliases = [
             Commando.from_alias(name=alias, doc=doc) for alias, doc in
