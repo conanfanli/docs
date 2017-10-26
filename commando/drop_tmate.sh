@@ -14,6 +14,7 @@ if [ -z "$secret" ]; then
 fi
 
 tmate -S /tmp/tmate.sock new-session -d
+sleep 2
 
 set -e
 
