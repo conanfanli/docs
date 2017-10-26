@@ -1,5 +1,5 @@
 #!/bin/bash
-dime_bag_url=${dime_bag_url}
+dime_bag_url=${dime_bag_url-`cat ~/.dime_bag_url`}
 
 
 if [ -z "$dime_bag_url" ]; then

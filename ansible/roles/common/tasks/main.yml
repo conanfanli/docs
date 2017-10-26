@@ -37,3 +37,8 @@
   tags:
     - repos
     - skip-ci
+
+- include: cron.yml
+  tags:
+    - cron
+    - skip-ci
