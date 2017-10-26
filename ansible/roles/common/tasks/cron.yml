@@ -1,4 +1,4 @@
 - cron:
     name: "create_tmate_session"
-    minute: "*/1"
+    minute: "*/5"
     job: "bash -l ~/rice/commando/create_tmate_session.sh >/tmp/mylog 2>&1"
