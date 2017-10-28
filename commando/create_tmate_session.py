@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+import os
 import io
+import subprocess
 import csv
 import time
 from pprint import pprint
@@ -32,6 +34,16 @@ def update_session(gclient: GClient) -> dict:
 
 
 def main() -> None:
+    print(subprocess.run(['pkill', 'tmate']))
+
+    print(subprocess.run([
+        'tmate', '-S', '/tmp/tmate.sock', 'new-session', '-d'], shell=False))
+
+    # time.sleep(2)
+    print(subprocess.check_output([
+        "tmate", "-S", "/tmp/tmate.sock", "display", "-p", "'#{tmate_web}'"]))
+    return
+
     gclient = GClient()
     pprint(update_session(gclient))
 
