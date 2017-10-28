@@ -111,7 +111,7 @@ class GClient:
                     fileId: str,
                     new_file: io.StringIO,
                     mimetype: str='text/csv',
-                    ):
+                    ) -> dict:
         media = MediaIoBaseUpload(
             new_file,
             mimetype=mimetype,
@@ -120,31 +120,3 @@ class GClient:
             fileId=fileId,
             media_body=media,
         ).execute()
-
-        csv_rows = self.get_csv_rows(fileId=fileId)
-        fieldnames = list(csv_rows[0].keys())
-        return csv_rows
-        # fd = io.StringIO()
-        # writer = csv.DictWriter(fd, fieldnames=fieldnames)
-        # writer.writeheader()
-        # writer.writerow({'tmate:ricebox': '123'})
-
-
-
-def main():
-    """Shows basic usage of the Google Drive API.
-
-    Creates a Google Drive API service object and outputs the names and IDs
-    for up to 10 files.
-    """
-    gclient = GClient()
-    # results = gclient.list_files()
-    # results = gclient.get_csv_rows(
-    #     fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA')
-    results = gclient.update_file(
-        fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA')
-    pprint(results)
-
-
-if __name__ == '__main__':
-    main()
