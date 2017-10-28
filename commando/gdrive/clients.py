@@ -3,6 +3,7 @@ import httplib2
 import os
 import argparse
 
+from googleapiclient.discovery import Resource
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
@@ -19,8 +20,22 @@ APPLICATION_NAME = 'Drive API Python Quickstart'
 
 class GClient:
 
-    @classmethod
-    def get_credentials(cls):
+    def __init__(self) -> None:
+        self.credentials = GClient.get_credentials()
+        self.service = GClient.get_service(self.credentials)
+
+    @staticmethod
+    def get_service(credentials=None) -> Resource:
+        if not credentials:
+            credentials = GClient.get_credentials()
+
+        http = credentials.authorize(httplib2.Http())
+        service = discovery.build('drive', 'v3', http=http)
+        print(service)
+        return service
+
+    @staticmethod
+    def get_credentials() -> client.OAuth2Credentials:
         """Gets valid user credentials from storage.
 
         If nothing has been stored, or if the stored credentials are invalid,
@@ -45,15 +60,12 @@ class GClient:
                 credentials = tools.run_flow(flow, store, flags)
             else:  # Needed only for compatibility with Python 2.6
                 credentials = tools.run(flow, store)
+
             print('Storing credentials to ' + credential_path)
         return credentials
 
-    @classmethod
-    def get_service(cls):
-        credentials = cls.get_credentials()
-        http = credentials.authorize(httplib2.Http())
-        service = discovery.build('drive', 'v3', http=http)
-        return service
+    def list_files(self):
+        return self.service.files().list()
 
 
 def main():
