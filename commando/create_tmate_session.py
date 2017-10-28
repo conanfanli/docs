@@ -2,7 +2,6 @@
 import io
 import csv
 import time
-import typing
 from pprint import pprint
 
 from gdrive.clients import GClient
