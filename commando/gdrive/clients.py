@@ -8,7 +8,7 @@ from pprint import pprint
 
 import httplib2
 from googleapiclient.discovery import Resource
-from googleapiclient.http import MediaIoBaseDownload
+from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
@@ -19,12 +19,15 @@ flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/drive-python-quickstart.json
 # SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
-SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
+SCOPES = 'https://www.googleapis.com/auth/drive'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'rice'
 
 
 class GClient:
+    """
+    https://developers.google.com/resources/api-libraries/documentation/drive/v3/python/latest/drive_v3.files.html
+    """
 
     def __init__(self) -> None:
         self.credentials = GClient.get_credentials()
@@ -80,11 +83,11 @@ class GClient:
 
     def export_file_as_str(self,
                            *,
-                           fileId: str=None,
+                           fileId: str,
                            ) -> str:
         file_handler = io.BytesIO()
         request = self.service.files().export_media(
-            fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA',
+            fileId=fileId,
             mimeType='text/csv',
         )
         downloader = MediaIoBaseDownload(file_handler, request)
@@ -99,9 +102,33 @@ class GClient:
                      *,
                      fileId: str=None,
                      ) -> typing.List[dict]:
-        content = self.export_file_as_str()
+        content = self.export_file_as_str(fileId=fileId)
         reader = csv.DictReader(io.StringIO(content))
         return [row for row in reader]
+
+    def update_file(self,
+                    *,
+                    fileId: str,
+                    new_file: io.StringIO,
+                    mimetype: str='text/csv',
+                    ):
+        media = MediaIoBaseUpload(
+            new_file,
+            mimetype=mimetype,
+        )
+        return self.service.files().update(
+            fileId=fileId,
+            media_body=media,
+        ).execute()
+
+        csv_rows = self.get_csv_rows(fileId=fileId)
+        fieldnames = list(csv_rows[0].keys())
+        return csv_rows
+        # fd = io.StringIO()
+        # writer = csv.DictWriter(fd, fieldnames=fieldnames)
+        # writer.writeheader()
+        # writer.writerow({'tmate:ricebox': '123'})
+
 
 
 def main():
@@ -112,7 +139,10 @@ def main():
     """
     gclient = GClient()
     # results = gclient.list_files()
-    results = gclient.get_csv_rows()
+    # results = gclient.get_csv_rows(
+    #     fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA')
+    results = gclient.update_file(
+        fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA')
     pprint(results)
 
 
