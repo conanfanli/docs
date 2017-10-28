@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-import httplib2
+import typing
+import csv
 import os
 import argparse
 import io
 from pprint import pprint
 
+import httplib2
 from googleapiclient.discovery import Resource
 from googleapiclient.http import MediaIoBaseDownload
 from apiclient import discovery
@@ -76,10 +78,10 @@ class GClient:
             pageSize=pageSize
         ).execute()
 
-    def download_file(self,
-                      *,
-                      fileId: str=None,
-                      ) -> str:
+    def export_file_as_str(self,
+                           *,
+                           fileId: str=None,
+                           ) -> str:
         file_handler = io.BytesIO()
         request = self.service.files().export_media(
             fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA',
@@ -93,6 +95,14 @@ class GClient:
 
         return file_handler.getvalue().decode('utf-8')
 
+    def get_csv_rows(self,
+                     *,
+                     fileId: str=None,
+                     ) -> typing.List[dict]:
+        content = self.export_file_as_str()
+        reader = csv.DictReader(io.StringIO(content))
+        return [row for row in reader]
+
 
 def main():
     """Shows basic usage of the Google Drive API.
@@ -102,7 +112,7 @@ def main():
     """
     gclient = GClient()
     # results = gclient.list_files()
-    results = gclient.download_file()
+    results = gclient.get_csv_rows()
     pprint(results)
 
 
