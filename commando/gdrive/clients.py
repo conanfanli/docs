@@ -2,9 +2,11 @@
 import httplib2
 import os
 import argparse
+import io
 from pprint import pprint
 
 from googleapiclient.discovery import Resource
+from googleapiclient.http import MediaIoBaseDownload
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
@@ -14,9 +16,10 @@ flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/drive-python-quickstart.json
-SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+# SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'Drive API Python Quickstart'
+APPLICATION_NAME = 'rice'
 
 
 class GClient:
@@ -49,7 +52,7 @@ class GClient:
         if not os.path.exists(credential_dir):
             os.makedirs(credential_dir)
         credential_path = os.path.join(credential_dir,
-                                       'drive-python-quickstart.json')
+                                       'drive-python-rice.json')
 
         store = Storage(credential_path)
         credentials = store.get()
@@ -68,10 +71,27 @@ class GClient:
                    *,
                    pageSize: int=20,
                    fields: str='nextPageToken, files(id, name)'
-                   ):
+                   ) -> dict:
         return self.service.files().list(
             pageSize=pageSize
         ).execute()
+
+    def download_file(self,
+                      *,
+                      fileId: str=None,
+                      ) -> str:
+        file_handler = io.BytesIO()
+        request = self.service.files().export_media(
+            fileId='1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA',
+            mimeType='text/csv',
+        )
+        downloader = MediaIoBaseDownload(file_handler, request)
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+            print('Downloaded {}%'.format(int(status.progress() * 100)))
+
+        return file_handler.getvalue().decode('utf-8')
 
 
 def main():
@@ -81,7 +101,8 @@ def main():
     for up to 10 files.
     """
     gclient = GClient()
-    results = gclient.list_files()
+    # results = gclient.list_files()
+    results = gclient.download_file()
     pprint(results)
 
 
