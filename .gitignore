@@ -6,3 +6,4 @@ playbook.retry
 gonuts/bin
 gonuts/.go
 gin-bin
+client_secret.json

@@ -2,3 +2,4 @@ ipython
 mypy
 flake8
 jinja2
+google-api-python-client
