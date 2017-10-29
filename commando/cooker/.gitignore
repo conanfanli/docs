@@ -1,0 +1,9 @@
+.idea
+node_modules
+*.log
+tags
+.venv/
+__pycache__
+db.sqlite3
+.ropeproject
+

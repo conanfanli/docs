@@ -1,0 +1,2 @@
+web: PYTHONUNBUFFERED=1 python manage.py runserver --settings=cooker.settings.dev_settings 0.0.0.0:8000
+node: yarn start
