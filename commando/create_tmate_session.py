@@ -14,12 +14,12 @@ CMD_CREATE_SESSION = 'tmate -S /tmp/tmate.sock new-session -d'
 CMD_PRINT_WEB = "tmate -S /tmp/tmate.sock display -p '#{tmate_web}'"
 
 
-def update_session(gclient: GClient) -> dict:
+def update_session(gclient: GClient, url: str) -> dict:
     current_rows = gclient.get_csv_rows(fileId=TMATE_DB)
     for row in current_rows:
         if row['name'] == 'ricebox':
             row['updated_ts'] = int(time.time())
-            row['url'] = 'hi'
+            row['url'] = url
             row['comment'] = 'sup'
 
     fieldnames = list(current_rows[0].keys())
@@ -48,12 +48,11 @@ def main() -> None:
     web_url = subprocess.check_output(
         shlex.split(CMD_PRINT_WEB),
         stderr=subprocess.STDOUT
-    )
-    print(web_url)
-    return
+    ).decode('utf-8')
 
+    # Update
     gclient = GClient()
-    pprint(update_session(gclient))
+    pprint(update_session(gclient, url=web_url))
 
 
 if __name__ == '__main__':
