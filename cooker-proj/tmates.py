@@ -29,25 +29,30 @@ class Tmate:
         )
 
     def get_session_url(self):
-        return subprocess.check_output(
-            shlex.split(CMD_PRINT_WEB),
-            stderr=subprocess.STDOUT
-        ).decode('utf-8').strip()
+        try:
+            return subprocess.check_output(
+                shlex.split(CMD_PRINT_WEB),
+                stderr=subprocess.STDOUT
+            ).decode('utf-8').strip()
+        except subprocess.CalledProcessError:
+            return None
 
     def _get_row(self, rows):
         return [row for row in rows if row['name'] == 'ricebox'][0]
 
     def update_session(self):
-        session_url = self.get_session_url()
         rows = self.client.get_csv_rows(fileId=TMATE_DB)
         row = self._get_row(rows)
+
+        session_url = self.get_session_url()
         if row['url'] == session_url:
             print(f'URL in sync: {session_url}')
             return None
 
-        print('restarting')
+        print('{}!={}. Restarting ...'.format(row['url'], session_url))
         self.kill()
         time.sleep(2)
+        self.new_session()
 
         row['updated_ts'] = int(time.time())
         row['url'] = session_url
