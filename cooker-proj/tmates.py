@@ -51,14 +51,16 @@ class Tmate:
 
         print('{}!={}. Restarting ...'.format(row['url'], session_url))
         self.kill()
-        time.sleep(2)
         self.new_session()
+        time.sleep(2)
+        session_url = self.get_session_url()
+        if not session_url:
+            raise Exception('cannot create new session')
 
         row['updated_ts'] = int(time.time())
         row['url'] = session_url
         row['comment'] = 'sup'
-        print(row)
-
+        print(f'Update url to {session_url}')
         self.update_csv(rows)
 
     def update_csv(self, rows) -> dict:
