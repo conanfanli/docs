@@ -35,14 +35,14 @@ class Tmate:
         ).decode('utf-8').strip()
 
     def _get_row(self, rows):
-        return [row for row in rows if row['name']] == 'ricebox'
+        return [row for row in rows if row['name'] == 'ricebox'][0]
 
     def update_session(self):
         session_url = self.get_session_url()
         rows = self.client.get_csv_rows(fileId=TMATE_DB)
         row = self._get_row(rows)
         if row['url'] == session_url:
-            print('Will not restart')
+            print(f'URL in sync: {session_url}')
             return None
 
         print('restarting')

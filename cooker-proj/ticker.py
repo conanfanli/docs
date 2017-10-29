@@ -4,8 +4,9 @@ import tmates
 
 
 def tick():
-    tmates.main()
-    Timer(10, tmates.main).start()
+    tmate = tmates.Tmate()
+    tmate.update_session()
+    Timer(30, tick).start()
 
 
 tick()
