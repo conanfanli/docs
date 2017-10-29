@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os
+import shlex
 import io
 import subprocess
 import csv
@@ -9,6 +9,9 @@ from pprint import pprint
 from gdrive.clients import GClient
 
 TMATE_DB = '1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA'
+
+CMD_CREATE_SESSION = 'tmate -S /tmp/tmate.sock new-session -d'
+CMD_PRINT_WEB = "tmate -S /tmp/tmate.sock display -p '#{tmate_web}'"
 
 
 def update_session(gclient: GClient) -> dict:
@@ -36,12 +39,17 @@ def update_session(gclient: GClient) -> dict:
 def main() -> None:
     print(subprocess.run(['pkill', 'tmate']))
 
-    print(subprocess.run([
-        'tmate', '-S', '/tmp/tmate.sock', 'new-session', '-d'], shell=False))
+    print(subprocess.check_output(
+        shlex.split(CMD_CREATE_SESSION),
+        stderr=subprocess.STDOUT
+    ))
 
-    # time.sleep(2)
-    print(subprocess.check_output([
-        "tmate", "-S", "/tmp/tmate.sock", "display", "-p", "'#{tmate_web}'"]))
+    time.sleep(2)
+    web_url = subprocess.check_output(
+        shlex.split(CMD_PRINT_WEB),
+        stderr=subprocess.STDOUT
+    )
+    print(web_url)
     return
 
     gclient = GClient()
