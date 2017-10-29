@@ -12,6 +12,7 @@ dj-database-url
 mypy
 django-debug-toolbar
 
+google-api-python-client
 
 flake8
 ipython
