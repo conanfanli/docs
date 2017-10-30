@@ -49,11 +49,18 @@ logging.config.dictConfig(LOGGING)
 logger = logging.getLogger(__name__)
 
 
-def help(target):
-    for cmd in Commando.get_all():
+targets = {cmd.name: cmd for cmd in Commando.get_all()}
+
+
+def help_target(target):
+    for cmd in targets.values():
         if not target or target == cmd.name:
             print_red(cmd, end=': ')
             print(cmd.doc)
+
+
+def run_target(target):
+    targets[target].execute()
 
 
 def main():
@@ -91,7 +98,9 @@ def main():
         Color.disable = True
 
     if action == 'help':
-        help(args.target)
+        help_target(args.target)
+    elif action == 'run':
+        run_target(args.target)
 
 
 if __name__ == "__main__":
