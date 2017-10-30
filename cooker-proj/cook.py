@@ -49,6 +49,13 @@ logging.config.dictConfig(LOGGING)
 logger = logging.getLogger(__name__)
 
 
+def help(target):
+    for cmd in Commando.get_all():
+        if not target or target == cmd.name:
+            print_red(cmd, end=': ')
+            print(cmd.doc)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Show all the rice commands.'
@@ -57,8 +64,16 @@ def main():
     parser.add_argument(
         'action',
         type=str,
-        nargs=1,
+        nargs='?',
+        default='help',
+        choices=['help', 'run'],
         help='Action to perform',
+    )
+    parser.add_argument(
+        'target',
+        type=str,
+        nargs='?',
+        help='Target',
     )
     parser.add_argument(
         '--no-color',
@@ -70,17 +85,13 @@ def main():
 
     args = parser.parse_args()
 
-    action = args.action[0]
+    action = args.action
 
     if args.no_color:
         Color.disable = True
 
-    for cmd in Commando.get_all():
-        if action == cmd.name:
-            return cmd.execute()
-
-        print_red(cmd, end=': ')
-        print(cmd.doc)
+    if action == 'help':
+        help(args.target)
 
 
 if __name__ == "__main__":
