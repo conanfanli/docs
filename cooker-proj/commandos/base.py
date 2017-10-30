@@ -82,3 +82,6 @@ class PyModule(Commando):
             doc=module.__doc__,
             filepath=module.__file__
         )
+
+    def execute(self):
+        self.module.main()

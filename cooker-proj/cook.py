@@ -83,6 +83,12 @@ def main():
         help='Target',
     )
     parser.add_argument(
+        'targs',
+        type=str,
+        nargs='*',
+        help='target args',
+    )
+    parser.add_argument(
         '--no-color',
         dest='no_color',
         action='store_true',

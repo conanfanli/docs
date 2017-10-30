@@ -2,6 +2,7 @@
 this is a doc
 """
 import io
+import sys
 
 
 class Color:
@@ -28,5 +29,6 @@ def print_red(*args, **kwargs):
     print(*args, file=f, **kwargs)
     return print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
 
+
 def main():
-    pass
+    print(sys.argv)
