@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from datetime import datetime
 import shlex
 import io
 import subprocess
@@ -86,4 +87,5 @@ def main():
 
 
 if __name__ == '__main__':
+    print(datetime.now())
     main()
