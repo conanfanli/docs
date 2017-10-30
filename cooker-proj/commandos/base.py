@@ -24,7 +24,6 @@ class Commando:
         self.filepath = filepath
         self.module = module
 
-
     @classmethod
     def get_module(cls, full_path) -> types.ModuleType:
         relpath = cls.relpath(full_path)
@@ -33,7 +32,7 @@ class Commando:
 
         module_name = relpath.split('.py')[0]
         module = importlib.import_module(f'commandos.{module_name}')
-        if not hasattr(module, 'main'):
+        if not hasattr(module, 'run_from_argv'):
             return None
 
         return module
@@ -71,6 +70,9 @@ class Commando:
         assert scripts, 'Empty rice bin?'
         return scripts + aliases
 
+    def run_from_argv(self, argv):
+        raise NotImplementedError(f'run_from_argv is not implemented for {self}')
+
 
 class PyModule(Commando):
 
@@ -83,5 +85,5 @@ class PyModule(Commando):
             filepath=module.__file__
         )
 
-    def execute(self):
-        self.module.main()
+    def run_from_argv(self, argv):
+        self.module.run_from_argv(argv)

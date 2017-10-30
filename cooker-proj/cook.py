@@ -60,46 +60,53 @@ def help_target(target):
             print(cmd.doc)
 
 
-def run_target(target):
-    targets[target].execute()
-
+def run_subcommand(subcommand, subargs):
+    targets[subcommand].run_from_argv(subargs)
 
 
 def main():
-    print(sys.argv)
     try:
         subcommand = sys.argv[1]
     except IndexError:
         subcommand = 'help'
 
     if subcommand == 'help':
-        help_target(len(sys.argv) >= 2 and sys.argv[2] or None)
+        return help_target(len(sys.argv) >= 2 and sys.argv[2] or None)
 
-    return
+    if subcommand not in targets:
+        return help_target(None)
+
+    # return
     parser = argparse.ArgumentParser(
-        description='Show all the rice commands.'
+        description='Start cooking'
     )
 
-    parser.add_argument(
-        'action',
-        type=str,
-        nargs='?',
-        default='help',
-        choices=['help', 'run'],
-        help='Action to perform',
-    )
-    parser.add_argument(
-        'target',
-        type=str,
-        nargs='?',
-        help='Target',
-    )
-    parser.add_argument(
-        'targs',
-        type=str,
-        nargs='*',
-        help='target args',
-    )
+    # parser.add_argument(
+    #     'subcommand',
+    #     type=str,
+    #     nargs=1,
+    #     help='Action to perform',
+    # )
+    # parser.add_argument(
+    #     'action',
+    #     type=str,
+    #     nargs='?',
+    #     default='help',
+    #     choices=['help', 'run'],
+    #     help='Action to perform',
+    # )
+    # parser.add_argument(
+    #     'target',
+    #     type=str,
+    #     nargs='?',
+    #     help='Target',
+    # )
+    # parser.add_argument(
+    #     'targs',
+    #     type=str,
+    #     nargs='*',
+    #     help='target args',
+    # )
     parser.add_argument(
         '--no-color',
         dest='no_color',
@@ -108,19 +115,13 @@ def main():
         help='Disable colors when printing',
     )
 
-    args = parser.parse_args()
+    options, subargs = parser.parse_known_args(sys.argv[2:])
 
-    action = args.action
-
-    if args.no_color:
+    if options.no_color:
         Color.disable = True
 
-    if action == 'help':
-        help_target(args.target)
-    elif action == 'run':
-        run_target(args.target)
+    run_subcommand(subcommand, subargs)
 
 
 if __name__ == "__main__":
-    print(sys.argv)
     main()

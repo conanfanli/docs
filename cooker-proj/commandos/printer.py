@@ -2,7 +2,7 @@
 this is a doc
 """
 import io
-import sys
+import argparse
 
 
 class Color:
@@ -30,5 +30,16 @@ def print_red(*args, **kwargs):
     return print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
 
 
-def main():
-    print(sys.argv)
+def run_from_argv(argv):
+    parser = argparse.ArgumentParser(
+        description='Start cooking'
+    )
+    parser.add_argument(
+        'message',
+        type=str,
+        nargs='?',
+        default='',
+        help='Message to print.',
+    )
+    parsed = parser.parse_args(argv)
+    print_red(parsed.message)
