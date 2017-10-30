@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+import sys
 import logging
 import logging.config
 import argparse
@@ -63,7 +64,18 @@ def run_target(target):
     targets[target].execute()
 
 
+
 def main():
+    print(sys.argv)
+    try:
+        subcommand = sys.argv[1]
+    except IndexError:
+        subcommand = 'help'
+
+    if subcommand == 'help':
+        help_target(len(sys.argv) >= 2 and sys.argv[2] or None)
+
+    return
     parser = argparse.ArgumentParser(
         description='Show all the rice commands.'
     )
@@ -110,4 +122,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print(sys.argv)
     main()
