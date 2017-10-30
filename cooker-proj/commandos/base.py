@@ -13,8 +13,7 @@ def parent(path):
     return abspath(join(path, pardir))
 
 
-RICE_BASE = parent(parent(__file__))
-RICE_BIN = join(RICE_BASE, 'commando')
+COMMANDOS_DIR = abspath(parent(__file__))
 
 
 class Commando:
@@ -41,7 +40,7 @@ class Commando:
             return None
 
         module_name = relpath.split('.py')[0]
-        module = importlib.import_module(f'commando.{module_name}')
+        module = importlib.import_module(f'commandos.{module_name}')
         if not hasattr(module, 'main'):
             return None
 
@@ -61,12 +60,12 @@ class Commando:
 
     @staticmethod
     def relpath(full_path):
-        return os.path.relpath(full_path, RICE_BIN)
+        return os.path.relpath(full_path, COMMANDOS_DIR)
 
     @classmethod
     def get_all(cls) -> typing.List['Commando']:
         modules = (
-            Commando.get_module(f) for f in glob.glob('{}/*.*'.format(RICE_BIN))
+            Commando.get_module(f) for f in glob.glob('{}/*.*'.format(COMMANDOS_DIR))
         )
 
         scripts = [
