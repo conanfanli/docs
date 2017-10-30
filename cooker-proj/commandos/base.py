@@ -28,7 +28,7 @@ class Commando:
 
         return Commando(
             cmd_type='script',
-            name=cls.relpath(module.__file__),
+            name=cls.relpath(module.__file__).split('.py')[0],
             doc=module.__doc__,
             filepath=module.__file__
         )

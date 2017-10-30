@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 import argparse
-# from commando.printer import print_red, Color
+from commandos.printer import print_red, Color
 from commandos.base import Commando
 
 
@@ -10,6 +10,12 @@ def main():
     )
 
     parser.add_argument(
+        'action',
+        type=str,
+        nargs=1,
+        help='Action to perform',
+    )
+    parser.add_argument(
         '--no-color',
         dest='no_color',
         action='store_true',
@@ -18,10 +24,16 @@ def main():
     )
 
     args = parser.parse_args()
+
+    action = args.action[0]
+
     if args.no_color:
         Color.disable = True
 
     for cmd in Commando.get_all():
+        if action == cmd.name:
+            return cmd.execute()
+
         print_red(cmd, end=': ')
         print(cmd.doc)
 
