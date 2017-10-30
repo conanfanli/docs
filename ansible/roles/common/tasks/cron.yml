@@ -1,4 +1,4 @@
 - cron:
     name: "call ticker"
     minute: "*/5"
-    job: "bash -lc '~/envs/cooker-proj/bin/python ~/rice/cooker-proj/tmates.py > /tmp/tmates.log 2>&1'"
+    job: "bash -lc '~/envs/cooker-proj/bin/python ~/rice/cooker-proj/tmates.py >> /tmp/tmates.log 2>&1'"
