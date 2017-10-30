@@ -49,7 +49,8 @@ class Tmate:
             print(f'URL in sync: {session_url}')
             return None
 
-        print('{}!={}. Restarting ...'.format(row['url'], session_url))
+        print('gdrive url {} != local url {}. Restarting ...'.format(
+            row['url'], session_url))
         self.kill()
         self.new_session()
         time.sleep(2)
@@ -77,3 +78,12 @@ class Tmate:
             new_file=new_file,
         )
         return results
+
+
+def main():
+    tmate = Tmate()
+    tmate.update_session()
+
+
+if __name__ == '__main__':
+    main()
