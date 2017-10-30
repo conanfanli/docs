@@ -17,21 +17,13 @@ COMMANDOS_DIR = abspath(parent(__file__))
 
 
 class Commando:
-    def __init__(self, cmd_type, name, doc, filepath):
+    def __init__(self, cmd_type, name, doc, filepath, module=None):
         self.cmd_type = cmd_type
         self.name = name
         self.doc = doc
         self.filepath = filepath
+        self.module = module
 
-    @classmethod
-    def from_module(cls, module) -> 'Commando':
-
-        return Commando(
-            cmd_type='script',
-            name=cls.relpath(module.__file__).split('.py')[0],
-            doc=module.__doc__,
-            filepath=module.__file__
-        )
 
     @classmethod
     def get_module(cls, full_path) -> types.ModuleType:
@@ -68,8 +60,8 @@ class Commando:
             Commando.get_module(f) for f in glob.glob('{}/*.*'.format(COMMANDOS_DIR))
         )
 
-        scripts = [
-            Commando.from_module(mod) for mod in modules if mod
+        scripts: typing.List[Commando] = [
+            PyModule(mod) for mod in modules if mod
         ]
         aliases = [
             Commando.from_alias(name=alias, doc=doc) for alias, doc in
@@ -78,3 +70,15 @@ class Commando:
 
         assert scripts, 'Empty rice bin?'
         return scripts + aliases
+
+
+class PyModule(Commando):
+
+    def __init__(self, module):
+        super().__init__(
+            cmd_type='PyModule',
+            module=module,
+            name=module.__name__,
+            doc=module.__doc__,
+            filepath=module.__file__
+        )
