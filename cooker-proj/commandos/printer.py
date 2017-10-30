@@ -32,6 +32,7 @@ def print_red(*args, **kwargs):
 
 def run_from_argv(argv):
     parser = argparse.ArgumentParser(
+        prog=__name__,
         description='Start cooking'
     )
     parser.add_argument(

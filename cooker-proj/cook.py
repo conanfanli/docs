@@ -65,48 +65,18 @@ def run_subcommand(subcommand, subargs):
 
 
 def main():
-    try:
-        subcommand = sys.argv[1]
-    except IndexError:
-        subcommand = 'help'
-
-    if subcommand == 'help':
-        return help_target(len(sys.argv) >= 2 and sys.argv[2] or None)
-
-    if subcommand not in targets:
-        return help_target(None)
-
-    # return
     parser = argparse.ArgumentParser(
         description='Start cooking'
     )
 
-    # parser.add_argument(
-    #     'subcommand',
-    #     type=str,
-    #     nargs=1,
-    #     help='Action to perform',
-    # )
-    # parser.add_argument(
-    #     'action',
-    #     type=str,
-    #     nargs='?',
-    #     default='help',
-    #     choices=['help', 'run'],
-    #     help='Action to perform',
-    # )
-    # parser.add_argument(
-    #     'target',
-    #     type=str,
-    #     nargs='?',
-    #     help='Target',
-    # )
-    # parser.add_argument(
-    #     'targs',
-    #     type=str,
-    #     nargs='*',
-    #     help='target args',
-    # )
+    parser.add_argument(
+        'subcommand',
+        type=str,
+        nargs='?',
+        choices=['help'] + list(targets.keys()),
+        default='help',
+        help='Subcommand',
+    )
     parser.add_argument(
         '--no-color',
         dest='no_color',
@@ -115,12 +85,14 @@ def main():
         help='Disable colors when printing',
     )
 
-    options, subargs = parser.parse_known_args(sys.argv[2:])
-
+    options, subargs = parser.parse_known_args()
     if options.no_color:
         Color.disable = True
 
-    run_subcommand(subcommand, subargs)
+    if options.subcommand == 'help':
+        return help_target(len(sys.argv) >= 2 and sys.argv[2] or None)
+
+    run_subcommand(options.subcommand, subargs)
 
 
 if __name__ == "__main__":
