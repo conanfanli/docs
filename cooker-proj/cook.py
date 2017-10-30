@@ -4,7 +4,7 @@ import logging
 import logging.config
 import argparse
 from commandos.printer import print_red, Color
-from commandos.base import Commando
+from commandos.base import BaseCommando
 
 
 LOGGING = {
@@ -50,14 +50,14 @@ logging.config.dictConfig(LOGGING)
 logger = logging.getLogger(__name__)
 
 
-targets = {cmd.name: cmd for cmd in Commando.get_all()}
+targets = {cmd.name: cmd for cmd in BaseCommando.get_all()}
 
 
 def help_target(target):
     for cmd in targets.values():
         if not target or target == cmd.name:
             print_red(cmd, end=': ')
-            print(cmd.doc)
+            cmd.print_help()
 
 
 def run_subcommand(subcommand, subargs):

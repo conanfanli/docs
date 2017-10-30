@@ -1,8 +1,10 @@
 """
-this is a doc
+Print messages in colors.
 """
 import io
+import typing
 import argparse
+from .base import PyModule
 
 
 class Color:
@@ -30,10 +32,11 @@ def print_red(*args, **kwargs):
     return print(Color.RED + f.getvalue() + Color.NO_COLOR, end='')
 
 
-def run_from_argv(argv):
-    parser = argparse.ArgumentParser(
+class Commando(PyModule):
+
+    parser: typing.ClassVar = argparse.ArgumentParser(
         prog=__name__,
-        description='Start cooking'
+        description=__doc__
     )
     parser.add_argument(
         'message',
@@ -42,5 +45,7 @@ def run_from_argv(argv):
         default='',
         help='Message to print.',
     )
-    parsed = parser.parse_args(argv)
-    print_red(parsed.message)
+
+    def run_from_argv(self, argv) -> typing.Any:
+        parsed = self.parser.parse_args(argv)
+        return print_red(parsed.message)
