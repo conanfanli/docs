@@ -57,7 +57,7 @@ def help_target(target):
     for cmd in targets.values():
         if not target or target == cmd.name:
             print_red(cmd, end=': ')
-            cmd.print_help()
+            cmd.print_help() if target else print(cmd.doc)
 
 
 def run_subcommand(subcommand, subargs):

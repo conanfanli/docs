@@ -85,7 +85,6 @@ class PyModule(BaseCommando):
             doc=module.__doc__,
             filepath=module.__file__
         )
-        # self.commando = module.Commando(module)
 
     def run_from_argv(self, argv):
         return self.module.run_from_argv(argv)
