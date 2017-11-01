@@ -15,6 +15,7 @@ CMD_CREATE_SESSION = 'tmate -S /tmp/tmate.sock new-session -d'
 CMD_PRINT_WEB = "tmate -S /tmp/tmate.sock display -p '#{tmate_web}'"
 
 boxname = open('./.boxname').read().strip()
+print(f'boxname is {boxname}')
 
 
 class Tmate:
@@ -41,7 +42,7 @@ class Tmate:
             return None
 
     def _get_row(self, rows):
-        return [row for row in rows if row['name'] == 'ricebox'][0]
+        return [row for row in rows if row['name'] == boxname][0]
 
     def update_session(self):
         rows = self.client.get_csv_rows(fileId=TMATE_DB)
