@@ -60,8 +60,8 @@ alias rice='cd ~/rice'
 alias iconf='cd ~/projects/iconfigs'
 
 alias my-docker-compose='convox start --file my-docker-compose.yml'
-alias copy-package-to-container='~/rice/commando/copy-package-to-container.sh'  # Copy package files to docker container
-alias create_react_container='~/rice/commando/create_react_container.py'  # Create a empty react container
+alias copy-package-to-container='~/rice/cooker-proj/commandos/copy-package-to-container.sh'  # Copy package files to docker container
+alias create_react_container='~/rice/cooker-proj/commandos/create_react_container.py'  # Create a empty react container
 
 yank() { # drop in dropbox
     (cd ~/dropbox/ &&  echo $1 > ~/dropbox/yanked && \
@@ -84,7 +84,7 @@ fdir () { # Find directory matching pattern
 alias myip='curl https://ifconfig.co/'  # print my IP address
 
 cmds () { # show all aliases and functions in a list
-    selected=`~/rice/commando/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
+    selected=`~/rice/cooker-proj/commandos/get_all_aliases.py | fzf | ag -o '^(.*)(?=:)'`
     read -p "$selected " args
 
     eval "$selected $args"
