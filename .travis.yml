@@ -19,4 +19,5 @@ install:
   - pip3 install ansible
 
 script:
+  - rm ansible/ansible.cfg
   - cd ansible && make test-ci
