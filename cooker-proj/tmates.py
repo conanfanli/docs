@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 from datetime import datetime
 import shlex
 import io
@@ -13,6 +13,8 @@ TMATE_DB = '1Jbsm4qCqk2-HRwA3cnT4wBRV3dnvvAQrXdqV6fBvuoA'
 
 CMD_CREATE_SESSION = 'tmate -S /tmp/tmate.sock new-session -d'
 CMD_PRINT_WEB = "tmate -S /tmp/tmate.sock display -p '#{tmate_web}'"
+
+boxname = open('./.boxname').read().strip()
 
 
 class Tmate:
