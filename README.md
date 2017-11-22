@@ -89,3 +89,6 @@ Usage: `copy-package-to-container.sh container_name package_name`
 
 # Github
 - You can deploy to a branch `gh-pages` and the content will be pushed github pages at `https://username.github.io/project_name`
+
+# Google Cloud Platform
+https://cloud.google.com/sdk/docs/
