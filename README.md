@@ -76,6 +76,9 @@ Usage: `copy-package-to-container.sh container_name package_name`
 ## Clean up images and volumes
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
 
+## Optimizing Dockerfile caching for pip
+https://www.aptible.com/documentation/enclave/tutorials/faq/dockerfile-caching/pip-dockerfile-caching.html
+
 
 # Postgres
 ## Insert rows from CSV file
