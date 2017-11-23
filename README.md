@@ -68,6 +68,10 @@ test: ## Run tests for the application
 
 # Docker
 
+## Optimizing Dockerfile caching for pip
+https://www.aptible.com/documentation/enclave/tutorials/faq/dockerfile-caching/pip-dockerfile-caching.html
+https://lekum.org/post/multistage-dockerfile/
+
 ## Edit local python packages and sync to docker container
 We sometimes need to edit installed Python packages. This is not too straightforward with docker containers. If the package is install on the host in a virtual environment. Use this [script](copy-package-to-container.sh) to copy from the host to the container.
 
@@ -75,6 +79,7 @@ Usage: `copy-package-to-container.sh container_name package_name`
 
 ## Clean up images and volumes
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
+
 
 
 # Postgres
