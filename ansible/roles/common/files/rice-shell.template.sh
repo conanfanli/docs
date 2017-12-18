@@ -108,7 +108,8 @@ ci () { # shortcut to git commit -a -m (if branch name contains ticket number, i
 }
 
 proverb() {
-    message=`head -$((${RANDOM} % `wc -l < ~/commits.txt` + 1)) ~/commits.txt  | tail -1`
+    lineno=`wc -l < ~/rice/commits.txt`
+    message=`head -$((${RANDOM} %  $lineno + 1)) ~/rice/commits.txt  | tail -1`
     ci $message
 }
 
