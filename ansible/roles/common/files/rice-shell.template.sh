@@ -107,6 +107,11 @@ ci () { # shortcut to git commit -a -m (if branch name contains ticket number, i
     fi
 }
 
+proverb() {
+    message=`head -$((${RANDOM} % `wc -l < ~/commits.txt` + 1)) ~/commits.txt  | tail -1`
+    ci $message
+}
+
 gdm () { # delete stale branches
     git branch --merged | grep -v '*' | xargs git branch -d
     git fetch -p
