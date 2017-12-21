@@ -27,7 +27,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-c
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'fatih/vim-go'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -201,6 +201,13 @@ let g:ale_linters = {
 \   'go': ['go build'],
 \}
 
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['javascript.jsx'] = ['prettier']
+let g:ale_fixers['typescript.tsx'] = ['prettier']
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fix_on_save = 1
 
 " Supertab
 imap <tab> <C-Space>
