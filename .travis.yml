@@ -19,5 +19,7 @@ install:
   - pip3 install ansible
 
 script:
-  - rm ansible/ansible.cfg
+  # - rm ansible/ansible.cfg
+  - mkdir ~/.ssh
+  - echo test > ~/.ssh/id_rsa
   - cd ansible && make test-ci
