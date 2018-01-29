@@ -22,4 +22,5 @@ script:
   # - rm ansible/ansible.cfg
   - mkdir ~/.ssh
   - echo test > ~/.ssh/id_rsa
+  - rm ansible/group_vars/all/vault.yml
   - cd ansible && make test-ci
