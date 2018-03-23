@@ -12,3 +12,4 @@ typings/material-ui/index.d.ts
 .mypy_cache/
 migrations/
 *.json
+staticfiles/
