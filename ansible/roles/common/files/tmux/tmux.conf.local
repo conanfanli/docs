@@ -298,3 +298,9 @@ bind -n M-right resize-pane -R
 bind -n M-left resize-pane -L
 bind -n M-down resize-pane -D
 bind -n M-up resize-pane -U
+#
+#
+#
+# Use this to send a pane to a new window named "idle"
+bind-key ! break-pane -d -n idle
+bind-key @ join-pane -hs idle
