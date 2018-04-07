@@ -39,12 +39,26 @@
 - ~/.bashrc loads ~/.rice.bash
 - Press `ALT-C` to go to a directory
 - `cmds` to choose one of the alasies or functions defined in [rice.shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
-- Find all tsx files: `ag -g tsx` 
+- Find all tsx files: `ag -g tsx`
 
 ## Regex
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
 
 # Python
+## Create mypy compatible decorator
+```
+FuncType = TypeVar('FuncType', bound=Callable[..., Any])
+def fart_without_making_a_sound(loudness: int) -> Callable[[FuncType], FuncType]:
+    def decorator(func: FuncType) -> FuncType:
+        @wraps(func)
+        def func_wrapper(*args, **kwargs):
+            # Cover your bum with your hand
+            # Fart
+            # Smell your hand
+            pass
+        return cast(FuncType, func_wrapper)
+    return decorator
+```
 
 # Django
 - Make sure `multi_db = True` in test cases when working with multiple databases. Otherwise, DB won't be flushed after every test.
