@@ -27,6 +27,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-c
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'fatih/vim-go'
+Plug 'kshenoy/vim-signature'
 " Plug 'sbdchd/neoformat'
 
 call plug#end()
