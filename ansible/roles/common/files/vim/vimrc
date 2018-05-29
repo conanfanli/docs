@@ -28,7 +28,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'fatih/vim-go'
 Plug 'kshenoy/vim-signature'
-" Plug 'sbdchd/neoformat'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 call plug#end()
 
@@ -270,3 +272,6 @@ set rtp+=~/.fzf
 " let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ackprg = 'git grep -n'
 set encoding=utf-8
+
+" Snip Expansion
+let g:UltiSnipsExpandTrigger="<c-l>"
