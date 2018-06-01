@@ -94,6 +94,7 @@ Usage: `copy-package-to-container.sh container_name package_name`
 
 ## Clean up images and volumes
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
+Newer versions of docker now supports `docker system prune` 
 
 # Tmux
 - `ctrl-a alt-2` to switch layout
