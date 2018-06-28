@@ -23,16 +23,7 @@
 - [Heroku](#heroku)
 - [Github](#github)
 
-# Provisioning
-
-## Setup a new box
-- clone this repo
-- Install ansible: `sudo apt-get update && sudo apt install python3-pip && sudo pip3 install ansible`
-- `cd ansible && make play`
-- To run a specific tag: `make play-tags vim`
-
-## Only run tasks with tags
-- Only setup vim:` make play -- --tags vim` or `make paly-tags vim`
+# Provisioning. See [here](ansible/README.md)
 
 # Bash, Shell, Commands
 
@@ -96,7 +87,7 @@ Usage: `copy-package-to-container.sh container_name package_name`
 
 ## Clean up images and volumes
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
-Newer versions of docker now supports `docker system prune` 
+Newer versions of docker now supports `docker system prune`
 
 # Tmux
 - `ctrl-a alt-2` to switch layout
