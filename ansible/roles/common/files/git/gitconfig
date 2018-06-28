@@ -5,6 +5,7 @@
     st = status
     co = checkout
     merge = --no-ff
+    smart-config = "!git remote -v|grep waveaccounting && git config user.email cli@waveapps.com || git config user.email conanlics@gmail.com"
 
 [user]
 	name = Conan Li
