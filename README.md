@@ -28,7 +28,8 @@
 ## Setup a new box
 - clone this repo
 - Install ansible: `sudo apt-get update && sudo apt install python3-pip && sudo pip3 install ansible`
-- `make play`
+- `cd ansible && make play`
+- To run a specific tag: `make play-tags vim`
 
 ## Only run tasks with tags
 - Only setup vim:` make play -- --tags vim` or `make paly-tags vim`
