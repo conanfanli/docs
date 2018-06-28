@@ -5,11 +5,11 @@ python:
 
 matrix:
   include:
-    - language: generic
-      os: osx
-      before_install:
-        - brew update
-        - brew install python3
+    # - language: generic
+    #   os: osx
+    #   before_install:
+    #     - brew update
+    #     - brew install python3
     - language: python
       os: linux
       before_install:

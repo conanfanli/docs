@@ -5,17 +5,6 @@
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
     state: present
 
-- name: apt_repository:yarn_golang_tmate
-  become: true
-  when: ansible_os_family == 'Debian'
-  apt_repository:
-    repo: '{{item}}'
-    state: present
-  with_items:
-    - 'ppa:gophers/archive'
-    - 'ppa:tmate.io/archive'
-    - deb https://dl.yarnpkg.com/debian/ stable main
-
 - name: packages:ubuntu
   package: name={{item}} state=present
   when: ansible_os_family == 'Debian'
@@ -25,12 +14,9 @@
     - tree
     - yarn
     - silversearcher-ag
-    - zsh
     - git
     - python-dev
     - python3-dev
     - cmake
     - htop
     - bash-completion
-    - golang-1.8-go
-    - tmate
