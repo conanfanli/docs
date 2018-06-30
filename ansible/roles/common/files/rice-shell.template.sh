@@ -63,6 +63,12 @@ alias my-docker-compose='convox start --file my-docker-compose.yml'
 alias copy-package-to-container='~/rice/cooker-proj/commandos/copy-package-to-container.sh'  # Copy package files to docker container
 alias create_react_container='~/rice/cooker-proj/commandos/create_react_container.py'  # Create a empty react container
 
+git-clone() {
+    git clone git@github.com:conanfanli/$1.git
+    cd $1
+    git smart-config
+}
+
 yank() { # drop in dropbox
     (cd ~/dropbox/ &&  echo $1 > ~/dropbox/yanked && \
         git add -A && git commit -m 'paste yanked'&& git push)
