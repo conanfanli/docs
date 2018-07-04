@@ -12,7 +12,7 @@
   with_items:
     - lsof
     - tree
-    - yarn
+      # - yarn
     - silversearcher-ag
     - git
     - python-dev
