@@ -17,6 +17,9 @@
     - git
     - python-dev
     - python3-dev
-    - cmake
     - htop
     - bash-completion
+    # For VIM YouCompleteMe
+    - cmake
+    - nodejs
+    - npm
