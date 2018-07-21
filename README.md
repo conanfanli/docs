@@ -2,7 +2,12 @@
 
 # Provisioning. See [here](ansible/README.md)
 
-# Bash, Shell, Commands
+# Productivity: Bash, Shell, Commands
+## Shorcuts
+- `ctrl-a alt-2` to switch layout in `tmux`
+- `ctrl-e` to jump to end of line. `ctrl-a` won't work as jump to start because it's mapped in `tmux`. Use `alt-b` to go back one word at a time.
+
+
 ## Vim
 - use `silent! py3 pass` in vimrc to supress python3.7 warnings
 - Install YouCompleteMe with `./install.py --gocode-completer --tern-completer --clang-completer` in Python2
@@ -68,9 +73,6 @@ Usage: `copy-package-to-container.sh container_name package_name`
 ## Clean up images and volumes
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
 Newer versions of docker now supports `docker system prune`
-
-# Tmux
-- `ctrl-a alt-2` to switch layout
 
 # Postgres
 ## Insert rows from CSV file
