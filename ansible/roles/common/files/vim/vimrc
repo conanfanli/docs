@@ -275,3 +275,6 @@ set encoding=utf-8
 
 " Snip Expansion
 let g:UltiSnipsExpandTrigger="<c-l>"
+
+" supress warning
+silent! py3 pass
