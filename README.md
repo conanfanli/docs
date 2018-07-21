@@ -26,6 +26,9 @@
 # Provisioning. See [here](ansible/README.md)
 
 # Bash, Shell, Commands
+## Vim
+- use `silent! py3 pass` in vimrc to supress python3.7 warnings
+- Install YouCompleteMe with `./install.py --gocode-completer --tern-completer --clang-completer` in Python2
 
 ## General
 - ~/.bashrc loads ~/.rice.bash
