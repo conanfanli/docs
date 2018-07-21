@@ -1,28 +1,5 @@
 [![Build Status](https://travis-ci.org/conanfanli/rice.svg?branch=master)](https://travis-ci.org/conanfanli/rice)
 
-# Table of contents
-- [Rice or die](#rice-or-die)
-- [Provisioning](#provisioning)
-  * [Setup a new box](#setup-a-new-box)
-  * [Only run tasks with tags](#only-run-tasks-with-tags)
-- [Bash, Shell, Commands](#bash-shell-commands)
-  * [General](#general)
-  * [Regex](#regex)
-- [Python](#python)
-- [Django](#django)
-  * [Write decorators with arguments](#write-decorators-with-arguments)
-  * [Stream subprocess stdin and stdout](#stream-subprocess-stdin-and-stdout)
-- [Makefile](#makefile)
-  * [Pass arguments to make commands](#pass-arguments-to-make-commands)
-  * [Assign result of a command to a variable in Makefile](#assign-result-of-a-command-to-a-variable-in-makefile)
-- [Docker](#docker)
-  * [Edit local python packages and sync to docker container](#edit-local-python-packages-and-sync-to-docker-container)
-  * [Clean up images and volumes](#clean-up-images-and-volumes)
-- [Postgres](#postgres)
-  * [Insert rows from CSV file](#insert-rows-from-csv-file)
-- [Heroku](#heroku)
-- [Github](#github)
-
 # Provisioning. See [here](ansible/README.md)
 
 # Bash, Shell, Commands
@@ -30,8 +7,8 @@
 - use `silent! py3 pass` in vimrc to supress python3.7 warnings
 - Install YouCompleteMe with `./install.py --gocode-completer --tern-completer --clang-completer` in Python2
 
-## General
-- ~/.bashrc loads ~/.rice.bash
+## General shell stuff
+- ~/.bashrc loads ~/.rice.bash which is generated from [rice-shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
 - Press `ALT-C` to go to a directory
 - `cmds` to choose one of the alasies or functions defined in [rice.shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
 - Find all tsx files: `ag -g tsx`
