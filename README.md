@@ -25,7 +25,7 @@
 # Python
 ## Install Python3.7 on ubuntu
 Follow https://blog.softhints.com/ubuntu-how-to-install-latest-python-and-list-all-python-versions/
-and then run `sudo apt install python3.7-venv`
+and then run `sudo apt install python3.7-venv python3.7-dev`
 
 ## Create mypy compatible decorator
 ```
