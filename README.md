@@ -23,6 +23,10 @@
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
 
 # Python
+## Install Python3.7 on ubuntu
+Follow https://blog.softhints.com/ubuntu-how-to-install-latest-python-and-list-all-python-versions/
+and then run `sudo apt install python3.7-venv`
+
 ## Create mypy compatible decorator
 ```
 FuncType = TypeVar('FuncType', bound=Callable[..., Any])
