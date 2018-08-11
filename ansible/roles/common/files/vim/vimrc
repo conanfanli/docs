@@ -30,6 +30,8 @@ Plug 'fatih/vim-go'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'alvan/vim-closetag'
+
 
 
 call plug#end()
@@ -205,7 +207,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {}
-let g:ale_fixers['python'] = ['isort','yapf']
+let g:ale_fixers['python'] = ['isort', 'yapf']
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript.jsx'] = ['prettier']
@@ -275,3 +277,10 @@ set encoding=utf-8
 
 " Snip Expansion
 let g:UltiSnipsExpandTrigger="<c-l>"
+
+" supress warning
+silent! py3 pass
+
+" Add > at current position without closing the current tag, default is ''
+let g:closetag_close_shortcut = '<leader>>'
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx"

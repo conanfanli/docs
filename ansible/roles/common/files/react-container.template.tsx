@@ -2,10 +2,15 @@ import * as React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import * as actionCreators from '@src/actions.ts'
+import {ACTIONS as actionCreators} from '@src/actions.ts'
+import {ActionType} from "@src/types"
 
 
-class {{container_name}}Component extends React.Component<any, any> {
+interface PropsFromStore {}
+interface Prop extends PropsFromStore {}
+
+
+class {{container_name}}Component extends React.Component<Prop, any> {
     render() {
         return (
             <div/>
@@ -23,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators<any>(actionCreators, dispatch),
     }
 }
-export const {{container_name}} = connect(
+export const {{container_name}} = connect<PropsFromStore, {actions: ActionType}>(
     mapStateToProps,
     mapDispatchToProps
 )({{container_name}}Component)

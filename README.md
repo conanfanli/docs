@@ -1,34 +1,19 @@
 [![Build Status](https://travis-ci.org/conanfanli/rice.svg?branch=master)](https://travis-ci.org/conanfanli/rice)
 
-# Table of contents
-- [Rice or die](#rice-or-die)
-- [Provisioning](#provisioning)
-  * [Setup a new box](#setup-a-new-box)
-  * [Only run tasks with tags](#only-run-tasks-with-tags)
-- [Bash, Shell, Commands](#bash-shell-commands)
-  * [General](#general)
-  * [Regex](#regex)
-- [Python](#python)
-- [Django](#django)
-  * [Write decorators with arguments](#write-decorators-with-arguments)
-  * [Stream subprocess stdin and stdout](#stream-subprocess-stdin-and-stdout)
-- [Makefile](#makefile)
-  * [Pass arguments to make commands](#pass-arguments-to-make-commands)
-  * [Assign result of a command to a variable in Makefile](#assign-result-of-a-command-to-a-variable-in-makefile)
-- [Docker](#docker)
-  * [Edit local python packages and sync to docker container](#edit-local-python-packages-and-sync-to-docker-container)
-  * [Clean up images and volumes](#clean-up-images-and-volumes)
-- [Postgres](#postgres)
-  * [Insert rows from CSV file](#insert-rows-from-csv-file)
-- [Heroku](#heroku)
-- [Github](#github)
-
 # Provisioning. See [here](ansible/README.md)
 
-# Bash, Shell, Commands
+# Productivity: Bash, Shell, Commands
+## Shorcuts
+- `ctrl-a alt-2` to switch layout in `tmux`
+- `ctrl-e` to jump to end of line. `ctrl-a` won't work as jump to start because it's mapped in `tmux`. Use `alt-b` to go back one word at a time.
 
-## General
-- ~/.bashrc loads ~/.rice.bash
+
+## Vim
+- use `silent! py3 pass` in vimrc to supress python3.7 warnings
+- Install YouCompleteMe with `./install.py --gocode-completer --tern-completer --clang-completer` in Python2
+
+## General shell stuff
+- ~/.bashrc loads ~/.rice.bash which is generated from [rice-shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
 - Press `ALT-C` to go to a directory
 - `cmds` to choose one of the alasies or functions defined in [rice.shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
 - Find all tsx files: `ag -g tsx`
@@ -38,6 +23,10 @@
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
 
 # Python
+## Install Python3.7 on ubuntu
+Follow https://blog.softhints.com/ubuntu-how-to-install-latest-python-and-list-all-python-versions/
+and then run `sudo apt install python3.7-venv python3.7-dev`
+
 ## Create mypy compatible decorator
 ```
 FuncType = TypeVar('FuncType', bound=Callable[..., Any])
@@ -89,9 +78,6 @@ Usage: `copy-package-to-container.sh container_name package_name`
 `alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'`
 Newer versions of docker now supports `docker system prune`
 
-# Tmux
-- `ctrl-a alt-2` to switch layout
-
 # Postgres
 ## Insert rows from CSV file
 `\copy companies from 'companies.csv' with csv;`
@@ -107,3 +93,8 @@ Newer versions of docker now supports `docker system prune`
 
 # Google Cloud Platform
 https://cloud.google.com/sdk/docs/
+
+# Sumo example
+```
+_source=prod AND _sourceHost=appName* AND NOT _sourceName=nginx AND NOT "shit I do not want" | json auto nodrop | where !(name matches "crap.*") | last(asctime) as start_time ,first(asctime) as finish_time, first(_messageTime) as finish_time_epoch, last(_messageTime) as start_time_epoch group by some_id | finish_time_epoch - start_time_epoch as time_diff 
+```

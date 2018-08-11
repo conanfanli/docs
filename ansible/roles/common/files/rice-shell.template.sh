@@ -56,7 +56,6 @@ alias ...='cd ../../'
 alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 # Personal projects, shortcuts
-alias rice='cd ~/rice'
 alias iconf='cd ~/projects/iconfigs'
 
 alias my-docker-compose='convox start --file my-docker-compose.yml'
