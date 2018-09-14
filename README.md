@@ -93,3 +93,8 @@ Newer versions of docker now supports `docker system prune`
 
 # Google Cloud Platform
 https://cloud.google.com/sdk/docs/
+
+# Sumo example
+```
+_source=prod AND _sourceHost=appName* AND NOT _sourceName=nginx AND NOT "shit I do not want" | json auto nodrop | where !(name matches "crap.*") | last(asctime) as start_time ,first(asctime) as finish_time, first(_messageTime) as finish_time_epoch, last(_messageTime) as start_time_epoch group by some_id | finish_time_epoch - start_time_epoch as time_diff 
+```
