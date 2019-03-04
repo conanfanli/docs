@@ -167,7 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 whoisusingthisport () { # check who is using the port
-    lsof -i $1
+    lsof -t -i $1
 }
 
 export GOPATH=$HOME
