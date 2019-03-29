@@ -18,6 +18,7 @@
 - `cmds` to choose one of the alasies or functions defined in [rice.shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
 - Find all tsx files: `ag -g tsx`
 - Highlight text using `grep`: `command_here | grep --color -E '^|pattern1|pattern2'`
+- Multiline grep: `pcregrep -Mr  --include='\.py$' 'django_db\n(.)+BaseTestCase' .`
 
 ## Regex
 - Use look ahead and lookbehind to print out the only the matching group. For example `ag '(?<=alias )(.*?)(?=\=)` will print out the string between `alias` and `=`.
