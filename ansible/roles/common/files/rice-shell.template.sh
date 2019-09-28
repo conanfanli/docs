@@ -53,14 +53,10 @@ alias ll='ls -FGlAhp'
 alias la='ls -a'
 alias ..='cd ../'
 alias ...='cd ../../'
-alias sag='eval `ssh-agent` && ssh-add ~/.ssh/id_rsa'
 
 # Personal projects, shortcuts
 alias iconf='cd ~/projects/iconfigs'
 
-alias my-docker-compose='convox start --file my-docker-compose.yml'
-alias copy-package-to-container='~/rice/cooker-proj/commandos/copy-package-to-container.sh'  # Copy package files to docker container
-alias create_react_container='~/rice/cooker-proj/commandos/create_react_container.py'  # Create a empty react container
 
 git-clone() {
     git clone git@github.com:conanfanli/$1.git
@@ -123,9 +119,6 @@ gdm () { # delete stale branches
     git fetch -p
 }
 
-clip () {
-    echo "$1" > /usr/share/nginx/html/clips/1.txt
-}
 
 change_extension () { # change file extentions in the current directory
     if [ -z "$1" ] || [ -z "$2" ]; then
@@ -145,8 +138,6 @@ push() { # git push branch even when the current branch has no upstream branch
 alias dockerclean='(docker ps -aq | xargs docker rm); (docker images -aq -f dangling=true | xargs docker rmi); docker volume rm $(docker volume ls -qf dangling=true)'  # clean up docker containers and volumnes
 alias dc='docker-compose' # shorcut to docker-compose
 alias disk-space='df -h'  # Display disk space usage
-export USER_ID=`id -u`
-export PGUSER=postgres
 
 export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
@@ -162,13 +153,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
 whoisusingthisport () { # check who is using the port
     lsof -t -i $1
 }
 
-export GOPATH=$HOME
-export PATH=$PATH:/usr/lib/go-1.8/bin/

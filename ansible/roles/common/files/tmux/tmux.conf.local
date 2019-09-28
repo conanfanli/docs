@@ -274,6 +274,7 @@ tmux_conf_copy_to_os_clipboard=false
 
 
 # -- user customizations -------------------------------------------------------
+bind-key C-a last-pane
 # this is the place to override or undo settings
 
 # increase history size
