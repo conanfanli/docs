@@ -11,6 +11,7 @@
 ## Vim
 - use `silent! py3 pass` in vimrc to supress python3.7 warnings
 - Install YouCompleteMe with `./install.py --gocode-completer --tern-completer --clang-completer` in Python2
+- Copy text to system clipboard on Mac, use the register `*`: select the text then type `"*y`
 
 ## General shell stuff
 - ~/.bashrc loads ~/.rice.bash which is generated from [rice-shell.template.sh](ansible/roles/common/files/rice-shell.template.sh)
@@ -97,5 +98,5 @@ https://cloud.google.com/sdk/docs/
 
 # Sumo example
 ```
-_source=prod AND _sourceHost=appName* AND NOT _sourceName=nginx AND NOT "shit I do not want" | json auto nodrop | where !(name matches "crap.*") | last(asctime) as start_time ,first(asctime) as finish_time, first(_messageTime) as finish_time_epoch, last(_messageTime) as start_time_epoch group by some_id | finish_time_epoch - start_time_epoch as time_diff 
+_source=prod AND _sourceHost=appName* AND NOT _sourceName=nginx AND NOT "shit I do not want" | json auto nodrop | where !(name matches "crap.*") | last(asctime) as start_time ,first(asctime) as finish_time, first(_messageTime) as finish_time_epoch, last(_messageTime) as start_time_epoch group by some_id | finish_time_epoch - start_time_epoch as time_diff
 ```
