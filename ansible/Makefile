@@ -4,7 +4,7 @@ play:
 
 .PHONY: play-tags
 play-tags:
-	@ansible-playbook playbook.yml -i hosts --tags $(filter-out $@,$(MAKECMDGOALS))
+	ansible-playbook playbook.yml -i hosts --tags $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: test-ci
 test-ci:

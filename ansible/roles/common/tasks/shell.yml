@@ -37,10 +37,3 @@
   template:
     src: '{{role_path}}/files/rice-shell.template.sh'
     dest: ~/.rice.bash
-
-- name: write ~/.rice.zsh
-  vars:
-    rice_type: zsh
-  template:
-    src: '{{role_path}}/files/rice-shell.template.sh'
-    dest: ~/.rice.zsh
