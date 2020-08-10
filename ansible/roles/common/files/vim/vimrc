@@ -194,10 +194,28 @@ map gd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
 
+" set fold level to 1 unless it's a *.go file
 set foldlevel=1
+" set foldlevelstart=1
+"autocmd BufNewFile,BufRead *.go setlocal foldlevelstart=0
+"autocmd BufNewFile,BufRead *.go setlocal foldlevelstart=1
+autocmd BufNewFile,BufRead *.go setlocal foldmethod=indent
 
+
+
+
+" set foldmethod=indent
+let g:go_fmt_experimental = 1
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 
 let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
+
+
+
 
 let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too

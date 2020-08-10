@@ -10,6 +10,6 @@ typings/material-ui/index.d.ts
 .cover/
 .cache/
 .mypy_cache/
-migrations/
+# migrations/
 # *.json
 staticfiles/
