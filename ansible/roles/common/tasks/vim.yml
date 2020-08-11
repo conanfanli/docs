@@ -7,7 +7,7 @@
     state: directory
 
 - name: install vim for Mac OS X
-  homebrew: name=vim state=present install_options=--with-python3
+  homebrew: name=vim state=present
   when: ansible_os_family == 'Darwin'
 
 - name: install vim for Ubuntu
@@ -25,7 +25,7 @@
       state: link
       force: yes
 
-- name: verify vim 8.0 is installed
-  shell: "vim --version | grep '8.0'"
+- name: verify vim 8.2 is installed
+  shell: "vim --version | grep '8.2'"
   args:
     executable: /bin/bash
