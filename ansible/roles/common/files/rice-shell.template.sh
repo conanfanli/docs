@@ -157,3 +157,5 @@ whoisusingthisport () { # check who is using the port
     lsof -t -i $1
 }
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
