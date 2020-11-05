@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 " You can specify revision/branch/tag.
 Plug 'Shougo/vimshell', { 'rev': '3787e5' }
 Plug 'scrooloose/nerdtree'
+Plug 'unkiwii/vim-nerdtree-sync'
+
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kien/ctrlp.vim'
 
@@ -42,8 +44,10 @@ filetype plugin indent on
 syntax enable
 
  " Toggle nerd tree
- map <C-n> :NERDTreeToggle<CR>
- let NERDTreeIgnore = ['__pycache__', 'node_modules']
+map <C-n> :NERDTreeToggle<CR>
+let g:nerdtree_sync_cursorline = 1
+
+let NERDTreeIgnore = ['__pycache__', 'node_modules']
 
  " Auto reload vimrc
  autocmd! bufwritepost .vimrc source %
