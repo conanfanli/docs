@@ -7,6 +7,7 @@ Plug 'unkiwii/vim-nerdtree-sync'
 
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kien/ctrlp.vim'
+Plug 'vim-ruby/vim-ruby'
 
 " Deprecated in favor of ale which is async
 " Plug 'scrooloose/syntastic'
